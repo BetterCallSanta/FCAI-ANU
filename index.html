@@ -1,0 +1,3414 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+ <head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none';script-src 'self' 'unsafe-inline' blob: https://cdn.tailwindcss.com/3.4.17 https://unpkg.com/lucide@1.43.0/dist/umd/ https://unpkg.com/leaflet@1.9.4/dist/ https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/ https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/ https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/ https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.32.0/ https://cdn.jsdelivr.net/npm/echarts@6.1.0/dist/ https://cdn.jsdelivr.net/npm/scrollama@3.2.0/build/ https://cdn.jsdelivr.net/npm/katex@0.18.2/dist/ https://cdn.jsdelivr.net/npm/mathjs@12.4.3/lib/browser/ https://cdn.jsdelivr.net/npm/three@0.160.0/build/ https://cdn.jsdelivr.net/npm/tone@14.9.17/build/ https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/ https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/ https://cdn.jsdelivr.net/npm/mermaid@11.17.2/dist/ https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/ https://unpkg.com/roughjs@4.6.6/bundled/;style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/css https://fonts.googleapis.com/css2 https://cdn.jsdelivr.net/npm/katex@0.18.2/dist/ https://unpkg.com/leaflet@1.9.4/dist/ https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/ https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.46.0/dist/ https://cdn.jsdelivr.net/npm/iconoir@7.12.1/css/;img-src 'self' blob: data: https://unpkg.com/leaflet@1.9.4/dist/images/ https://cdn.jsdelivr.net/npm/heroicons@2.2.0/ https://lh3.googleusercontent.com https://contribution.usercontent.google.com https://lh3.google.com/rd-notebooklm/ https://lh3-dz.googleusercontent.com/notebooklm-qual/ https://lh3-dz.sandbox.google.com/rd-notebooklm-qual/ https://lh3-dy.googleusercontent.com/notebooklm/ https://lh3-dy.sandbox.google.com/rd-notebooklm/;font-src 'self' data: https://fonts.gstatic.com/s/ https://fonts.gstatic.com/l/ https://cdn.jsdelivr.net/npm/katex@0.18.2/dist/fonts/ https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/ https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.46.0/dist/fonts/ https://www.gstatic.com/external_hosted/katex/dist/fonts/;connect-src 'self' https://cdn.jsdelivr.net/npm/us-atlas@3.0.1/ https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/ https://cdn.jsdelivr.net/npm/plotly.js@2.32.0/dist/topojson/;frame-src 'none';media-src 'self' blob: data:;object-src 'none';base-uri 'none';form-action 'none';worker-src 'self' blob:">
+  <script>document.addEventListener('securitypolicyviolation',function(e){try{var u=e.blockedURI||'',s=e.sourceFile||'';if(!/^https?:/i.test(u)||/^(chrome|moz|safari|safari-web)-extension(:|$)/i.test(s)){return;}window.parent.postMessage({version:'1.0',action:'ResourceBlocked',payload:{uri:u,directive:e.effectiveDirective||''}},'*');}catch(_){}});</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="haven">
+  <title>المنصة الأكاديمية لمراجعة الاتصال الشخصي | الميدتيرم الشامل</title>
+  <!-- Google Fonts: Cairo, Outfit & Hanken Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&amp;family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces - Haven Style */
+      --background: #f5f6f5;
+      --surface-container-low: #ffffff;
+      --surface-container: #e6ece5;
+      --surface-container-high: #dbe3dc;
+
+      /* Ink */
+      --on-surface: #222629;
+      --on-surface-variant: #565f64;
+
+      /* Rules and hairlines */
+      --outline: #c5cdca;
+      --outline-variant: #dce3e0;
+
+      /* Accents */
+      --primary: #385568;
+      --on-primary: #ffffff;
+      --primary-container: #e1e9ee;
+      --on-primary-container: #203542;
+      --secondary: #48634c;
+      --on-secondary: #ffffff;
+      --tertiary: #58745c;
+      --error: #a2382e;
+      --on-error: #ffffff;
+      --positive: #2d6a4f;
+      --on-positive: #ffffff;
+      --warning: #b7791f;
+
+      /* Data series */
+      --data-1: #385568;
+      --data-2: #58745c;
+      --data-3: #9c6044;
+      --data-4: #817260;
+      --data-context: #bec6c2;
+
+      /* Typography */
+      --font-headline: 'Cairo', 'Outfit', sans-serif;
+      --font-body: 'Cairo', 'Hanken Grotesk', sans-serif;
+      --font-label: 'Cairo', 'Outfit', sans-serif;
+
+      /* Sizes */
+      --display-size: clamp(1.65rem, 1.3rem + 1.2vw, 2.2rem);
+      --headline-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.45rem);
+      --subhead-size: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+      --body-size: clamp(0.9rem, 0.86rem + 0.15vw, 0.98rem);
+      --label-size: 0.78rem;
+
+      /* Spacing Scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+
+      /* Shapes */
+      --rounded: 0.375rem;
+      --rounded-lg: 0.5rem;
+      --rounded-full: 9999px;
+
+      /* Haven Style Effects */
+      --hairline: 1px solid var(--outline-variant);
+      --hairline-control: 1px solid var(--outline);
+      --elevation: none;
+
+      /* Transitions */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 200ms;
+      --dur-long: 380ms;
+    }
+
+    /* Dark Mode Theme */
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --background: #1a1d20;
+      --surface-container-low: #22262a;
+      --surface-container: #2b3136;
+      --surface-container-high: #333a40;
+
+      --on-surface: #e4e7e5;
+      --on-surface-variant: #a0aab0;
+
+      --outline: #414a50;
+      --outline-variant: #30373d;
+
+      --primary: #9ab4c7;
+      --on-primary: #18222a;
+      --primary-container: #273742;
+      --on-primary-container: #d2e3ef;
+      --secondary: #a0bda5;
+      --on-secondary: #17261a;
+      --tertiary: #8fae94;
+      --error: #e06d63;
+      --on-error: #2a110f;
+      --positive: #68ba93;
+      --on-positive: #0e2b1d;
+      --warning: #e2a856;
+
+      --data-1: #9ab4c7;
+      --data-2: #8fae94;
+      --data-3: #d79b82;
+      --data-4: #beb19f;
+      --data-context: #444e55;
+    }
+
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      transition: background-color var(--dur-short) var(--ease-in-out), color var(--dur-short) var(--ease-in-out);
+    }
+
+    header { position: static !important; }
+
+    .page-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: var(--space-md) var(--space-md) var(--space-2xl) var(--space-md);
+    }
+
+    /* Typography & Hierarchy */
+    h1, h2, h3, h4, .headline {
+      font-family: var(--font-headline);
+      color: var(--on-surface);
+      margin-top: 0;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    h1 b, h1 strong, h2 b, h2 strong, .headline b, .headline strong {
+      font-weight: 700;
+      color: var(--primary);
+    }
+    [data-theme="dark"] h1 b, [data-theme="dark"] h1 strong,
+    [data-theme="dark"] h2 b, [data-theme="dark"] h2 strong,
+    [data-theme="dark"] .headline b, [data-theme="dark"] .headline strong {
+      color: var(--primary);
+    }
+
+    .subhead {
+      font-size: var(--subhead-size);
+      color: var(--on-surface-variant);
+      line-height: 1.5;
+    }
+
+    .label-text {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      color: var(--on-surface-variant);
+    }
+
+    .caption-sage {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--secondary);
+    }
+
+    /* Hairline Panels */
+    .panel {
+      background: var(--surface-container-low);
+      border: var(--hairline);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--elevation);
+      padding: var(--space-md) var(--space-lg);
+      transition: border-color var(--dur-short) var(--ease-out);
+    }
+
+    /* Navigation & Tabs */
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: var(--space-sm) 0 var(--space-md) 0;
+      border-bottom: var(--hairline);
+      margin-bottom: var(--space-lg);
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .brand-title h1 {
+      font-size: var(--display-size);
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .theme-toggle-btn, .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      font-family: var(--font-label);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--rounded);
+      cursor: pointer;
+      border: var(--hairline-control);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      transition: background-color var(--dur-micro), border-color var(--dur-micro), color var(--dur-micro);
+      text-decoration: none;
+      min-height: 40px;
+    }
+    .theme-toggle-btn:hover, .btn:hover {
+      background: var(--surface-container-high);
+    }
+    .btn:focus-visible, .theme-toggle-btn:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+    .btn-primary:hover {
+      background: var(--on-primary-container);
+      color: var(--primary-container);
+    }
+
+    .btn-secondary {
+      background: var(--surface-container);
+      color: var(--on-surface);
+      border-color: var(--outline-variant);
+    }
+
+    /* Tab Buttons Row */
+    .tabs-wrapper {
+      display: flex;
+      gap: var(--space-xs);
+      overflow-x: auto;
+      padding-bottom: var(--space-xs);
+      border-bottom: var(--hairline);
+      margin-bottom: var(--space-lg);
+      scrollbar-width: thin;
+    }
+
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 0.6rem 1rem;
+      font-family: var(--font-label);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--on-surface-variant);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      border-radius: var(--rounded) var(--rounded) 0 0;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color var(--dur-micro), border-color var(--dur-micro);
+    }
+    .tab-btn:hover {
+      color: var(--on-surface);
+      background: var(--surface-container);
+    }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background: var(--surface-container-low);
+    }
+
+    /* Key Metrics Strip */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+    .metric-card {
+      background: var(--surface-container-low);
+      border: var(--hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .metric-val {
+      font-size: 1.7rem;
+      font-weight: 700;
+      font-family: var(--font-headline);
+      color: var(--primary);
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* View Content Areas */
+    .view-section {
+      display: none;
+    }
+    .view-section.active {
+      display: block;
+      animation: fadeIn var(--dur-short) var(--ease-out);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Lecture Summaries Layout */
+    .lectures-grid {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .lectures-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lecture-sidebar {
+      position: sticky;
+      top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .lecture-nav-btn {
+      text-align: right;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      border: var(--hairline);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      cursor: pointer;
+      font-family: var(--font-label);
+      font-weight: 600;
+      font-size: 0.86rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all var(--dur-micro);
+    }
+    .lecture-nav-btn:hover {
+      background: var(--surface-container-high);
+      border-color: var(--primary);
+    }
+    .lecture-nav-btn.active {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      border-color: var(--primary);
+    }
+
+    .lecture-card {
+      background: var(--surface-container-low);
+      border: var(--hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--rounded-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--surface-container);
+      color: var(--secondary);
+    }
+    .badge-primary {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+
+    .concept-box {
+      background: var(--surface-container);
+      border-right: 3px solid var(--primary);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 0 var(--rounded) var(--rounded) 0;
+      margin: var(--space-md) 0;
+    }
+    .caution-box {
+      background: var(--surface-container);
+      border-right: 3px solid var(--warning);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 0 var(--rounded) var(--rounded) 0;
+      margin: var(--space-md) 0;
+    }
+
+    /* Comparison Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: var(--space-md) 0;
+      border: var(--hairline);
+      border-radius: var(--rounded);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 0.88rem;
+    }
+    th {
+      background: var(--surface-container);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-weight: 700;
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--hairline);
+    }
+    td {
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--hairline);
+      color: var(--on-surface);
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover td {
+      background: var(--surface-container-high);
+    }
+
+    /* Question Bank Styles */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      background: var(--surface-container-low);
+      border: var(--hairline);
+      border-radius: var(--rounded-lg);
+      margin-bottom: var(--space-md);
+    }
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--surface-container);
+      border: var(--hairline-control);
+      border-radius: var(--rounded);
+      padding: 0.35rem 0.75rem;
+      flex: 1 1 260px;
+      max-width: 450px;
+    }
+    .search-input-wrap input {
+      border: none;
+      background: transparent;
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      width: 100%;
+      outline: none;
+    }
+
+    .filter-select {
+      background: var(--surface-container);
+      border: var(--hairline-control);
+      border-radius: var(--rounded);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-size: 0.84rem;
+      padding: 0.4rem 0.8rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .questions-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .question-card {
+      background: var(--surface-container-low);
+      border: var(--hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      transition: border-color var(--dur-micro);
+    }
+    .question-card.bookmarked {
+      border-right: 4px solid var(--warning);
+    }
+
+    .q-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .q-number {
+      font-weight: 700;
+      color: var(--primary);
+      font-family: var(--font-label);
+      font-size: 0.9rem;
+    }
+    .q-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .q-text {
+      font-weight: 600;
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin-bottom: var(--space-md);
+      color: var(--on-surface);
+    }
+
+    .q-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-md);
+    }
+
+    .q-option {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: 0.6rem 0.85rem;
+      border-radius: var(--rounded);
+      border: var(--hairline);
+      background: var(--surface-container-low);
+      font-size: 0.88rem;
+      color: var(--on-surface);
+      cursor: pointer;
+      transition: background-color var(--dur-micro), border-color var(--dur-micro);
+    }
+    .q-option:hover {
+      background: var(--surface-container);
+    }
+    .q-option.correct-revealed {
+      background: #e7f4ec !important;
+      border-color: #388e5d !important;
+      color: #124d29 !important;
+      font-weight: 600;
+    }
+    [data-theme="dark"] .q-option.correct-revealed {
+      background: #173824 !important;
+      border-color: #48a86f !important;
+      color: #a3e6be !important;
+    }
+
+    .q-opt-char {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container-high);
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: var(--on-surface);
+    }
+
+    .q-rationale {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      font-size: 0.86rem;
+      margin-top: var(--space-sm);
+      border-top: 1px solid var(--outline-variant);
+      display: none;
+    }
+    .q-rationale.shown {
+      display: block;
+      animation: fadeIn var(--dur-short) var(--ease-out);
+    }
+    .q-rationale-title {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Exam Simulator Styles */
+    .simulator-container {
+      background: var(--surface-container-low);
+      border: var(--hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+    }
+
+    .sim-setup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+
+    .sim-card {
+      border: var(--hairline);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      background: var(--surface-container);
+    }
+
+    .sim-active-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: var(--hairline);
+      margin-bottom: var(--space-lg);
+    }
+
+    .sim-timer-badge {
+      font-family: var(--font-label);
+      font-size: 1.15rem;
+      font-weight: 700;
+      background: var(--surface-container-high);
+      color: var(--primary);
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--rounded);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .sim-q-grid-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: var(--space-lg);
+      max-height: 180px;
+      overflow-y: auto;
+      padding: var(--space-xs);
+      border: var(--hairline);
+      border-radius: var(--rounded);
+      background: var(--surface-container);
+    }
+
+    .sim-q-btn {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: var(--rounded);
+      border: var(--hairline);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      cursor: pointer;
+      transition: all var(--dur-micro);
+    }
+    .sim-q-btn:hover {
+      background: var(--surface-container-high);
+    }
+    .sim-q-btn.answered {
+      background: var(--secondary);
+      color: var(--on-secondary);
+      border-color: var(--secondary);
+    }
+    .sim-q-btn.current {
+      outline: 2px solid var(--primary);
+      outline-offset: 1px;
+      font-weight: 700;
+    }
+
+    .sim-option-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 0.75rem 1rem;
+      border: var(--hairline);
+      border-radius: var(--rounded);
+      background: var(--surface-container-low);
+      cursor: pointer;
+      margin-bottom: var(--space-xs);
+      font-size: 0.92rem;
+      transition: background-color var(--dur-micro), border-color var(--dur-micro);
+    }
+    .sim-option-label:hover {
+      background: var(--surface-container);
+    }
+    .sim-option-label.selected {
+      background: var(--primary-container);
+      border-color: var(--primary);
+      color: var(--on-primary-container);
+      font-weight: 600;
+    }
+
+    .sim-result-score {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: var(--font-headline);
+      line-height: 1;
+    }
+
+    /* Core Theories Matrix */
+    .theories-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-md);
+    }
+    .theory-card {
+      background: var(--surface-container-low);
+      border: var(--hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Footer & Notes */
+    .page-footer {
+      border-top: var(--hairline);
+      padding-top: var(--space-xl);
+      margin-top: var(--space-2xl);
+      text-align: center;
+      color: var(--on-surface-variant);
+      font-size: 0.85rem;
+    }
+
+    /* Accessibility focus */
+    button:focus-visible, select:focus-visible, input:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+ </head>
+ <body>
+  <div class="page-container">
+   <!-- Top Navigation & Header -->
+   <header>
+    <div class="nav-bar">
+     <div class="brand-title">
+      <div>
+       <span class="badge-tag badge-primary">الميدتيرم الأكاديمي الشامل | 2026</span>
+       <h1 class="headline" style="margin-top: 0.25rem;">مدخل إلى <strong>الاتصال الشخصي</strong> وتطبيقاته الأكاديمية</h1>
+       <div class="subhead">منصة المراجعة التفاعلية الشاملة: ملخصات المحاضرات الخمس، بنك الأسئلة (75 سؤالاً)، محاكي الامتحانات، والمصفوفة النظرية</div>
+      </div>
+     </div>
+     <div class="nav-controls">
+      <button type="button" class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn" aria-label="تبديل الوضع الليلي"> <i data-lucide="moon" style="width: 16px; height: 16px;"></i> <span id="themeToggleText">الوضع الليلي</span> </button> <button type="button" class="btn btn-secondary" onclick="exportStudySummary()" title="تحميل تقرير المذاكرة"> <i data-lucide="download" style="width: 16px; height: 16px;"></i> <span>حفظ التقرير</span> </button>
+     </div>
+    </div>
+    <!-- Main Navigation Tabs -->
+    <div class="tabs-wrapper" role="tablist">
+     <button type="button" class="tab-btn active" onclick="switchMainTab('lectures')" id="tabBtn-lectures"> <i data-lucide="book-open" style="width: 17px; height: 17px;"></i> <span>ملخصات المحاضرات الخمس</span> </button> <button type="button" class="tab-btn" onclick="switchMainTab('bank')" id="tabBtn-bank"> <i data-lucide="help-circle" style="width: 17px; height: 17px;"></i> <span>بنك الأسئلة والحلول النموذجية (75)</span> </button> <button type="button" class="tab-btn" onclick="switchMainTab('simulator')" id="tabBtn-simulator"> <i data-lucide="clock" style="width: 17px; height: 17px;"></i> <span>محاكي اختبار الميدتيرم</span> </button> <button type="button" class="tab-btn" onclick="switchMainTab('theories')" id="tabBtn-theories"> <i data-lucide="compass" style="width: 17px; height: 17px;"></i> <span>مصفوفة النظريات والرواد</span> </button> <button type="button" class="tab-btn" onclick="switchMainTab('progress')" id="tabBtn-progress"> <i data-lucide="bar-chart-2" style="width: 17px; height: 17px;"></i> <span>إحصائيات التقدم والمحفوظات</span> </button>
+    </div>
+   </header>
+   <!-- Quick Progress Strip -->
+   <div class="metrics-grid">
+    <div class="metric-card">
+     <span class="label-text">تغطية المقرر الأكاديمي</span>
+     <div class="metric-val">5 محاضرات</div>
+     <span class="caption-sage">شاملة لكافة الفصول والمفاهيم</span>
+    </div>
+    <div class="metric-card">
+     <span class="label-text">إجمالي أسئلة بنك الميدتيرم</span>
+     <div class="metric-val">75 سؤالاً</div>
+     <span class="caption-sage">مع الحلول النموذجية والتعليل العلمي</span>
+    </div>
+    <div class="metric-card">
+     <span class="label-text">الأسئلة المجابة في التدريب</span>
+     <div class="metric-val" id="statAnsweredCount">0 / 75</div>
+     <span class="caption-sage" id="statAccuracyPercent">نسبة الدقة: --</span>
+    </div>
+    <div class="metric-card">
+     <span class="label-text">الأسئلة المحفوظة للمراجعة</span>
+     <div class="metric-val" id="statBookmarkedCount">0</div>
+     <span class="caption-sage">محددة كعناصر حرجة للامتحان</span>
+    </div>
+   </div>
+   <!-- SECTION 1: LECTURES SUMMARIES -->
+   <section id="view-lectures" class="view-section active">
+    <div class="lectures-grid">
+     <!-- Sidebar -->
+     <aside class="lecture-sidebar">
+      <div class="label-text" style="margin-bottom: var(--space-xs);">فهرس المحاضرات المعتمدة:</div>
+      <button type="button" class="lecture-nav-btn active" onclick="showLectureDetail(1)" id="lecNavBtn-1"> <span>1. التأصيل والتطور النظري</span> <i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i> </button> <button type="button" class="lecture-nav-btn" onclick="showLectureDetail(2)" id="lecNavBtn-2"> <span>2. بنية المنظومة والنماذج الاتصالية</span> <i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i> </button> <button type="button" class="lecture-nav-btn" onclick="showLectureDetail(3)" id="lecNavBtn-3"> <span>3. مهارات العرض الفعّال والشرائح</span> <i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i> </button> <button type="button" class="lecture-nav-btn" onclick="showLectureDetail(4)" id="lecNavBtn-4"> <span>4. الإنصات والاتصال غير اللفظي</span> <i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i> </button> <button type="button" class="lecture-nav-btn" onclick="showLectureDetail(5)" id="lecNavBtn-5"> <span>5. الصراع والتحالفات والاتصال الرقمي</span> <i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i> </button>
+     </aside>
+     <!-- Lecture Details Container -->
+     <div id="lectureContentArea">
+      <!-- Rendered dynamically via JavaScript for rich formatting & state -->
+     </div>
+    </div>
+   </section>
+   <!-- SECTION 2: QUESTION BANK (75 QUESTIONS) -->
+   <section id="view-bank" class="view-section">
+    <div class="filter-bar">
+     <div class="search-input-wrap">
+      <i data-lucide="search" style="width: 18px; height: 18px; color: var(--on-surface-variant);"></i> <input type="text" id="bankSearchInput" placeholder="ابحث في الأسئلة، المفاهيم، العلماء، النظريات..." oninput="handleBankSearch()">
+     </div>
+     <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+      <select class="filter-select" id="bankLectureFilter" onchange="applyBankFilters()" aria-label="تصفية حسب المحاضرة"> <option value="all">كل المحاضرات (75 سؤالاً)</option> <option value="1">المحاضرة 1: التأصيل النظري (س1 - س11، س51 - س55)</option> <option value="2">المحاضرة 2: عناصر المنظومة ونماذجها (س12 - س25، س56 - س58)</option> <option value="3">المحاضرة 3: العرض الفعال ونظرية ماير</option> <option value="4">المحاضرة 4: الإنصات وغير اللفظي (س26 - س38، س59 - س65)</option> <option value="5">المحاضرة 5: الصراع والتفاوض والرقمي (س39 - س50، س66 - س75)</option> </select> <select class="filter-select" id="bankBookmarkFilter" onchange="applyBankFilters()" aria-label="تصفية الأسئلة المحفوظة"> <option value="all">جميع الحالات</option> <option value="bookmarked">المحفوظة للمراجعة فقط ⭐</option> <option value="unanswered">الأسئلة غير المحلولة</option> <option value="incorrect">الأسئلة الخاطئة</option> </select> <button type="button" class="btn btn-secondary" onclick="toggleAllBankRationales()"> <i data-lucide="eye" style="width: 16px; height: 16px;"></i> <span id="toggleAllRationalesText">إظهار جميع التعليلات</span> </button>
+     </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+     <div class="label-text" id="bankResultCountText">عرض 75 من أصل 75 سؤالاً</div>
+     <div class="caption-sage">انقر على الخيار للتحقق المباشر من إجابتك وعرض التعليل الأكاديمي</div>
+    </div>
+    <!-- Questions Container -->
+    <div class="questions-list" id="bankQuestionsContainer">
+     <!-- Generated via JS -->
+    </div>
+   </section>
+   <!-- SECTION 3: EXAM SIMULATOR -->
+   <section id="view-simulator" class="view-section">
+    <div class="simulator-container">
+     <!-- Setup Screen -->
+     <div id="simSetupScreen">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto var(--space-xl) auto;">
+       <span class="badge-tag badge-primary">محاكي اختبار منتصف الفصل (Midterm Simulator)</span>
+       <h2 class="headline" style="margin-top: 0.5rem; font-size: 1.8rem;">محاكاة حية لاختبار <strong>مدخل إلى الاتصال الشخصي</strong></h2>
+       <p class="subhead">اختبر جاهزيتك الكاملة للامتحان وفق ذات المعايير الأكاديمية وصياغة الأسئلة المعتمدة، مع مؤقت زمني وتصحيح تفصيلي فوري ونقاط القوة والضعف.</p>
+      </div>
+      <div class="sim-setup-grid">
+       <div class="sim-card">
+        <span class="label-text">نطاق المحتوى المطلوب:</span>
+        <div style="margin-top: var(--space-xs);">
+         <label style="display: block; margin-bottom: 0.4rem; cursor: pointer;"> <input type="radio" name="simScope" value="all" checked> كامل المقرر (كل المحاضرات الخمس) </label> <label style="display: block; margin-bottom: 0.4rem; cursor: pointer;"> <input type="radio" name="simScope" value="lec1_2"> المحاضرتان 1 و 2 (التأصيل والبنية والنماذج) </label> <label style="display: block; margin-bottom: 0.4rem; cursor: pointer;"> <input type="radio" name="simScope" value="lec3"> المحاضرة 3 (مهارات العرض الفعال وتصميم الشرائح) </label> <label style="display: block; margin-bottom: 0.4rem; cursor: pointer;"> <input type="radio" name="simScope" value="lec4_5"> المحاضرتان 4 و 5 (الإنصات، غير اللفظي، الصراع، CMC) </label>
+        </div>
+       </div>
+       <div class="sim-card">
+        <span class="label-text">عدد الأسئلة:</span>
+        <div style="margin-top: var(--space-xs);">
+         <label style="display: block; margin-bottom: 0.4rem; cursor: pointer;"> <input type="radio" name="simCount" value="25"> 25 سؤالاً (اختبار سريع - 20 دقيقة) </label> <label style="display: block; margin-bottom: 0.4rem; cursor: pointer;"> <input type="radio" name="simCount" value="50" checked> 50 سؤالاً (اختبار الميدتيرم القياسي - 40 دقيقة) </label> <label style="display: block; margin-bottom: 0.4rem; cursor: pointer;"> <input type="radio" name="simCount" value="75"> 75 سؤالاً (البنك الشامل بالكامل - 60 دقيقة) </label>
+        </div>
+       </div>
+       <div class="sim-card">
+        <span class="label-text">المؤقت والضوابط:</span>
+        <div style="margin-top: var(--space-xs);">
+         <label style="display: block; margin-bottom: 0.4rem; cursor: pointer;"> <input type="checkbox" id="simTimerEnable" checked> تفعيل المؤقت التنازلي </label> <label style="display: block; margin-bottom: 0.4rem; cursor: pointer;"> <input type="checkbox" id="simRandomize" checked> ترتيب عشوائي للأسئلة </label> <label style="display: block; margin-bottom: 0.4rem; cursor: pointer;"> <input type="checkbox" id="simInstantFeedback"> كشف النتيجة فور كل سؤال </label>
+        </div>
+       </div>
+      </div>
+      <div style="text-align: center;">
+       <button type="button" class="btn btn-primary" style="padding: 0.75rem 2rem; font-size: 1rem;" onclick="startSimulatorExam()"> <i data-lucide="play" style="width: 18px; height: 18px;"></i> <span>بدء الاختبار الآن</span> </button>
+      </div>
+     </div>
+     <!-- Active Exam Screen -->
+     <div id="simActiveScreen" style="display: none;">
+      <div class="sim-active-header">
+       <div>
+        <span class="badge-tag badge-primary" id="simCurrentQMeta">السؤال 1 من 50</span>
+        <div class="q-meta label-text" id="simTopicBadge" style="margin-top: 0.2rem;">المحاضرة الأولى: التأصيل النظري</div>
+       </div>
+       <div style="display: flex; align-items: center; gap: var(--space-md);">
+        <div class="sim-timer-badge" id="simTimerBadge">
+         <i data-lucide="clock" style="width: 18px; height: 18px;"></i> <span id="simTimeRemainingText">40:00</span>
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="confirmEndSimulator()">إنهاء وتسليم الاختبار</button>
+       </div>
+      </div>
+      <!-- Question Navigation Grid -->
+      <div class="sim-q-grid-nav" id="simQGridNav">
+       <!-- Populated via JS -->
+      </div>
+      <!-- Single Question Card -->
+      <div class="panel" style="margin-bottom: var(--space-lg);">
+       <div class="q-text" id="simActiveQText" style="font-size: 1.1rem;"></div>
+       <div class="q-options" id="simActiveQOptions"></div>
+       <div id="simActiveRationale" class="q-rationale"></div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md);">
+       <button type="button" class="btn btn-secondary" onclick="navSimulatorPrev()" id="simPrevBtn"> <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i> <span>السؤال السابق</span> </button>
+       <div style="display: flex; gap: var(--space-xs);">
+        <button type="button" class="btn btn-secondary" onclick="toggleSimBookmarkCurrent()" id="simBookmarkBtn"> <i data-lucide="bookmark" style="width: 16px; height: 16px;"></i> <span id="simBookmarkBtnText">حفظ السؤال للمراجعة</span> </button>
+       </div>
+       <button type="button" class="btn btn-primary" onclick="navSimulatorNext()" id="simNextBtn"> <span>السؤال التالي</span> <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> </button>
+      </div>
+     </div>
+     <!-- Result Screen -->
+     <div id="simResultScreen" style="display: none;">
+      <div style="text-align: center; margin-bottom: var(--space-xl);">
+       <span class="badge-tag badge-primary">نتيجة محاكي الاختبار</span>
+       <div class="sim-result-score" id="simFinalScoreText" style="margin-top: 0.5rem;">88%</div>
+       <h3 id="simGradeTitle" style="margin: 0.25rem 0 0.5rem 0;">ممتاز (امتياز أكاديمي)</h3>
+       <p class="subhead" id="simGradeDesc">أظهرت استيعاباً رصيناً لمعظم مفاهيم ونظريات الاتصال الشخصي وعناصره.</p>
+      </div>
+      <div class="metrics-grid" style="margin-bottom: var(--space-xl);">
+       <div class="metric-card">
+        <span class="label-text">إجمالي الأسئلة</span>
+        <div class="metric-val" id="simResultTotalQ">50</div>
+       </div>
+       <div class="metric-card">
+        <span class="label-text">الإجابات الصحيحة</span>
+        <div class="metric-val" style="color: var(--positive);" id="simResultCorrectQ">44</div>
+       </div>
+       <div class="metric-card">
+        <span class="label-text">الإجابات الخاطئة</span>
+        <div class="metric-val" style="color: var(--error);" id="simResultWrongQ">6</div>
+       </div>
+       <div class="metric-card">
+        <span class="label-text">الوقت المستغرق</span>
+        <div class="metric-val" id="simResultTimeSpent">28:15</div>
+       </div>
+      </div>
+      <div class="panel" style="margin-bottom: var(--space-xl);">
+       <h4 style="margin-bottom: var(--space-sm);">تحليل الأداء حسب موضوعات المقرر:</h4>
+       <div id="simTopicBreakdown"></div>
+      </div>
+      <div style="display: flex; justify-content: center; gap: var(--space-md); flex-wrap: wrap;">
+       <button type="button" class="btn btn-primary" onclick="reviewExamMistakes()"> <i data-lucide="alert-circle" style="width: 16px; height: 16px;"></i> <span>مراجعة الأسئلة الخاطئة والتعليلات</span> </button> <button type="button" class="btn btn-secondary" onclick="resetSimulatorToSetup()"> <i data-lucide="rotate-ccw" style="width: 16px; height: 16px;"></i> <span>إعادة الاختبار بنموذج جديد</span> </button>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- SECTION 4: THEORIES & SCHOLARS MATRIX -->
+   <section id="view-theories" class="view-section">
+    <div style="margin-bottom: var(--space-lg);">
+     <h2 class="headline">مصفوفة <strong>النظريات الكبرى ورواد الاتصال الشخصي</strong></h2>
+     <p class="subhead">الخارطة الإدراكية لجميع النظريات الأكاديمية والفرضيات الأساسية وروادها الواردة في المنهج وبنك الأسئلة.</p>
+    </div>
+    <div class="theories-matrix-grid" id="theoriesMatrixContainer">
+     <!-- Generated via JS -->
+    </div>
+   </section>
+   <!-- SECTION 5: PROGRESS & BOOKMARKS -->
+   <section id="view-progress" class="view-section">
+    <div style="margin-bottom: var(--space-lg);">
+     <h2 class="headline">سجل <strong>التقدم والمحفوظات الشخصية</strong></h2>
+     <p class="subhead">متابعة دقيقة لمستوى إتقانك للأسئلة والأسئلة الحرجة التي قمت بحفظها للمراجعة قبل دخول لجنة الامتحان.</p>
+    </div>
+    <div class="panel" style="margin-bottom: var(--space-lg);">
+     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); flex-wrap: wrap; gap: var(--space-sm);">
+      <h3 style="margin: 0;">الأسئلة المحفوظة للمراجعة السريعة (<span id="savedCountHeading">0</span>)</h3>
+      <button type="button" class="btn btn-secondary" onclick="clearAllBookmarks()">مسح كل المحفوظات</button>
+     </div>
+     <div id="savedQuestionsContainer">
+      <!-- Rendered via JS -->
+     </div>
+    </div>
+   </section>
+   <!-- Footer -->
+   <footer class="page-footer">
+    <p>منصة مراجعة مقرر مدخل إلى الاتصال الشخصي وتطبيقاته الأكاديمية للميدتيرم — أعدت استناداً إلى المراجع المعتمدة (DeVito, Hargie, Burgoon, Baxter, Festinger, Daft &amp; Lengel, Mayer, Walther, Altman &amp; Taylor, Thomas &amp; Kilmann, Granovetter) وبنك الأسئلة الرسمي لأستاذة المادة أ.د.م / يمنى محمد عاطف.</p>
+    <div class="caption-sage">تم تصميم الواجهة بنمط Haven الهادئ والمريح للعين لدعم التركيز الذهني الكامل.</div>
+   </footer>
+  </div>
+  <!-- State persistence shim required by NotebookLM Web-Craft -->
+  <script data-api-capabilities="CgYBGQQICg4=">(function(){'use strict';/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+var aa=this||self;function ba(a){var b=typeof a;return b!="object"?b:a?Array.isArray(a)?"array":b:"null"}function ca(a){return a};function da(a){aa.setTimeout(()=>{throw a;},0)};var ea,fa;a:{for(var ha=["CLOSURE_FLAGS"],ia=aa,ja=0;ja<ha.length;ja++)if(ia=ia[ha[ja]],ia==null){fa=null;break a}fa=ia}var ka=fa&&fa[748402147];ea=ka!=null?ka:!0;var la=/[-_.]/g,ma={"-":"+",_:"/",".":"="};function na(a){return ma[a]||""}function oa(a){a=la.test(a)?a.replace(la,na):a;a=atob(a);var b=new Uint8Array(a.length);for(let c=0;c<a.length;c++)b[c]=a.charCodeAt(c);return b}var k={};var u=class{constructor(a,b){pa(b);this.h=a;if(a!=null&&a.length===0)throw Error("ByteString should be constructed with non-empty values");}},qa;function pa(a){if(a!==k)throw Error("illegal external caller");};function ra(a,b){a.__closure__error__context__984382||(a.__closure__error__context__984382={});a.__closure__error__context__984382.severity=b};var sa=void 0;function ta(a){a=Error(a);ra(a,"warning");return a}function ua(a,b){if(a!=null){var c=sa??={};var d=c[a]||0;d>=b||(c[a]=d+1,a=Error(),ra(a,"incident"),da(a))}};function v(a,b=!1){return b&&Symbol.for&&a?Symbol.for(a):a!=null?Symbol(a):Symbol()}var va=v(),wa=v(),xa=v(),ya=v(),za=v(),Aa=v("m_m",!0);var w=v("jas",!0),x,Ba=[];Ba[w]=7;x=Object.freeze(Ba);function y(a){a[w]|=34;return a}function Ca(a){a[w]|=8192;return a}function Da(a){a[w]|=32;return a}function Ea(a,b){2&b&&(a|=2);return a|1};var Fa={};function z(a){return a!=null&&a[Aa]===Fa}function A(a,b){return b===void 0?a.h!==D&&!!(2&(a.j[w]|0)):!!(2&b)&&a.h!==D}var D={};class Ga{constructor(a,b,c){this.h=a;this.i=b;this.l=c}next(){var a=this.h.next();a.done||(a.value=this.i.call(this.l,a.value));return a}[Symbol.iterator](){return this}}Object.freeze({});
+function Ha(a,b,c){var d=b&128?0:-1,e=a.length,f;if(f=!!e)f=a[e-1],f=f!=null&&typeof f==="object"&&f.constructor===Object;var g=e+(f?-1:0);for(b=b&128?1:0;b<g;b++)c(b-d,a[b]);if(f){a=a[e-1];for(let h in a)!isNaN(h)&&c(+h,a[h])}}var Ia={};function Ja(a){a.ca=!0;return a};var Ka=Ja(a=>typeof a==="number"),La=Ja(a=>typeof a==="string");function E(a){if(La(a)){if(!/^\s*(?:-?[1-9]\d*|0)?\s*$/.test(a))throw Error(String(a));}else if(Ka(a)&&!Number.isSafeInteger(a))throw Error(String(a));return BigInt(a)}var Oa=Ja(a=>a>=Ma&&a<=Na),Ma=BigInt(Number.MIN_SAFE_INTEGER),Na=BigInt(Number.MAX_SAFE_INTEGER);var I=0,J=0;function Pa(a){var b=a>>>0;I=b;J=(a-b)/4294967296>>>0}function Qa(a){if(a<0){Pa(-a);a=I;var b=J;b=~b;a?a=~a+1:b+=1;let [c,d]=[a,b];I=c>>>0;J=d>>>0}else Pa(a)}function Ra(a,b){b>>>=0;a>>>=0;var c;b<=2097151?c=""+(4294967296*b+a):c=""+(BigInt(b)<<BigInt(32)|BigInt(a));return c}function Sa(){var a=I,b=J,c;b&2147483648?c=""+(BigInt(b|0)<<BigInt(32)|BigInt(a>>>0)):c=Ra(a,b);return c};var Ta=typeof BigInt==="function"?BigInt.asIntN:void 0,K=Number.isSafeInteger,Ua=Number.isFinite,Va=Math.trunc;function Wa(a){if(a==null||typeof a==="number")return a;if(a==="NaN"||a==="Infinity"||a==="-Infinity")return Number(a)}var Xa=/^-?([1-9][0-9]*|0)(\.[0-9]+)?$/;function Ya(a){switch(typeof a){case "bigint":return!0;case "number":return Ua(a);case "string":return Xa.test(a);default:return!1}}function Za(a){if(a!=null){if(!Ua(a))throw ta("enum");a|=0}return a}
+function $a(a){return a==null?a:Ua(a)?a|0:void 0}function ab(a){if(a!=null){if(typeof a!=="number")throw ta("int32");if(!Ua(a))throw ta("int32");a|=0}return a}function bb(a){if(a==null)return a;if(typeof a==="string"&&a)a=+a;else if(typeof a!=="number")return;return Ua(a)?a|0:void 0}function cb(a){a=Va(a);K(a)?a=String(a):(Qa(a),a=Sa());return a}function db(a){var b=Va(Number(a));if(K(b))return E(b);b=a.indexOf(".");b!==-1&&(a=a.substring(0,b));return E(Ta(64,BigInt(a)))}
+function eb(a){var b=typeof a;if(a==null)return a;if(b==="bigint")return E(Ta(64,a));if(Ya(a))return b==="string"?db(a):E(K(a)?a:cb(a))}function fb(a){return a==null||typeof a==="string"?a:void 0}function gb(a,b,c,d){if(z(a))return a;if(!Array.isArray(a))return c?d&2?b[va]||(b[va]=hb(b)):new b:void 0;c=a[w]|0;d=c|d&32|d&2;d!==c&&(a[w]=d);return new b(a)}function hb(a){a=new a;y(a.j);return a}function ib(a,b,c){if(b){if(typeof a!=="string")throw Error();}else a=fb(a)??(c?"":void 0);return a};function jb(a){return a};var kb={},lb=(()=>class extends Map{constructor(){super()}})();function mb(a){return a}function nb(a){if(a.v&2)throw Error("Cannot mutate an immutable Map");}
+var L=class extends lb{constructor(a,b,c=mb,d=mb){super();this.v=a[w]|0;this.u=b;this.G=c;this.S=this.u?ob:d;for(let e=0;e<a.length;e++){let f=a[e],g=c(f[0],!1,!0),h=f[1];b?h===void 0&&(h=null):h=d(f[1],!1,!0,void 0,void 0,this.v);super.set(g,h)}}L(a){return Ca(Array.from(super.entries(),a))}clear(){nb(this);super.clear()}delete(a){nb(this);return super.delete(this.G(a,!0,!1))}entries(){if(this.u){var a=super.keys();a=new Ga(a,pb,this)}else a=super.entries();return a}values(){if(this.u){var a=super.keys();
+a=new Ga(a,L.prototype.get,this)}else a=super.values();return a}forEach(a,b){this.u?super.forEach((c,d,e)=>{a.call(b,e.get(d),d,e)}):super.forEach(a,b)}set(a,b){nb(this);a=this.G(a,!0,!1);return a==null?this:b==null?(super.delete(a),this):super.set(a,this.S(b,!0,!0,this.u,!1,this.v))}has(a){return super.has(this.G(a,!1,!1))}get(a){a=this.G(a,!1,!1);var b=super.get(a);if(b!==void 0){var c=this.u;return c?(c=this.S(b,!1,!0,c,this.V,this.v),c!==b&&super.set(a,c),c):b}}[Symbol.iterator](){return this.entries()}};
+L.prototype.toJSON=void 0;function ob(a,b,c,d,e,f){a=gb(a,d,c,f);e&&(a=qb(a));return a}function pb(a){return[a,this.get(a)]}var rb;function sb(){return rb||=new L(y([]),void 0,void 0,void 0,kb)};function tb(a){var b=ca(xa);return b?a[b]:void 0}function ub(a,b){for(let c in a)!isNaN(c)&&b(a,+c,a[c])}function vb(a){var b=new wb;ub(a,(c,d,e)=>{b[d]=[...e]});b.h=a.h;return b}var wb=class{};function xb(a,b){b<100||ua(ya,1)};function yb(a,b,c,d){var e=d!==void 0;d=!!d;var f=ca(xa),g;!e&&f&&(g=a[f])&&ub(g,xb);f=[];var h=a.length;g=4294967295;var m=!1,n=!!(b&64),l=n?b&128?0:-1:void 0;if(!(b&1)){var p=h&&a[h-1];p!=null&&typeof p==="object"&&p.constructor===Object?(h--,g=h):p=void 0;!n||b&128||e||(m=!0,g=(zb??jb)(g-l,l,a,p,void 0)+l)}b=void 0;for(var r=0;r<h;r++){let q=a[r];if(q!=null&&(q=c(q,d))!=null)if(n&&r>=g){let t=r-l;(b??={})[t]=q}else f[r]=q}if(p)for(let q in p){h=p[q];if(h==null||(h=c(h,d))==null)continue;r=+q;let t;
+n&&!Number.isNaN(r)&&(t=r+l)<g?f[t]=h:(b??={})[q]=h}b&&(m?f.push(b):f[g]=b);e&&(c=ca(xa))&&(a=tb(a))&&a instanceof wb&&(f[c]=vb(a));return f}function Ab(a){a[0]=Bb(a[0]);a[1]=Bb(a[1]);return a}
+function Bb(a){switch(typeof a){case "number":return Number.isFinite(a)?a:""+a;case "bigint":return Oa(a)?Number(a):""+a;case "boolean":return a?1:0;case "object":if(Array.isArray(a)){var b=a[w]|0;return a.length===0&&b&1?void 0:yb(a,b,Bb)}if(z(a))return Cb(a);if(a instanceof u){b=a.h;if(b==null)a="";else if(typeof b==="string")a=b;else{let c="",d=0,e=b.length-10240;for(;d<e;)c+=String.fromCharCode.apply(null,b.subarray(d,d+=10240));c+=String.fromCharCode.apply(null,d?b.subarray(d):b);b=btoa(c);a=
+a.h=b}return a}if(a instanceof L)return a=a.size!==0?a.L(Ab):void 0,a;return}return a}var zb;function Cb(a){a=a.j;return yb(a,a[w]|0,Bb)};var Db,Eb;function Fb(a){switch(typeof a){case "boolean":return Db||=[0,void 0,!0];case "number":return a>0?void 0:a===0?Eb||=[0,void 0]:[-a,void 0];case "string":return[0,a];case "object":return a}}function Gb(a,b){return Hb(a,b[0],b[1])}
+function Hb(a,b,c,d=0){if(a==null){var e=32;c?(a=[c],e|=128):a=[];b&&(e=e&-16760833|(b&1023)<<14)}else{if(!Array.isArray(a))throw Error("narr");e=a[w]|0;if(ea&&1&e)throw Error("rfarr");2048&e&&!(2&e)&&Ib();if(e&256)throw Error("farr");if(e&64)return(e|d)!==e&&(a[w]=e|d),a;if(c&&(e|=128,c!==a[0]))throw Error("mid");a:{c=a;e|=64;var f=c.length;if(f){var g=f-1;let m=c[g];if(m!=null&&typeof m==="object"&&m.constructor===Object){b=e&128?0:-1;g-=b;if(g>=1024)throw Error("pvtlmt");for(var h in m)if(f=+h,
+f<g)c[f+b]=m[h],delete m[h];else break;e=e&-16760833|(g&1023)<<14;break a}}if(b){h=Math.max(b,f-(e&128?0:-1));if(h>1024)throw Error("spvt");e=e&-16760833|(h&1023)<<14}}}a[w]=e|64|d;return a}function Ib(){if(ea)throw Error("carr");ua(za,5)};function Jb(a,b){if(typeof a!=="object")return a;if(Array.isArray(a)){var c=a[w]|0;return a.length===0&&c&1?void 0:Kb(a,c,b)}if(z(a))return Lb(a);if(a instanceof L){b=a.v;if(b&2)return a;if(!a.size)return;c=y(a.L());if(a.u)for(a=0;a<c.length;a++){let d=c[a],e=d[1];e==null||typeof e!=="object"?e=void 0:z(e)?e=Lb(e):Array.isArray(e)?e=Kb(e,e[w]|0,!!(b&32)):e=void 0;d[1]=e}return c}if(a instanceof u)return a}
+function Kb(a,b,c){if(b&2)return a;!c||4096&b||16&b?a=Mb(a,b,!1,c&&!(b&16)):(a[w]|=34,b&4&&Object.freeze(a));return a}function Nb(a,b,c){a=new a.constructor(b);c&&(a.h=D);a.l=D;return a}function Lb(a){var b=a.j,c=b[w]|0;return A(a,c)?a:Ob(a,b,c)?Nb(a,b):Mb(b,c)}function Mb(a,b,c,d){d??=!!(34&b);a=yb(a,b,Jb,d);d=32;c&&(d|=2);b=b&16769217|d;a[w]=b;return a}function qb(a){var b=a.j,c=b[w]|0;if(A(a,c)){var d;Ob(a,b,c)?d=Nb(a,b,!0):d=new a.constructor(Mb(b,c,!1));a=d}return a}
+function Pb(a){if(a.h!==D)return!1;var b=a.j;b=Mb(b,b[w]|0);b[w]|=2048;a.j=b;a.h=void 0;a.l=void 0;return!0}function Qb(a){if(!Pb(a)&&A(a,a.j[w]|0))throw Error();}function M(a,b){b===void 0&&(b=a[w]|0);b&32&&!(b&4096)&&(a[w]=b|4096)}function Ob(a,b,c){return c&2?!0:c&32&&!(c&4096)?(b[w]=c|2,a.h=D,!0):!1};function N(a,b,c,d){a=O(a.j,b,c,d);if(a!==null)return a}function Rb(a,b,c){return O(a,b,void 0,c)}function O(a,b,c,d){if(b===-1)return null;var e=b+(c?0:-1),f=a.length-1;if(!(f<1+(c?0:-1))){if(e>=f){var g=a[f];if(g!=null&&typeof g==="object"&&g.constructor===Object){c=g[b];var h=!0}else if(e===f)c=g;else return}else c=a[e];if(d&&c!=null){d=d(c);if(d==null)return d;if(!Object.is(d,c))return h?g[b]=d:a[e]=d,d}return c}}function Sb(a,b,c){Qb(a);a=a.j;P(a,a[w]|0,b,c)}
+function P(a,b,c,d,e){var f=c+(e?0:-1),g=a.length-1;if(g>=1+(e?0:-1)&&f>=g){let h=a[g];if(h!=null&&typeof h==="object"&&h.constructor===Object)return h[c]=d,b}if(f<=g)return a[f]=d,b;d!==void 0&&(g=(b??=a[w]|0)>>14&1023||536870912,c>=g?d!=null&&(a[g+(e?0:-1)]={[c]:d}):a[f]=d);return b}function Tb(a){a=O(a.j,2);return z(a)||Array.isArray(a)}
+function Ub(a,b,c,d,e,f,g,h){var m=b,n=Vb(b);n&&f===2&&(a=[...a],m=0,b=Wb(b,d),d=P(c,d,e,a),n=!1);n||(f===1||(f!==4?0:2&b||!(16&b)&&32&d)?(b|=!a.length||g&&!(4096&b)||32&d&&!(4096&b||16&b)?2:256,b!==m&&(a[w]=b),Object.freeze(a)):(h||(b|=16),b!==m&&(a[w]=b)));2&b||!(4096&b||16&b)||M(c,d);return a}function Xb(a,b,c){a=O(a,b,c);return Array.isArray(a)?a:x}function Vb(a){return!!(2&a)&&!!(4&a)||!!(256&a)}
+function Yb(a){var b=Zb;var c=a.j;var d=c[w]|0;var e=A(a,d);a:{!e&&Pb(a)&&(c=a.j,d=c[w]|0);var f=O(c,1);a=!1;if(f==null){if(e){c=sb();break a}f=[]}else if(f.constructor===L)if(f.v&2&&!e)f=f.L();else{c=f;break a}else Array.isArray(f)?a=!!((f[w]|0)&2):f=[];if(e){if(!f.length){c=sb();break a}a||(a=!0,y(f))}else if(a){a=!1;Ca(f);f=[...f];for(let g=0;g<f.length;g++){let h=f[g]=[...f[g]];Array.isArray(h[1])&&(h[1]=y(h[1]))}f=Ca(f)}!a&&d&32&&Da(f);f=new L(f,b,ib,void 0);d=P(c,d,1,f);a||M(c,d);c=f}!e&&b&&
+(c.V=!0);return c}function Q(a,b,c,d){Qb(a);var e=a.j;P(e,e[w]|0,b,(d==="0"?Number(c)===0:c===d)?void 0:c);return a}function $b(a,b,c,d){Qb(a);var e=a.j,f=e[w]|0;if(d==null){var g=ac(e);if(bc(g,e,f,c)===b)g.set(c,0);else return a}else{g=ac(e);let h=bc(g,e,f,c);h!==b&&(h&&(f=P(e,f,h)),g.set(c,b))}P(e,f,b,d);return a}function R(a,b,c){return cc(a.j,b)===c?c:-1}function cc(a,b){return bc(ac(a),a,void 0,b)}function ac(a){return a[wa]??(a[wa]=new Map)}
+function bc(a,b,c,d){var e=a.get(d);if(e!=null)return e;e=0;for(let f=0;f<d.length;f++){let g=d[f];O(b,g)!=null&&(e!==0&&(c=P(b,c,e)),e=g)}a.set(d,e);return e}function dc(a,b,c){var d=a[w]|0,e=d&128?Ia:void 0,f=O(a,c,e);if(z(f)){if(!A(f))return Pb(f),f.j;var g=f.j}else Array.isArray(f)&&(g=f,d&2&&y(g));if(g){let h=g[w]|0;h&2&&(g=Mb(g,h))}g=Gb(g,b);g!==f&&P(a,d,c,g,e);return g}
+function ec(a,b,c,d){var e=!1;d=Rb(a,d,f=>{var g=gb(f,c,!1,b);e=g!==f&&g!=null;return g});if(d!=null)return e&&!A(d)&&M(a,b),d}function fc(a){var b=hc;a=a.j;return ec(a,a[w]|0,b,2)||b[va]||(b[va]=hb(b))}function ic(a,b,c){var d=a.j,e=d[w]|0;b=ec(d,e,b,c);if(b==null)return b;e=d[w]|0;if(!A(a,e)){let f=qb(b);f!==b&&(Pb(a)&&(d=a.j,e=d[w]|0),b=f,e=P(d,e,c,b),M(d,e))}return b}
+function jc(a,b,c,d,e,f,g,h){f=f&&f!==4?f!==1&&(a?A(a,c):2&c)?1:f:4;g=!!g||f===3;var m=!!h&&!(a?A(a,c):2&c);(f===2||m)&&a&&Pb(a)&&(b=a.j,c=b[w]|0);a=Xb(b,e);var n=a===x?7:a[w]|0,l=Ea(n,c);if(h=!(4&l)){var p=a,r=c;let q=!!(2&l);q&&(r|=2);let t=!q,F=!0,B=0,C=0;for(;B<p.length;B++){let G=gb(p[B],d,!1,r);if(G instanceof d){if(!q){let H=A(G);t&&=!H;F&&=H}p[C++]=G}}C<B&&(p.length=C);l|=4;l=F?l&-4097:l|4096;l=t?l|8:l&-9}l!==n&&(a[w]=l,2&l&&Object.freeze(a));if(m&&!(8&l||!a.length&&(f===1||(f!==4?0:2&l||
+!(16&l)&&32&c)))){Vb(l)&&(a=[...a],l=Wb(l,c),c=P(b,c,e,a));d=a;m=l;for(n=0;n<d.length;n++)p=d[n],l=qb(p),p!==l&&(d[n]=l);m|=8;l=m=d.length?m|4096:m&-4097;a[w]=l}return a=Ub(a,l,b,c,e,f,h,g)}function kc(a,b,c){var d=a.j;return jc(a,d,d[w]|0,b,c,void 0,!1,!0)}function lc(a){a==null&&(a=void 0);return a}function mc(a,b,c){c=lc(c);Sb(a,b,c);c&&!A(c)&&M(a.j);return a}function nc(a,b,c){var d=S;c=lc(c);$b(a,b,d,c);c&&!A(c)&&M(a.j);return a}function Wb(a,b){return a=(2&b?a|2:a&-3)&-273}
+function oc(a,b,c,d,e,f){Qb(a);var g=a.j;a=jc(a,g,g[w]|0,c,b,2,!0);if(f){if(typeof e!=="number"||e<0||e>a.length)throw Error();}else d=d!=null?d:new c;e!=void 0?a.splice(e,f,d):a.push(d);e=c=a===x?7:a[w]|0;(d=A(d))?(c&=-9,a.length===1&&(c&=-4097)):c|=4096;c!==e&&(a[w]=c);d||M(g)};var T=class{constructor(a,b,c){this.buffer=a;if(c&&!b)throw Error();this.h=b}};
+function pc(a,b){if(typeof a==="string")return new T(oa(a),b);if(Array.isArray(a))return new T(new Uint8Array(a),b);if(a.constructor===Uint8Array)return new T(a,!1);if(a.constructor===ArrayBuffer)return a=new Uint8Array(a),new T(a,!1);if(a.constructor===u)return pa(k),b=a.h,b=b==null||b!=null&&b instanceof Uint8Array?b:typeof b==="string"?oa(b):null,b=(b==null?b:a.h=b)||new Uint8Array(0),new T(b,!0,a);if(a instanceof Uint8Array)return a=a.constructor===Uint8Array?a:new Uint8Array(a.buffer,a.byteOffset,
+a.byteLength),new T(a,!1);throw Error();};function U(a){var b=a.l,c=a.h,d=b[c++],e=d&127;if(d&128&&(d=b[c++],e|=(d&127)<<7,d&128&&(d=b[c++],e|=(d&127)<<14,d&128&&(d=b[c++],e|=(d&127)<<21,d&128&&(d=b[c++],e|=d<<28,d&128&&b[c++]&128&&b[c++]&128&&b[c++]&128&&b[c++]&128&&b[c++]&128)))))throw Error();qc(a,c);return e}function qc(a,b){a.h=b;if(b>a.i)throw Error();}
+var rc=class{constructor(a,b,c,d){this.l=null;this.o=!1;this.h=this.i=this.m=0;this.init(a,b,c,d)}init(a,b,c,{J:d=!1,M:e=!1}={}){this.J=d;this.M=e;a&&(a=pc(a,this.M),this.l=a.buffer,this.o=a.h,this.m=b||0,this.i=c!==void 0?this.m+c:this.l.length,this.h=this.m)}clear(){this.l=null;this.o=!1;this.h=this.i=this.m=0;this.J=!1}},sc=[];var V=0;function tc(a,b,c,d){if(uc.length){let e=uc.pop();vc(e,d);e.h.init(a,b,c,d);return e}return new wc(a,b,c,d)}function vc(a,{N:b=!1}={}){a.N=b}function xc(a){a.h.clear();a.l=-1;a.i=-1;uc.length<100&&uc.push(a)}function yc(a){var b=a.h;if(b.h==b.i)return!1;a.m=a.h.h;var c=U(a.h)>>>0;b=c>>>3;c&=7;if(!(c>=0&&c<=5))throw Error();if(b<1)throw Error();a.l=b;a.i=c;return!0}
+function zc(a){try{switch(a.i){case 0:if(a.i!=0)zc(a);else a:{var b=a.h;let h=b.h;a=h+10;let m=b.l;for(;h<a;)if((m[h++]&128)===0){qc(b,h);break a}throw Error();}break;case 1:var c=a.h;qc(c,c.h+8);break;case 2:if(a.i!=2)zc(a);else{var d=U(a.h)>>>0,e=a.h;qc(e,e.h+d)}break;case 5:var f=a.h;qc(f,f.h+4);break;case 3:Ac();let g=a.l;try{do{if(!yc(a))throw Error();if(a.i==4){if(a.l!=g)throw Error();break}zc(a)}while(1)}catch(h){if(h instanceof RangeError)throw new SyntaxError;throw h;}finally{V>0&&V--}break;
+default:throw Error();}}catch(g){if(g instanceof RangeError)throw new SyntaxError;throw g;}}function Ac(){if(V>=100)throw new SyntaxError;V++}function Bc(a,b,c){var d=a.h.i,e=U(a.h)>>>0;e=a.h.h+e;var f=e-d;f<=0&&(a.h.i=e,c(b,a,void 0,void 0,void 0),f=e-a.h.h);if(f)throw Error();a.h.h=e;a.h.i=d}var wc=class{constructor(a,b,c,d){if(sc.length){let e=sc.pop();e.init(a,b,c,d);a=e}else a=new rc(a,b,c,d);this.h=a;this.m=this.h.h;this.i=this.l=-1;vc(this,d)}},uc=[];function Cc(){var a=class{constructor(){throw Error();}};Object.setPrototypeOf(a,a.prototype);return a}var Dc=Cc(),Ec=Cc();function Fc(a){return JSON.stringify(Cb(a))}var W=class{constructor(a){this.j=Hb(a,void 0,void 0,2048)}toJSON(){return Cb(this)}};W.prototype[Aa]=Fa;W.prototype.toString=function(){return this.j.toString()};var Gc=class{constructor(a,b){this.h=a;a=ca(Dc);this.i=!!a&&b===a||!1}},Hc=new Gc(function(a,b,c,d,e){if(a.i!==2)return!1;Bc(a,dc(b,d,c),e);return!0},Dc),Ic=new Gc(function(a,b,c,d,e){if(a.i!==2)return!1;Bc(a,dc(b,d,c),e);return!0},Dc),Jc=Symbol(),Kc=Symbol(),Lc=Symbol(),Mc,Nc;
+function Oc(a){var b=Pc,c=Qc,d=a[Jc];if(d)return d;d={};d.U=a;d.K=Fb(a[0]);var e=a[1],f=1;e&&e.constructor===Object&&(d.O=e,e=a[++f],typeof e==="function"&&e.length>0&&(d.Z=!0,Mc??=e,Nc??=a[f+1],e=a[f+=2]));for(var g={};e&&Array.isArray(e)&&e.length&&typeof e[0]==="number"&&e[0]>0;){for(var h=0;h<e.length;h++)g[e[h]]=e;e=a[++f]}for(h=1;e!==void 0;){typeof e==="number"&&(h+=e,e=a[++f]);let l;var m=void 0;e instanceof Gc?l=e:(l=Hc,f--);if(l?.i){e=a[++f];m=a;var n=f;typeof e==="function"&&(e=e(),m[n]=
+e);m=e}e=a[++f];n=h+1;typeof e==="number"&&e<0&&(n-=e,e=a[++f]);for(;h<n;h++){let p=g[h];m?c(d,h,l,m,p):b(d,h,l,p)}}return a[Jc]=d};function Pc(a,b,c,d){var e=c.h;a[b]=d?(f,g,h)=>e(f,g,h,d):e}function Qc(a,b,c,d,e){var f=c.h,g,h;a[b]=(m,n,l)=>f(m,n,l,h||=Oc(d).K,g||=Rc(d),e)}
+function Rc(a){var b=a[Kc];if(b!=null)return b;var c=Oc(a);b=c.Z?(d,e)=>Mc(d,e,c):(d,e)=>{a:{Ac();try{for(;yc(e)&&e.i!=4;){let F=e.l,B=c[F];if(B==null){let C=c.O;if(C){let G=C[F];if(G){let H=Sc(G);H!=null&&(B=c[F]=H)}}}if(B==null||!B(e,d,F)){var f=e;let C=f.m;zc(f);if(f.N)var g=void 0;else{let G=f.h.h-C;f.h.h=C;c:{var h=f.h;f=G;if(f==0){g=qa||=new u(null,k);break c}if(f<0)throw Error();let H=h.h;var m=H+f;if(m>h.i)throw Error();h.h=m;var n=H;if(h.J&&h.o)var l=h.l.subarray(n,n+f);else{var p=h.l;m=
+n;f=n+f;l=m===f?new Uint8Array(0):p.slice(m,f)}f=l;g=f.length==0?qa||=new u(null,k):new u(f,k)}}f=void 0;m=d;n=F;var r=g;r&&((f=m[xa]??(m[xa]=new wb))[n]??(f[n]=[])).push(r)}}let t=tb(d);t&&(t.h=c.U[Lc]);var q=!0;break a}catch(t){if(t instanceof RangeError)throw new SyntaxError;throw t;}finally{V>0&&V--}q=void 0}return q};a[Kc]=b;a[Lc]=Tc.bind(a);return b}
+function Tc(a,b,c,d){var e=this[Jc],f=this[Kc],g=Gb(void 0,e.K),h=tb(a);if(h){var m=!1,n=e.O;if(n){e=(l,p,r)=>{if(r.length!==0)if(n[p])for(let q of r){l=tc(q);try{m=!0,f(g,l)}finally{xc(l)}}else d?.(a,p,r)};if(b==null)ub(h,e);else if(h!=null){let l=h[b];l&&e(h,b,l)}if(m){let l=a[w]|0;if(l&2&&l&2048&&!c?.ea)throw Error();let p=l&128?Ia:void 0,r=(q,t)=>{if(O(a,q,p)!=null)switch(c?.da){case 1:return;default:throw Error();}t!=null&&(l=P(a,l,q,t,p));delete h[q]};b==null?Ha(g,g[w]|0,(q,t)=>{r(q,t)}):r(b,
+O(g,b,p))}}}}function Sc(a){a=Array.isArray(a)?a[0]instanceof Gc?a:[Ic,a]:[a,void 0];var b=a[0].h;if(a=a[1]){let c=Rc(a),d=Oc(a).K;return(e,f,g)=>b(e,f,g,d,c)}return b};function Uc(a){return b=>{if(b==null||b=="")b=new a;else{b=JSON.parse(b);if(!Array.isArray(b))throw Error("dnarr");b=new a(Da(b))}return b}};function Vc(a){var b=new Wc,c=Yb(b);for(let d in a){let e=a[d];e!==void 0&&c.set(d,Xc(e))}return b}function Yc(a){var b={};Yb(a).forEach(function(c,d){b[d]=Zc(c)});return b}var Wc=class extends W{},$c=Uc(Wc);
+function Xc(a){var b=new Zb;switch(ba(a)){case "string":if(a!=null&&typeof a!=="string")throw Error();return $b(b,3,S,a);case "number":if(a!=null&&typeof a!=="number")throw Error(`Value of float/double field must be a number, found ${typeof a}: ${a}`);return $b(b,2,S,a);case "boolean":if(a!=null&&typeof a!=="boolean")throw Error(`Expected boolean but got ${ba(a)}: ${a}`);return $b(b,4,S,a);case "null":return $b(b,1,S,Za(0));case "array":let e=new ad;for(let f=0;f<a.length;f++){var c=e,d=Xc(a[f]);
+oc(c,1,Zb,d)}return nc(b,6,e);case "object":return a=Vc(a),nc(b,5,a);default:throw Error("Unexpected struct type.");}}
+function Zc(a){switch(cc(a.j,S)){case 1:return null;case 2:var b=R(a,S,2);return N(a,b,void 0,Wa)??0;case 3:return b=R(a,S,3),fb(N(a,b))??"";case 4:return b=R(a,S,4),a=N(a,b),(a==null||typeof a==="boolean"?a:typeof a==="number"?!!a:void 0)??!1;case 5:return Yc(ic(a,Wc,R(a,S,5)));case 6:b=ic(a,ad,R(a,S,6));a=[];b=kc(b,Zb,1);for(let c=0;c<b.length;c++)a[c]=Zc(b[c]);return a;default:throw Error("Unexpected struct type");}}var Zb=class extends W{},ad=class extends W{},S=[1,2,3,4,5,6];var bd=class extends W{getAppState(){return ic(this,Wc,1)}setAppState(a){return mc(this,1,a)}};function cd(a){var b=Number;var c=N(a,1,void 0,eb),d=typeof c;if(c!=null)if(d==="bigint")c=String(Ta(64,c));else if(Ya(c))if(d==="string")d=Va(Number(c)),K(d)?c=String(d):(d=c.indexOf("."),d!==-1&&(c=c.substring(0,d)),d=c.length,(c[0]==="-"?d<20||d===20&&c<="-9223372036854775808":d<19||d===19&&c<="9223372036854775807")||(c.length<16?Qa(Number(c)):(c=BigInt(c),I=Number(c&BigInt(4294967295))>>>0,J=Number(c>>BigInt(32)&BigInt(4294967295))),c=Sa()));else{if(c=Va(c),!K(c)){Qa(c);d=I;var e=J;if(c=e&2147483648)d=
+~d+1>>>0,e=~e>>>0,d==0&&(e=e+1>>>0);let f=e*4294967296+(d>>>0);d=Number.isSafeInteger(f)?f:Ra(d,e);c=typeof d==="number"?c?-d:d:c?"-"+d:d}}else c=void 0;b=b(c??"0");a=bb(N(a,2))??0;return new Date(b*1E3+a/1E6)}function dd(a,b){Number.isFinite(b)||(b=0);var c=Math.floor(b/1E3);if(c!=null)a:{if(!Ya(c))throw ta("int64");switch(typeof c){case "string":c=db(c);break a;case "bigint":c=E(Ta(64,c));break a;default:c=E(K(c)?c:cb(c))}}a=Q(a,1,c,"0");Q(a,2,ab((b%1E3+1E3)%1E3*1E6),0)}var hc=class extends W{};var ed=class extends W{i(){return $a(N(this,1))??0}};var fd=class extends W{};function gd(a){return kc(a,fd,4)}function hd(a){var b=new id;Qb(b);var c=b.j,d=c[w]|0;if(a==null)P(c,d,4);else{var e=a===x?7:a[w]|0,f=e,g=Vb(e),h=g||Object.isFrozen(a),m=!0,n=!0;for(let p=0;p<a.length;p++){var l=a[p];g||(l=A(l),m&&=!l,n&&=l)}g||(e=m?13:5,e=n?e&-4097:e|4096);h&&e===f||(a=[...a],f=0,e=Wb(e,d));e!==f&&(a[w]=e);d=P(c,d,4,a);2&e||!(4096&e||16&e)||M(c,d)}return b}var id=class extends W{setScheduledNotificationConfigs(a,b){oc(this,4,fd,b,a,1);return this}},jd=Uc(id),kd=[1,2,3,6];function ld(a){a=a.j;var b=a[w]|0,c=Xb(a,1),d=c===x?7:c[w]|0,e=Ea(d,b),f=!(4&e);if(f){let g=0,h=0;for(;g<c.length;g++){let m=$a(c[g]);m!=null&&(c[h++]=m)}h<g&&(c.length=h);e=(e|4)&-513;e&=-1025;e&=-4097}e!==d&&(c[w]=e,2&e&&Object.freeze(c));return c=Ub(c,e,a,b,1,4,f,!1)}var md=class extends W{};var nd=function(a,b){return(c,d)=>{a:{let f={M:!0};d&&Object.assign(f,d);c=tc(c,void 0,void 0,f);try{let g=new a,h=g.j;Rc(b)(h,c);var e=g;break a}catch(g){if(g instanceof RangeError)throw new SyntaxError;throw g;}finally{xc(c)}e=void 0}return e}}(md,[0,new Gc(function(a,b,c){if(a.i!==0&&a.i!==2)return!1;var d=b[w]|0;if(d&2)throw Error();var e=d&128?Ia:void 0,f=Xb(b,c,e),g=f===x?7:f[w]|0,h=Ea(g,d);if(2&h||Vb(h)||16&h)h===g||Vb(h)||(f[w]=h),f=[...f],g=0,h=Wb(h,d),P(b,d,c,f,e);h&=-13;h!==g&&(f[w]=h);
+b=f;if(a.i==2)for(c=U(a.h)>>>0,c=a.h.h+c;a.h.h<c;)b.push(U(a.h));else b.push(U(a.h));return!0},Ec)]);/*
+
+
+ Copyright (c) 2015-2018 Google, Inc., Netflix, Inc., Microsoft Corp. and contributors
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+     http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+var od=class extends Error{constructor(a){super(a?`${a.length} errors occurred during unsubscription:
+${a.map((b,c)=>`${c+1}) ${b.toString()}`).join("\n  ")}`:"");this.h=a;Object.setPrototypeOf(this,new.target.prototype);this.name="UnsubscriptionError"}};function pd(a,b){a&&(b=a.indexOf(b),0<=b&&a.splice(b,1))};function X(a){return typeof a==="function"};var Y=class{constructor(a){this.C=a;this.closed=!1;this.l=this.i=null}unsubscribe(){if(!this.closed){this.closed=!0;let c=this.i;if(Array.isArray(c))for(var a of c)a.remove(this);else c?.remove(this);a=this.C;if(X(a))try{a()}catch(e){var b=e instanceof od?e.h:[e]}let d=this.l;if(d){this.l=null;for(let e of d)try{X(e)?e():e.unsubscribe()}catch(f){b=b??[],f instanceof od?b=[...b,...f.h]:b.push(f)}}if(b)throw new od(b);}}add(a){if(a&&a!==this)if(this.closed)X(a)?a():a.unsubscribe();else{if(a instanceof
+Y){if(a.closed||a.H(this))return;a.m(this)}(this.l=this.l??[]).push(a)}}H(a){var b=this.i;return b===a||Array.isArray(b)&&b.includes(a)}m(a){var b=this.i;this.i=Array.isArray(b)?(b.push(a),b):b?[b,a]:a}B(a){var b=this.i;b===a?this.i=null:Array.isArray(b)&&pd(b,a)}remove(a){var b=this.l;b&&pd(b,a);a instanceof Y&&a.B(this)}},qd=Y,rd=new Y;rd.closed=!0;qd.h=rd;function sd(a){return a instanceof Y||a&&"closed"in a&&X(a.remove)&&X(a.add)&&X(a.unsubscribe)};function td(a){setTimeout(()=>{throw a;})};var wd=class extends Y{static create(a,b,c){return new ud(a,b,c)}constructor(){super();this.h=!1;this.destination=new vd({next:void 0});sd()&&(void 0).add(this)}next(a){this.h||this.I(a)}error(a){this.h||(this.h=!0,this.A(a))}complete(){this.h||(this.h=!0,this.o())}unsubscribe(){this.closed||(this.h=!0,super.unsubscribe())}I(a){this.destination.next(a)}A(a){this.destination.error(a);this.unsubscribe()}o(){this.destination.complete();this.unsubscribe()}};
+class vd{constructor(a){this.h=a}next(a){var b=this.h;if(b.next)try{b.next(a)}catch(c){td(c)}}error(a){var b=this.h;if(b.error)try{b.error(a)}catch(c){td(c)}else td(a)}complete(){var a=this.h;if(a.complete)try{a.complete()}catch(b){td(b)}}}var ud=class extends wd{constructor(a,b,c){super();var d;X(a)||!a?d={next:a??void 0,error:b??void 0,complete:c??void 0}:d=a;this.destination=new vd(d)}};var xd=typeof Symbol==="function"&&Symbol.observable||"@@observable";var yd=class{constructor(a){a&&(this.i=a)}subscribe(a,b,c){a=a&&a instanceof wd||a&&X(a.next)&&X(a.error)&&X(a.complete)&&sd(a)?a:new ud(a,b,c);b=this.ba;c=this.source;a.add(b?b.call(a,c):c?this.i(a):this.o(a));return a}o(a){try{return this.i(a)}catch(b){a.error(b)}}forEach(a,b){b=b??void 0??Promise;return new b((c,d)=>{var e=this.subscribe(f=>{try{a(f)}catch(g){d(g),e?.unsubscribe()}},d,c)})}i(a){return this.source?.subscribe(a)}[xd](){return this}};yd.create=a=>new yd(a);var zd=class extends Error{constructor(){super("object unsubscribed");Object.setPrototypeOf(this,new.target.prototype);this.name="ObjectUnsubscribedError"}};var Ad=class extends yd{constructor(){super();this.m=[];this.A=this.h=this.closed=!1;this.C=null}l(){if(this.closed)throw new zd;}next(a){this.l();if(!this.h){let b=this.m.slice();for(let c of b)c.next(a)}}error(a){this.l();if(!this.h){this.A=this.h=!0;this.C=a;let b=this.m;for(;b.length;)b.shift().error(a)}}complete(){this.l();if(!this.h){this.h=!0;let a=this.m;for(;a.length;)a.shift().complete()}}unsubscribe(){this.h=this.closed=!0;this.m=null}o(a){this.l();return super.o(a)}i(a){this.l();this.I(a);
+return this.B(a)}B(a){var b=this.h,c=this.m;return this.A||b?Y.h:(c.push(a),new Y(()=>pd(this.m,a)))}I(a){var b=this.C,c=this.h;this.A?a.error(b):c&&a.complete()}};Ad.create=(a,b)=>new Bd(a,b);var Bd=class extends Ad{constructor(a,b){super();this.destination=a;this.source=b}next(a){this.destination?.next?.(a)}error(a){this.destination?.error?.(a)}complete(){this.destination?.complete?.()}i(a){return this.source?.subscribe(a)??Y.h}};function Cd(a){var b=a.H;a=a.buffer;b<Infinity&&b<a.length&&a.splice(0,a.length-b)}var Dd=class extends Ad{constructor(){super();this.H=1;this.buffer=[];this.H=1}next(a){var b=this.buffer;this.h||b.push(a);Cd(this);super.next(a)}i(a){this.l();Cd(this);var b=this.B(a),c=this.buffer.slice();for(let d=0;d<c.length&&!a.closed;d+=1)a.next(c[d]);this.I(a);return b}};function Ed(a,b,c,d){var e=setTimeout(()=>{d(Error(`callModel timed out after 60000ms for request ID: ${b}`));a.F.delete(b)},6E4);a.F.set(b,{W:c,aa:e})}
+function Fd(a){window.addEventListener("message",b=>{if(b.source===window.parent){var c=b.data;b=c.action;c=c.payload;if(b==="ThemeChange"&&c&&(c==="light"||c==="dark"))a.R.next(c);else if(b==="AppDataChange"&&c)a.T?.next(c);else if(b==="RenderingModeChange"&&c&&(c==="embedded"||c==="standalone"))a.P.next(c);else if(b==="CallModelResponse"&&c){a:{try{var d=JSON.parse(c);if(!d||typeof d!=="object"){var e=null;break a}let f=d.requestId,g=d.text,h=d.isFinal;e=f&&typeof f==="string"&&g&&typeof g==="string"&&
+typeof h==="boolean"?{requestId:f,text:g,isFinal:h}:null;break a}catch(f){e=null;break a}e=void 0}if(e){if(d=a.F.get(e.requestId))d.W(e.text,e.isFinal),e.isFinal&&(clearTimeout(d.aa),a.F.delete(e.requestId))}else console.error("Failed to parse call model response: ",c)}}})}
+function Z(a,b,c,d,e,f){return new Promise((g,h)=>{var m=setTimeout(()=>{window.removeEventListener("message",n);h(Error(e))},d),n=l=>{l.source===window.parent&&l.data.action===c&&(clearTimeout(m),window.removeEventListener("message",n),g(l.data.payload||null))};window.addEventListener("message",n);a.sendMessage(b,f)})}
+function Gd(a){var b=jd(a);a={};var c=ic(b,bd,R(b,kd,3))?.getAppState();c&&(a.appState=Yc(c));(b=gd(b))&&b.length>0&&(a.scheduledNotificationConfigs=b.map(d=>{var e={type:Hd($a(N(d,3))??0)};bb(N(d,1))!=null&&(e.intervalMinutes=bb(N(d,1))??0);Tb(d)&&(e.createTime=cd(fc(d)));return e}));return a}
+function Id(a){return(a=gd(jd(a)))&&a.length!==0?{scheduledNotificationConfigs:a.map(b=>{var c={type:Hd($a(N(b,3))??0)};bb(N(b,1))!=null&&(c.intervalMinutes=bb(N(b,1))??0);Tb(b)&&(c.createTime=cd(fc(b)));c.schedulingStatus=Jd(ic(b,ed,4)?.i());return c})}:{scheduledNotificationConfigs:[]}}
+class Kd{constructor(){this.D=Ld();this.API_VERSION="1.0";this.R=new Ad;this.P=new Dd;this.F=new Map;this.Y=(b,c,d,e,f)=>{this.notifyAppError(typeof b==="string"?b:f?.message||"Script execution error");return!0};this.X=b=>{b=b.reason;this.notifyAppError(typeof b==="string"?b:b?.message||"Unhandled promise rejection")};this.clientType="notebooklm-web";Fd(this);var a=ld(this.D);a.includes(10)&&(window.onerror=this.Y,window.addEventListener("unhandledrejection",this.X));a.includes(6)&&a.includes(2)&&
+(this.openArtifactCustomizationDialogWithInitialPrompt=b=>{b=JSON.stringify(b);this.sendMessage("OpenArtifactCustomizationDialogWithInitialPrompt",b)});a.includes(7)&&(this.updateAppData=async(b,c)=>{try{this.sendMessage("UpdateAppData",JSON.stringify({appData:b,etag:c}))}catch(d){throw Error(`Failed to update app data: ${d}`);}});if(a.includes(8)){let b=new Ad;this.addAppDataListener=c=>{b.subscribe(c)};this.T=b}a.includes(3)&&(this.askQuestion=b=>{this.sendMessage("AskQuestion",b)});a.includes(25)&&
+(this.dispatchStreamzEvent=b=>{this.sendMessage("DispatchStreamzEvent",JSON.stringify(b))});a.includes(9)&&(this.setScheduledNotificationConfigs=async b=>{try{let c=b.map(e=>{var f=new fd;f=Q(f,3,Za(Md(e.type)),0);e.intervalMinutes!=null&&Sb(f,1,ab(e.intervalMinutes));if(e.schedulingStatus!=null){var g=new ed;g=Q(g,1,Za(Nd(e.schedulingStatus)),0);mc(f,4,g)}e.createTime!=null&&(g=new hc,dd(g,e.createTime.getTime()),mc(f,2,g));return f}),d=Fc(hd(c));this.sendMessage("SetScheduledNotificationConfigs",
+d)}catch(c){throw c instanceof Error?c:Error(`Error serializing configs: ${c}`);}},this.getArtifactUserState=async()=>{var b=await Z(this,"GetArtifactUserState","GetArtifactUserStateResponse",5E3,"getArtifactUserState timed out after 5000ms");if(b)try{return Gd(b)}catch(c){throw c instanceof Error?c:Error(String(c));}return null});a.includes(11)&&(this.updateScheduledNotificationConfig=async b=>{try{var c=new fd;var d=Q(c,3,Za(Md(b.type)),0);b.intervalMinutes!=null&&Sb(d,1,ab(b.intervalMinutes));
+if(b.schedulingStatus!=null){var e=new ed;var f=Q(e,1,Za(Nd(b.schedulingStatus)),0);mc(d,4,f)}if(b.createTime!=null){let h=new hc;dd(h,b.createTime.getTime());mc(d,2,h)}let g=Fc(d);this.sendMessage("UpdateScheduledNotificationConfig",g)}catch(g){throw g instanceof Error?g:Error(`Error serializing config: ${g}`);}},this.listScheduledNotificationConfigs=async b=>{if(b=await Z(this,"ListScheduledNotificationConfigs","ListScheduledNotificationConfigsResponse",5E3,"listScheduledNotificationConfigs timed out after 5000ms",
+b))try{return Id(b).scheduledNotificationConfigs??[]}catch(c){throw c instanceof Error?c:Error(String(c));}return[]});a.includes(12)&&(this.getSessionIntent=()=>Z(this,"GetSessionIntent","GetSessionIntentResponse",5E3,"getSessionIntent timed out after 5000ms"));a.includes(13)&&(this.checkNotificationPreference=async b=>{if(b==="unspecified")throw Error("Cannot check notification preference for UNKNOWN notification type.");return await Z(this,"CheckNotificationPreference","CheckNotificationPreferenceResponse",
+15E3,"checkNotificationPreference timed out after 15000ms",b)==="NOTIFICATION_ENABLED"},this.getNotificationPreferenceStatus=async b=>{if(b==="unspecified")throw Error("Cannot get notification preference status for UNKNOWN notification type.");return await Z(this,"GetNotificationPreferenceStatus","GetNotificationPreferenceStatusResponse",15E3,"getNotificationPreferenceStatus timed out after 15000ms",b)==="NOTIFICATION_ENABLED"});a.includes(14)&&(this.callModel=async(b,c)=>new Promise((d,e)=>{var f=
+crypto?.randomUUID?.()||Math.random().toString(36).substring(2),g=0;Ed(this,f,(h,m)=>{if(c&&h){let n=h.slice(g);g=h.length;n&&c(n)}m&&d(h||"")},e);this.sendMessage("CallModel",JSON.stringify({prompt:b,requestId:f}))}))}sendMessage(a,b){window.parent.postMessage({version:this.API_VERSION,action:a,payload:b??""},"*")}addThemeChangeListener(a,b){this.R.subscribe(a);b&&this.sendMessage("GetTheme","")}addRenderingModeChangeListener(a){this.P.subscribe(a)}notifyAppReady(){ld(this.D).includes(4)&&this.sendMessage("AppReady")}notifyAppError(a){ld(this.D).includes(10)&&
+this.sendMessage("AppError",a)}setAppState(a){try{let b=Vc(a);if(!b)return Promise.reject(Error("Failed to convert state to Struct"));let c=Fc(b);this.sendMessage("SetAppState",c);return Promise.resolve()}catch(b){return Promise.reject(b instanceof Error?b:Error(`Error serializing app state: ${b}`))}}async getAppState(){var a=await Z(this,"GetAppState","GetAppStateResponse",5E3,"getAppState timed out after 5000ms");if(a)try{return Yc($c(a))}catch(b){throw b instanceof Error?b:Error(String(b));}return null}triggerFileDownload(a){a=
+JSON.stringify(a);this.sendMessage("TriggerFileDownload",a)}dispatchLogEvent(a){ld(this.D).includes(1)&&this.sendMessage("DispatchLogEvent",a)}}function Md(a){switch(a){case "study_reminder":return 1;case "fsrs_review_reminder":return 2;default:return 0}}function Hd(a){switch(a){case 1:return"study_reminder";case 2:return"fsrs_review_reminder";default:return"unspecified"}}
+function Jd(a){switch(a){case 1:return"pending";case 2:return"scheduled";case 3:return"failed";case 4:return"disabled";default:return"unspecified"}}function Nd(a){switch(a){case "pending":return 1;case "scheduled":return 2;case "failed":return 3;case "disabled":return 4;default:return 0}}
+function Ld(){var a=document.querySelector("script[data-api-capabilities]")?.getAttribute("data-api-capabilities");if(!a)return new md;try{let b=atob(a),c=new Uint8Array(b.length);for(a=0;a<b.length;a++)c[a]=b.charCodeAt(a);if(c)return nd(c)}catch(b){console.error("Failed to decode client capabilities:",b)}return new md};window.notebookAppApi=new class extends Kd{};}).call(this);</script>
+  <script>
+/* ==========================================================================
+   GLOBAL DATA STORE: LECTURES, 75 QUESTIONS, THEORIES, AND APP STATE
+   ========================================================================== */
+
+const LECTURES_DATA = [
+  {
+    id: 1,
+    title: "المحاضرة 1: التأصيل المفاهيمي والتطور النظري للاتصال الشخصي",
+    summary: `يُشكل الاتصال الشخصي (Interpersonal Communication) البنية التحتية الأساسية للتفاعل البشري وبناء الشبكات الاجتماعية والمهنية. يتجاوز التعريف الأكاديمي الحديث النظرة الساذجة التي تختزله في نقل البيانات، ليعرفه بوصفه عملية اجتماعية ومعرفية ونفسية معقدة وديناميكية لإنتاج المعاني وتبادلها وتعديلها عبر رموز لفظية وغير لفظية (DeVito, 2019; Hargie, 2017).`,
+    keyPoints: [
+      {
+        title: "الخصائص الجوهرية للاتصال الشخصي",
+        desc: "1. <strong>الحتمية (Inevitability):</strong> يستحيل عدم التواصل في أي موقف يتواجد فيه فردان؛ فالصمت ذاته رسالة.<br>2. <strong>عدم القابلية للإلغاء (Irreversibility):</strong> الرسالة بمجرد إرسالها يستحيل مسح أثرها كلياً من الذاكرة أو السياق العلاقي.<br>3. <strong>عدم القابلية للتكرار المتطابق (Unrepeatability):</strong> السياق الزمني والنفسي والمكاني لحظي وفريد.<br>4. <strong>الخصيصة المعاملاتية (Transactional Nature):</strong> إرسال واستقبال متزامن؛ المشفر هو المفكك في آن واحد.<br>5. <strong>التعقد والتعدد المستوي (Multidimensional Complexity):</strong> يشمل اللفظي والصوتي والمكاني واللمسي."
+      },
+      {
+        title: "الأساس النظري للتأثير المتبادل",
+        desc: "• <strong>نظرية التبادل الاجتماعي (Social Exchange Theory):</strong> تقييم العلاقات بناءً على معادلة العوائد والتكاليف النفسية والاجتماعية.<br>• <strong>نظرية التغلغل الاجتماعي (Social Penetration Theory):</strong> تشبيه الشخصية الإنسانية بطبقات البصلة التراكمية والتدرج من السطح إلى العمق عبر كشف الذات (Self-Disclosure).<br>• <strong>نظرية التخفيف من عدم اليقين (Uncertainty Reduction Theory):</strong> المحرك للتفاعل المبدئي هو تقليل الشك والتنبؤ بسلوكيات الطرف الآخر."
+      },
+      {
+        title: "الرواد والجذور التاريخية وبديهيات بالو ألتو",
+        desc: "• كيرت ليفين (Kurt Lewin): ديناميات الجماعة والتفاعل البيني.<br>• كارل هوفلاند (Carl Hovland): دراسات ييل حول الإقناع وتأثير مصداقية المصدر وبنية الرسالة.<br>• بول واتزلاويك (Paul Watzlawick) ومدرسة بالو ألتو: صياغة بديهيات الاتصال (السلوك كله اتصال، ولكل رسالة بُعدان متلازمان: بُعد المحتوى Content وبُعد العلاقة Relationship)."
+      },
+      {
+        title: "النظريات المتقدمة في بناء العلاقات",
+        desc: "• <strong>نظرية التناقضات الاتصالية (Relational Dialectics) لـ Leslie Baxter:</strong> العلاقات ليست استاتيكية بل تجاذب بين 3 تناقضات رئيسية: (الاستقلالية مقابل الاتصال، التنبؤ مقابل المفاجأة، الانفتاح مقابل الانغلاق).<br>• <strong>نظرية إدارة الخصوصية الاتصالية (CPM) لـ Sandra Petronio:</strong> حدود الخصوصية، وتحول المتلقي إلى 'مالك مشارك' (Co-owner) ملتزم بالسرية.<br>• <strong>نظرية خرق التوقعات (Expectancy Violations) لـ Judee Burgoon:</strong> استثارة معرفية ونفسية عند خرق المسافات أو القواعد، وتقييم الخرق بناءً على جاذبية المرسل وقيمة المكافأة."
+      },
+      {
+        title: "الأبعاد الثقافية والكفاءة وإدارة الانطباع",
+        desc: "• ثقافات السياق العالي (High-Context) تعتمد على الضمني والصمت والمقام، مقابل السياق المنخفض (Low-Context) المعتمد على الألفاظ المباشرة الصريحة (Edward Hall).<br>• أبعاد الكفاءة الاتصالية الثلاثة: المعرفي، السلوكي المهاري، والدافعي النفسي.<br>• إدارة الانطباع (Impression Management) لإرفينغ غوفمان (Erving Goffman) ونموذجه المسرحي."
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: "المحاضرة 2: البنية الهيكلية والعناصر الجوهرية للعملية الاتصالية ونماذجها",
+    summary: `تستند العملية الاتصالية إلى نظرية النظم العامة للودفيج فون بيرتالانفي، حيث يُنظر للتفاعل ككل متكامل تحكمه 'السببية الدائرية' لا الخطية، ويتكون من عناصر متفاعلة متزامنة تؤثر كل منها في الأخرى في اللحظة الزمنية ذاتها.`,
+    keyPoints: [
+      {
+        title: "المنظومة وعناصرها الجوهرية",
+        desc: "1. <strong>المشفر والمفكك المزدوج:</strong> كل طرف يرسل ويستقبل بالتزامن والمعاملاتية.<br>2. <strong>الرسالة وأبعادها:</strong> لفظية، غير لفظية، تمهيدية (تهيئة النفس وتحديد التوقعات)، ورسائل التغذية الراجعة (Feedback) التي تعد صمام الأمان والضابط الموجه.<br>3. <strong>القناة ونظرية ثراء الوسائط (Media Richness Theory) لـ Daft & Lengel:</strong> تصنيف القنوات حسب سرعتها وتعدد مؤشراتها وقدرتها التخصيصية؛ فالقنوات عالية الثراء (وجهاً لوجه) للقضايا المعقدة والحساسة، ومنخفضة الثراء (التقارير والإيميل) للبيانات الروتينية والموثقة."
+      },
+      {
+        title: "تصنيف أشكال الضوضاء والتشويش الأربعة",
+        desc: "• <strong>ضوضاء مادية:</strong> معوقات بيئية خارجية (ضجيج، ضعف إضاءة، انقطاع شبكة).<br>• <strong>ضوضاء فيزيولوجية:</strong> اختلالات جسدية وعضوية لدى المشاركين (ضعف سمع، إرهاق بدني مفرط، مرض، صداع).<br>• <strong>ضوضاء نفسية:</strong> عواطف مسبقة، تحيزات، قلق اجتماعي، وتوجيه الإدراك الانتقائي.<br>• <strong>ضوضاء دلالية (سمانتية Semantic):</strong> فجوة لغوية ومعرفية ناتجة عن استخدام مصطلحات تقنية معقدة أو غامضة."
+      },
+      {
+        title: "أبعاد السياق الأربعة ومستويات الأثر",
+        desc: "• <strong>أبعاد السياق:</strong> المادي (المكان والتجهيزات)، الاجتماعي-النفسي (موازين السلطة والمقام)، الزمني (التوقيت والتاريخ التراكمي)، والثقافي (القيم والأعراف).<br>• <strong>مستويات الأثر:</strong> الأثر المعرفي (اكتساب حقائق ومعلومات)، الأثر الوجداني (تحول المشاعر والارتياح والأمان النفسي)، والأثر السلوكي الحركي (القرارات والممارسات التنفيذية)."
+      },
+      {
+        title: "تطور النماذج الاتصالية والنظريات المعرفية",
+        desc: "• تطور النماذج: النماذج الخطية أحادية الاتجاه (أرسطو، لاسويل، شانون وويفر) ➔ النماذج التفاعلية ببعدي التغذية الراجعة وميدان الخبرة (ويلبور شرام) ➔ النماذج المعاملاتية الدائرية المتزامنة (بارنلوند وديفيتو).<br>• <strong>نظرية التنافر المعرفي (Leon Festinger):</strong> التوتر الناتج عن تعارض الرسالة مع القناعات، والآليات الانتقائية الأربع لإعادة التوازن: (التعرض الانتقائي، الانتباه الانتقائي، التفسير الانتقائي، والتذكر الانتقائي).<br>• تشوهات الإدراك: تأثير الهالة (Halo Effect)، تأثير القرن (Horns Effect)، والنمطية (Stereotyping)."
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "المحاضرة 3: مهارات العرض الفعّال (العرض المباشر والعرض البصري)",
+    summary: `العرض الشفهي موقف اتصال جماهيري محدد زمناً عالي الكثافة. الفكرة الحاكمة: العرض الناجح توافق بين 'ما أريد أن يفهمه الجمهور' و'ما أريده أن يشعر به أو يفعله' و'كيف أساعده بأقل تشتيت وأعلى وضوح'. بناء المحتوى والقصة يسبق تصميم الشرائح (Duarte).`,
+    keyPoints: [
+      {
+        title: "تحليل الجمهور وبناء الرسالة واقتصاد المعلومات",
+        desc: "• يبدأ العرض من 'ما يحتاجه الجمهور' لا ما يعرفه المتحدث، مع تحديد الهدف بصيغة سلوكية قابلة للملاحظة.<br>• الفكرة المركزية هي جملة واحدة لو تذكر الجمهور شيئاً واحداً نريد أن تكون هي، ويشتق منها 3-4 رسائل رئيسية.<br>• <strong>اقتصاد المعلومات:</strong> تقسيم المادة إلى ما يجب قوله، ما يعرض بصرياً، ما يحذف، وما يوضع في ملحق."
+      },
+      {
+        title: "خطوات الإعداد والتدريب والتعامل مع القلق",
+        desc: "• الخطوات الست: تحديد المهمة، جمع وفرز المادة، كتابة الهيكل، بناء المقدمة (فتح عقد اتصالي)، بناء الجسم (شرح وأدلة وانتقالات منطقية)، بناء الخاتمة (تلخيص ودعوة للفعل).<br>• التدريب المتدرج بالزمن وبالفيديو.<br>• قلق التحدث أمام الجمهور ظاهرة طبيعية؛ الحل في التدريب والتعرض التدريجي وتحويل التوتر إلى طاقة تركيز، وليس القضاء التام عليه."
+      },
+      {
+        title: "مهارات الأداء وإدارة الأسئلة والمقاطعات",
+        desc: "• إدارة الصوت، وتوظيف الوقفات كأداة للانتباه والمعالجة الذهنية.<br>• توزيع التواصل البصري قطاعياً، والنظر للعدسة في العرض الرقمي.<br>• التعامل مع الأسئلة الصعبة: فهم السؤال، فصل الحقيقة عن التفسير، تصحيح الافتراضات الخاطئة بلطف، والعودة دوماً للرسالة المركزية في ختام جلسة الأسئلة."
+      },
+      {
+        title: "التصميم البصري ونظرية ريتشارد ماير (Mayer) للتعلم متعدد الوسائط",
+        desc: "• الشريحة ليست ورقة بحثية؛ فكرة واحدة لكل شريحة، واستخدام العناوين الاستنتاجية.<br>• <strong>مبادئ ماير لتقليل العبء المعرفي:</strong><br>1. مبدأ الاتساق (Coherence): حذف الصور والكلمات والمؤثرات الزائدة.<br>2. مبدأ الإشارة (Signaling): توجيه العين للعنصر الأهم بسهم أو لون وظيفي.<br>3. التجاور المكاني (Spatial Contiguity): وضع التسمية قرب الجزء الذي تشرحه.<br>4. التجاور الزمني (Temporal Contiguity): ظهور المرئي بالتزامن مع شرحه شفهياً.<br>5. مبدأ التقطيع (Segmenting): تجزئة الموضوعات المعقدة لوحدات قصيرة متتابعة."
+      }
+    ]
+  },
+  {
+    id: 4,
+    title: "المحاضرة 4: مهارات الاتصال الشخصي (الإنصات والاتصال غير اللفظي)",
+    summary: `يقضي الإنسان ما بين 45% إلى 55% من وقته التفاعلي في الاستماع. يتم التمييز حاسماً بين السماع كعملية فيزيولوجية لاإرادية، والإنصات كنشاط عقلي ونفسي ومعرفي إرادي مقصود. ويتكامل ذلك مع الاتصال غير اللفظي الذي يحمل 55% من أثر الرسالة عند التناقض (Mehrabian).`,
+    keyPoints: [
+      {
+        title: "المراحل الخمس للإنصات ومعوقاته وأنماطه السلبية",
+        desc: "• <strong>المراحل الخمس:</strong> 1. الاستقبال والالتقاط (Receiving) ➔ 2. الفهم والإدراك (Understanding) ➔ 3. التذكر والاستيعاب (Remembering) ➔ 4. التقييم والنقد المتريث (Evaluating) ➔ 5. الاستجابة والتغذية الراجعة (Responding).<br>• <strong>الأنماط السلبية للاستماع:</strong><br>1. الاستماع الزائف (Pseudolistening): انتباه صوري بينما الذهن شارد.<br>2. الاستماع الانتقائي (Selective): التركيز فقط على ما يوافق الهوى.<br>3. الاستماع الدفاعي (Defensive): تأويل الكلام كهجوم شخصي.<br>4. الاستماع الترصدي أو الهجومي (Ambushing): تصيد الهفوات لإحراج المتحدث.<br>5. المتمركز حول الذات (Stage-Hogging): الاستحواذ واستعراض التجارب الذاتية."
+      },
+      {
+        title: "الإنصات التعاطفي والحزم الاتصالي (Assertiveness)",
+        desc: "• آليات الإنصات التعاطفي: تأجيل الأحكام، إعادة الصياغة والانعكاس الدلالي (Paraphrasing)، والتأكيد العاطفي.<br>• الحزم يقف وسطاً بين السلبية الإذعانية والعدوانية الهجومية.<br>• <strong>استراتيجيات الحزم:</strong> صياغة رسائل الذات (I-Messages: وصف السلوك، النتيجة العملية، الشعور النفسي)، الشريط المكسور (Broken Record)، والنزع التدريجي للتصعيد (Fogging)."
+      },
+      {
+        title: "الاتصال غير اللفظي وعلم الحركة (Kinesics)",
+        desc: "• نسب مهاربيان عند التناقض: 55% لغة الجسد، 38% نبرة الصوت، 7% الكلمات المنطوقة.<br>• <strong>الوظائف الست للسلوك غير اللفظي:</strong> التأكيد، التكرار، التناقض، الاستبدال، التنظيم، والتكتم/التكامل.<br>• <strong>تصنيفات الحركة الجسدية (بيردوستل):</strong> المشعرات البديلة (Emblems: إشارات ذات معنى لفظي محدد كالتحية)، الموضحات والشارحات (Illustrators)، معبرات المشاعر (Affect Displays)، المنظمات (Regulators)، والتكيفات والعدلات (Adaptors: حركات القلق اللاإرادية كفرك اليدين)."
+      },
+      {
+        title: "المسافات المكانية (Proxemics) والنظائر اللغوية وكشف الخداع",
+        desc: "• <strong>مسافات إدوارد هول الأربعة:</strong> الحميمة (0 - 45 سم)، الشخصية (45 سم - 1.2 م)، الاجتماعية (1.2 م - 3.6 م)، والعمومية (أكثر من 3.6 م).<br>• النظائر اللغوية (Paralanguage): نبرة الصوت، ارتفاعه، سرعته، والصمت التكتيكي.<br>• كشف الخداع والتسربات غير اللفظية: التعبيرات الوجهية الدقيقة (Micro-expressions)، ارتفاع نبرة الصوت، زيادة حركات التكيف الذاتي، وتناقص الإيماءات الشارحة.<br>• منهجية القراءة: قراءة المجموعات الحركية (Clusters)، الملاءمة السياقية، ومقارنة خط الأساس (Baseline)."
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "المحاضرة 5: إدارة الصراعات التفاعلية وبناء التحالفات والاتصال الرقمي",
+    summary: `تحول الفكر الإداري من المدرسة التقليدية (الصراع ظاهرة سلبية هدامة) ومدرسة العلاقات الإنسانية (حتمي يجب التعايش معه) إلى المدرسة التفاعلية المعاصرة التي ترى الصراع الوظيفي البناء (Functional) ضرورة حيوية لتجديد المنظومات ومنع الركود، إلى جانب دراسة الاتصال الرقمي الوسيط (CMC) وظواهره الحديثة.`,
+    keyPoints: [
+      {
+        title: "استراتيجيات إدارة الصراع وفق نموذج توماس - كليمان (TKI)",
+        desc: "تقاطع بعدي التأكيدية (Assertiveness) والتعاونية (Cooperativeness):<br>1. <strong>التنافس والفرض (Competing):</strong> تأكيدية عالية / تعاونية منخفضة (ربح/خسارة).<br>2. <strong>التجنب والانسحاب (Avoiding):</strong> تأكيدية منخفضة / تعاونية منخفضة (خسارة/خسارة).<br>3. <strong>التكيف والتساهل (Accommodating):</strong> تأكيدية منخفضة / تعاونية عالية (خسارة/ربح).<br>4. <strong>المساومة والتسوية (Compromising):</strong> تأكيدية متوسطة / تعاونية متوسطة (ربح جزئي/خسارة جزئية).<br>5. <strong>التعاون والتكامل (Collaborating):</strong> تأكيدية عالية / تعاونية عالية (ربح/ربح)."
+      },
+      {
+        title: "التفاوض المبدئي التكاملي (مشروع هارفارد)",
+        desc: "أركان التفاوض المبدئي (فيشر ويوري):<br>1. فصل الأشخاص عن المشكلة.<br>2. التركيز على المصالح الحقيقية الكامنة لا المواقف الظاهرة الصلبة.<br>3. ابتكار خيارات للمكسب المشترك لتوسيع المنافع.<br>4. الاحتكام إلى معايير موضوعية ومحايدة."
+      },
+      {
+        title: "التحليل الشبكي للعلاقات (SNA) وتكتيكات التأثير",
+        desc: "• <strong>قوة الروابط (Mark Granovetter):</strong> الروابط القوية (ثقة ولكن معلومات مكررة) مقابل <em>الروابط الضعيفة (Weak Ties)</em> التي تمثل جسوراً اتصالية لمعلومات وفرص جديدة.<br>• مؤشرات المركزية: مركزية الوساطة (Betweenness Centrality: حلقة وصل إجبارية)، والثقوب البنيوية (Structural Holes).<br>• تكتيكات التأثير: الإقناع العقلاني بالحجج والأرقام، الجذب القيمي والإلهامي، الاستشارة، والتودد وبناء الرصيد."
+      },
+      {
+        title: "الاتصال الشخصي الوسيط (CMC) والظواهر الرقمية والذكاء الاصطناعي",
+        desc: "• نظرية معالجة المعلومات الشخصية (SIPT) لـ Walther: قدرة الاتصال الرقمي على بناء علاقات قوية تعوض غياب الإشارات الجسدية بالوقت.<br>• النموذج الفائق (Hyperpersonal Model): تجاوز الرقمي للمباشر في الحميمة بفعل التعديل الانتقائي للذات.<br>• <strong>إرهاق الشاشات (Zoom Fatigue):</strong> أثر المرآة الذاتية (مشاهدة الوجه باستمرار يرفع التوتر ومراقبة الذات).<br>• ظاهرة التجاهل بالهاتف (Phubbing).<br>• تحدي الذكاء الاصطناعي التوليدي: إشكالية الأصالة الوجدانية (Authenticity Paradox) مقابل تمكين تحسين النصوص وتقليل العبء الإداري والمعرفي."
+      }
+    ]
+  }
+];
+
+/* ==========================================================================
+   COMPLETE 75 QUESTIONS DATA WITH OFFICIAL ANSWERS AND ACADEMIC RATIONALES
+   ========================================================================== */
+const QUESTIONS_BANK = [
+  {
+    id: 1,
+    lectureId: 1,
+    topic: "التأصيل المفاهيمي",
+    question: "كيف يُعرف الاتصال الشخصي (Interpersonal Communication) في الأدبيات الأكاديمية الحديثة؟",
+    options: [
+      "مجرد وسيلة لنقل البيانات والمعلومات من طرف لآخر",
+      "عملية اجتماعية ومعرفية ونفسية معقدة وديناميكية لإنتاج وتبادل المعاني",
+      "تفاعل تقني بحت عبر الوسائط الافتراضية",
+      "حركة أحادية الاتجاه لنقل الأفكار"
+    ],
+    correctIndex: 1,
+    rationale: "يؤكد ديفيتو (DeVito, 2019) وهارجي (Hargie, 2017) أن الاتصال الشخصي يتجاوز النقل الآلي، بل هو عملية اجتماعية ومعرفية ونفسية مركبة وديناميكية تسهم في إنتاج المعاني وتعديلها بين أطراف الموقف التفاعلي."
+  },
+  {
+    id: 2,
+    lectureId: 1,
+    topic: "النظريات التأسيسية",
+    question: "ما هي الفرضية الأساسية التي تقدمها نظرية التبادل الاجتماعي (Social Exchange Theory)؟",
+    options: [
+      "قياس العلاقات بناءً على معادلة العوائد والتكاليف النفسية والاجتماعية",
+      "تطور العلاقات عبر طبقات البصلة التراكمية",
+      "الرغبة في تقليل حالة عدم اليقين والتنبؤ بالسلوك",
+      "وجود تناقضات استاتيكية ثابتة في العلاقات"
+    ],
+    correctIndex: 0,
+    rationale: "تفترض نظرية التبادل الاجتماعي (هومانز، وثيبوت وكيلي) أن الأفراد يقيمون علاقاتهم واستمرارها بناءً على الموازنة العقلانية بين المكاسب/العوائد النفسية والاجتماعية، والتكاليف والجهود المستثمرة."
+  },
+  {
+    id: 3,
+    lectureId: 1,
+    topic: "النظريات التأسيسية",
+    question: "كيف تشبه نظرية التغلغل الاجتماعي (Social Penetration Theory) الشخصية الإنسانية؟",
+    options: [
+      "كشبكة إلكترونية مفتوحة",
+      "كطبقات البصلة التراكمية من السطح إلى العمق",
+      "كنظام خطي أحادي الاتجاه",
+      "كدائرة مغلقة بلا تفاعل"
+    ],
+    correctIndex: 1,
+    rationale: "صاغ النظرية ألتمان وتيلور (Altman & Taylor)، حيث شبهت الشخصية بطبقات البصلة؛ تبدأ العلاقات في الطبقات الخارجية السطحية ثم تتدرج نحو العمق عبر كشف الذات (Self-Disclosure)."
+  },
+  {
+    id: 4,
+    lectureId: 1,
+    topic: "خصائص الاتصال الشخصي",
+    question: "أي من خصائص الاتصال الشخصي تعني أنه في أي موقف يتواجد فيه فردان يصبح من المستحيل عدم التواصل؟",
+    options: [
+      "خاصية عدم القابلية للإلغاء",
+      "خاصية عدم القابلية للتكرار المتطابق",
+      "خاصية الحتمية (Inevitability)",
+      "الخاصية المعاملاتية"
+    ],
+    correctIndex: 2,
+    rationale: "خاصية الحتمية (Inevitability)، وهي بديهية بول واتزلاويك الشهيرة (You cannot not communicate)؛ حيث إن أي حركة أو صمت أو نظرة في وجود الآخرين تحمل قيمة اتصالية يتم تفكيكها وتأويلها."
+  },
+  {
+    id: 5,
+    lectureId: 1,
+    topic: "خصائص الاتصال الشخصي",
+    question: "ماذا تعني خاصية عدم القابلية للإلغاء (Irreversibility) في الاتصال الشخصي؟",
+    options: [
+      "إمكانية مسح الرسالة تماماً من الذاكرة",
+      "استحالة مسح أثر الرسالة كلياً من الذاكرة أو السياق العلاقي بعد إرسالها",
+      "تكرار الموقف التفاعلي بصورة متطابقة تماماً",
+      "غياب أي أثر نفسي للمرسل"
+    ],
+    correctIndex: 1,
+    rationale: "تعني عدم القابلية للإلغاء (Irreversibility) أن الكلمات والرسائل بمجرد خروجها وتلقيها، لا يمكن محوها أو إلغاء أثرها النفسي والمعرفي، حتى مع تقديم الاعتذار والتوضيح."
+  },
+  {
+    id: 6,
+    lectureId: 1,
+    topic: "النظريات المتقدمة",
+    question: "ما هي التناقضات الثلاثة الرئيسية التي تحددها نظرية التناقضات الاتصالية (Relational Dialectics Theory)؟",
+    options: [
+      "الاستقلالية مقابل الاتصال، التنبؤ مقابل المفاجأة، الانفتاح مقابل الانغلاق",
+      "العوائد مقابل التكاليف، السطح مقابل العمق، اليقين مقابل الشك",
+      "اللفظي مقابل غير اللفظي، المادي مقابل النفسي، الفردي مقابل الجمعي",
+      "الإرسال مقابل الاستقبال، التشويش مقابل التغذية الراجعة، الثراء مقابل الفقر"
+    ],
+    correctIndex: 0,
+    rationale: "طورت ليزلي بيكستر (Leslie Baxter) هذه النظرية محددة 3 توترات ديالكتيكية: Autonomy vs Connection, Novelty vs Predictability, Openness vs Closedness."
+  },
+  {
+    id: 7,
+    lectureId: 1,
+    topic: "النظريات المتقدمة",
+    question: "ما هو الدور الذي يلعبه الشخص الذي يشارك في معلومات خصوصية وفق نظرية إدارة الخصوصية الاتصالية (CPM)؟",
+    options: [
+      "مراقب خارجي للحدود",
+      "مالك مشارك (Co-owner) ملتزم بمستويات السرية",
+      "مرسل خطي للبيانات",
+      "مستقبل سلبي للرسائل"
+    ],
+    correctIndex: 1,
+    rationale: "توضح نظرية ساندرا بيترونيو (Sandra Petronio) أنه بمجرد الإفصاح عن المعلومة الخاصة يصبح المتلقي شريكاً في الملكية (Co-owner) ويتحمل مسؤولية التنسيق المشترك لحدود الخصوصية وقواعد كتمانها."
+  },
+  {
+    id: 8,
+    lectureId: 1,
+    topic: "النظريات المتقدمة",
+    question: "ماذا يمر به المستلم عندما يقوم أحد الأطراف بخرق التوقعات الاتصالية وفق نظرية جوديث بورغون؟",
+    options: [
+      "حالة من الاستثارة المعرفية والنفسية وتقييم الخرق",
+      "انقطاع تام في قنوات التواصل",
+      "استجابة فيزيولوجية لا إرادية فقط",
+      "عدم القدرة على تفكيك الشفرة"
+    ],
+    correctIndex: 0,
+    rationale: "تؤكد نظرية خرق التوقعات (Judee Burgoon) أن الخرق يولد استثارة وانتباهاً يقود إلى تقييم معنى الخرق بناءً على مكافأة وجاذبية القائم بالخرق (Violation Valence & Communicator Reward)."
+  },
+  {
+    id: 9,
+    lectureId: 1,
+    topic: "الأبعاد الثقافية",
+    question: "كيف تُصنف الثقافات التي تعتمد على المعاني الضمنية، والبيئة المحيطة، وتجنب المواجهة المباشرة بناءً على أطروحات إدوارد هول؟",
+    options: [
+      "ثقافات السياق المنخفض",
+      "ثقافات السياق العالي (High-Context Cultures)",
+      "الثقافات الفردية البحتة",
+      "الثقافات ذات مسافة السلطة المنخفضة"
+    ],
+    correctIndex: 1,
+    rationale: "وفقاً لإدوارد هول (Edward T. Hall)، تعتمد ثقافات السياق العالي على الإشارات غير اللفظية، الصمت، خلفية العلاقة، والبيئة المحيطة لفهم المعنى، بينما يعتمد السياق المنخفض على الصراحة اللفظية التامة."
+  },
+  {
+    id: 10,
+    lectureId: 1,
+    topic: "الكفاءة الاتصالية",
+    question: "ما هي الأبعاد الثلاثة المتكاملة التي تتكون منها الكفاءة الاتصالية (Communication Competence)؟",
+    options: [
+      "البعد اللفظي، البعد الصوتي، والبعد المادي",
+      "البعد المعرفي، البعد السلوكي / المهاري، والبعد الدافعي النفسي",
+      "البعد التاريخي، البعد الاقتصادي، والبعد السياسي",
+      "البعد الافتراضي، البعد التقني، والبعد الشبكي"
+    ],
+    correctIndex: 1,
+    rationale: "تتكون الكفاءة من: المعرفي (فهم القواعد والسياق)، السلوكي (التطبيق وإتقان المهارات ولغة الجسد)، والدافعي/الوجداني (الرغبة والانفتاح وتقبل الآخر)."
+  },
+  {
+    id: 11,
+    lectureId: 1,
+    topic: "إدارة الانطباع",
+    question: "ماذا يُقصد بمفهوم إدارة الانطباع (Impression Management) كما صاغه إرفينغ غوفمان؟",
+    options: [
+      "سعي الأفراد لتقديم صورة محددة عن أنفسهم تناسب الموقع والجمهور المستهدف",
+      "تقييم التكاليف والعوائد المادية للعلاقة",
+      "الهروب من حالة التنافر المعرفي",
+      "زيادة منسوب الشك واليقين"
+    ],
+    correctIndex: 0,
+    rationale: "قدم إرفينغ غوفمان (Erving Goffman) نموذجه المسرحي (Dramaturgical Model)، مبيناً أن الأفراد يتصرفون كالممثلين على خشبة المسرح لضبط وتقديم انطباع مدروس يتوافق مع توقعات الموقف."
+  },
+  {
+    id: 12,
+    lectureId: 2,
+    topic: "المنظومة الاتصالية",
+    question: "على أي نظرية يستند التأطير الفكري والمعرفي لبناء المنظومة الاتصالية ككل متكامل؟",
+    options: [
+      "نظرية التبادل الاجتماعي",
+      "نظرية النظم العامة للودفيج فون بيرتالانفي",
+      "نظرية اختراق الذات",
+      "نظرية التنافر المعرفي"
+    ],
+    correctIndex: 1,
+    rationale: "استند علماء الاتصال إلى نظرية النظم العامة (General Systems Theory) لبيرتالانفي، والتي تؤكد أن النظام كلٌ متكامل يفوق مجموع أجزائه وأن عناصره مترابطة عبر السببية الدائرية."
+  },
+  {
+    id: 13,
+    lectureId: 2,
+    topic: "النماذج المعاصرة",
+    question: "ماذا يُطلق في النماذج الاتصالية المعاصرة على الحالة التي يمارس فيها كل طرف دور الإرسال والاستقبال بصورة متزامنة؟",
+    options: [
+      "النموذج الخطي أحادي الاتجاه",
+      "المشفر والمفكك المزدوج (Transactional Nature)",
+      "النموذج التفاعلي المتعاقب",
+      "البث المعزول"
+    ],
+    correctIndex: 1,
+    rationale: "في النموذج المعاملاتي، لا يوجد مرسل منفصل عن المستقبل، بل يُعد كل طرف 'مشفر ومفكك مزدوج ومتزامن' يرسل ويستقبل الإشارات اللفظية وغير اللفظية في اللحظة نفسها."
+  },
+  {
+    id: 14,
+    lectureId: 2,
+    topic: "ثراء الوسائط",
+    question: "وفقاً لنظرية ثراء الوسائط، ما هي القنوات الأكثر ملاءمة لمعالجة الموضوعات الحساسة وإدارة الصراعات؟",
+    options: [
+      "التقارير المكتوبة والبريد الإلكتروني",
+      "القنوات منخفضة الثراء",
+      "القنوات عالية الثراء كالتفاعل المباشر وجهاً لوجه",
+      "الجداول والبيانات الرقمية الروتينية"
+    ],
+    correctIndex: 2,
+    rationale: "أثبت دافت ولينجل (Daft & Lengel) أن الوسائط الغنية (وجه لوجه، مرئي) هي الأنسب لخفض الغموض، وحل النزاعات، وتقديم تغذية راجعة فورية ومؤشرات غير لفظية متعددة."
+  },
+  {
+    id: 15,
+    lectureId: 2,
+    topic: "أنواع الضوضاء",
+    question: "أي أنواع الضوضاء تنشأ عن الاختلالات الجسدية والعضوية مثل ضعف السمع أو الإرهاق البدني المفرط؟",
+    options: [
+      "الضوضاء المادية",
+      "الضوضاء الفيزيولوجية",
+      "الضوضاء النفسية",
+      "الضوضاء الدلالية"
+    ],
+    correctIndex: 1,
+    rationale: "تتعلق الضوضاء الفيزيولوجية بالحالة العضوية والجسدية لأطراف الاتصال كالصداع، التعب، المرض، وضعف الحواس السمعية أو البصرية."
+  },
+  {
+    id: 16,
+    lectureId: 2,
+    topic: "السياق الاتصالي",
+    question: "ما الذي يمثله البعد المادي ضمن الأبعاد الأربعة للسياق الاتصالي؟",
+    options: [
+      "موازين السلطة والقواعد الاجتماعية",
+      "المحيط الجغرافي والبيئي الملموس كمساحة المكان والإضاءة",
+      "منظومة المعتقدات والقيم الثقافية",
+      "التوقيت التاريخي والسلسلة الزمنية للأحداث"
+    ],
+    correctIndex: 1,
+    rationale: "السياق المادي هو المحيط الجغرافي والبيئي الملموس؛ كالمكان، ترتيب المقاعد، درجة الحرارة، والإضاءة التي تحكم التفاعل."
+  },
+  {
+    id: 17,
+    lectureId: 2,
+    topic: "مستويات الأثر",
+    question: "إلى أي مستوى من مستويات الأثر الاتصالي ينتمي التغير الذي يطرأ على البناء الفكري والمعلومات واكتساب حقائق جديدة؟",
+    options: [
+      "الأثر المعرفي",
+      "الأثر الوجداني أو النفسي",
+      "الأثر السلوكي أو الحركي",
+      "الأثر الروحي"
+    ],
+    correctIndex: 0,
+    rationale: "الأثر المعرفي (Cognitive Effect) هو ما يطرأ على معلومات الفرد وتفكيره وتصحيح مفاهيمه واكتساب معارف جديدة."
+  },
+  {
+    id: 18,
+    lectureId: 2,
+    topic: "الاتصال التنظيمي",
+    question: "أي من شبكات التدفق المعلوماتي التنظيمي تستخدم لتوفير التقارير والتغذية الراجعة من المرؤوسين إلى القيادة؟",
+    options: [
+      "الاتصالات الهابطة",
+      "الاتصالات الأفقية",
+      "الاتصالات الصاعدة (Upward Communication)",
+      "الاتصالات الدائرية المغلقة"
+    ],
+    correctIndex: 2,
+    rationale: "الاتصالات الصاعدة تنطلق من المستويات التشغيلية والمرؤوسين نحو القيادة لرفع التقارير، المقترحات، والتغذية الراجعة حول الأداء."
+  },
+  {
+    id: 19,
+    lectureId: 2,
+    topic: "تطور النماذج",
+    question: "ما هي الميزة الأساسية التي قدمتها النماذج التفاعلية مقارنة بالنماذج الخطية للاتصال؟",
+    options: [
+      "إدخال بعدي التغذية الراجعة وميدان الخبرة",
+      "إلغاء دور المرسل كلياً",
+      "الاعتماد على القنوات المكتوبة فقط",
+      "افتراض ثبات المعنى بصورة مطلقة"
+    ],
+    correctIndex: 0,
+    rationale: "أضاف ويلبور شرام في النموذج التفاعلي عنصري التغذية الراجعة (Feedback) وميدان الخبرة المشترك (Field of Experience) مبيناً أن الفهم يتوقف على تقاطع الخبرات السابقة."
+  },
+  {
+    id: 20,
+    lectureId: 2,
+    topic: "اختراق الذات",
+    question: "ماذا يُقصد بمفهوم اتساع الإفصاح (Breadth) في نظرية اختراق الذات؟",
+    options: [
+      "مستوى الحميمة والخصوصية العميقة للمشاعر",
+      "تنوع عدد الموضوعات والمجالات التي يتطرق إليها أطراف التفاعل",
+      "سرعة الاستجابة للرسائل النصية",
+      "حجم التشويش المادي في القناة"
+    ],
+    correctIndex: 1,
+    rationale: "يمثل اتساع الإفصاح (Breadth) عدد وتنوع الموضوعات المطروحة (دراسة، عمل، هوايات)، بينما يمثل العمق (Depth) درجة الخصوصية والحميمية في الموضوع الواحد."
+  },
+  {
+    id: 21,
+    lectureId: 2,
+    topic: "تقليل الشك",
+    question: "ما هي الاستراتيجيات الثلاث التي يلجأ إليها الأفراد لتقليل الشك وعدم اليقين وفق نظرية بيرغر وكالابريز؟",
+    options: [
+      "الإيجابية، السلبية، والحيادية",
+      "الاستراتيجيات السلبية، النشطة، والتفاعلية",
+      "العرضية، الطولية، والمتقاطعة",
+      "اللفظية، غير اللفظية، والرمزية"
+    ],
+    correctIndex: 1,
+    rationale: "حدد تشارلز بيرغر وريتشارد كالابريز (Berger & Calabrese) ثلاث استراتيجيات: سلبية (ملاحظة صامتة)، نشطة (سؤال طرف ثالث أو بحث غير مباشر)، وتفاعلية (حوار وأسئلة مباشرة وجهاً لوجه)."
+  },
+  {
+    id: 22,
+    lectureId: 2,
+    topic: "التبادل الاجتماعي",
+    question: "ماذا يُقصد بمفهوم مستوى مقارنة البدائل (CLalt) في نظرية التبادل الاجتماعي؟",
+    options: [
+      "المعيار الذاتي لتوقعات العلاقة الناجحة",
+      "الحد الأدنى من النماذج أو البدائل المتاحة لتحديد استقرار العلاقة",
+      "مجموع التكاليف النفسية المبذولة",
+      "عدد مرات الإفصاح عن الذات"
+    ],
+    correctIndex: 1,
+    rationale: "مستوى مقارنة البدائل (CLalt) يحدد استقرار وبقاء العلاقة مقارنة بما تقدمه العلاقات البديلة المتاحة أو البقاء وحيداً."
+  },
+  {
+    id: 23,
+    lectureId: 2,
+    topic: "التنافر المعرفي",
+    question: "ما هي الآليات الانتقائية الأربع التي يمارسها الفرد لإعادة الاتزان النفسي عند حدوث 'التنافر المعرفي'؟",
+    options: [
+      "التعرض، الانتباه، التفسير، والتذكر الانتقائي",
+      "الإرسال، الاستقبال، التشفير، والتفكيك",
+      "الحزم، التجنب، التعاون، والتسوية",
+      "السماع، الإنصات، التقييم، والاستجابة"
+    ],
+    correctIndex: 0,
+    rationale: "وضع ليون فيستينجر (Leon Festinger) الآليات الانتقائية الأربع للحفاظ على التوازن المعرفي: Selective Exposure, Attention, Interpretation, and Retention."
+  },
+  {
+    id: 24,
+    lectureId: 2,
+    topic: "العوامل الإدراكية",
+    question: "ماذا يُقصد بـ 'تأثير الهالة (Halo Effect)' في العوامل الإدراكية المؤثرة على الاتصال؟",
+    options: [
+      "إسقاط انطباع سلبي واحد على كافة التصرفات",
+      "إسقاط انطباع إيجابي واحد على باقي صفات الشخص وقدراته",
+      "تصنيف الأفراد في أطر تعميمية عرقية",
+      "نسبة نقاط الضعف الشخصية للطرف الآخر"
+    ],
+    correctIndex: 1,
+    rationale: "تأثير الهالة (Halo Effect) انحياز إدراكي يجعل انطباعاً إيجابياً واحداً (كالمظهر الجذاب أو الفصاحة) يمتد ليجعلنا نقيم كل تصرفات وقدرات الشخص بإيجابية، وعكسه تأثير القرن (Horns Effect)."
+  },
+  {
+    id: 25,
+    lectureId: 2,
+    topic: "معايير الكفاءة",
+    question: "ما هي المعايير الأربعة الحاسمة لتقييم الكفاءة الاتصالية في المؤسسات المعاصرة والأوساط الأكاديمية؟",
+    options: [
+      "السرعة، التكلفة، الدقة، والوضوح",
+      "الفاعلية، الملاءمة، المرونة الاتصالية، وبناء العلاقات",
+      "الإرسال، الاستقبال، التشويش، والصدى",
+      "اللفظ، الصوت، الحركة، والزمن"
+    ],
+    correctIndex: 1,
+    rationale: "تتحدد الكفاءة بـ: الفاعلية (تحقيق الأهداف)، الملاءمة (مراعاة القواعد والمقام)، المرونة (تعديل السلوك حسب التغذية الراجعة)، وبناء العلاقات والحفاظ عليها."
+  },
+  {
+    id: 26,
+    lectureId: 4,
+    topic: "السماع والإنصات",
+    question: "ما هو الفرق الأساسي بين مفهومي السماع (Hearing) والإنصات (Listening)؟",
+    options: [
+      "السماع نشاط عقلي مقصود، والإنصات عملية فيزيولوجية",
+      "السماع عملية فيزيولوجية لاإرادية، والإنصات نشاط عقلي ونفسي مقصود",
+      "لا يوجد أي فرق بينهما في الأدبيات الحديثة",
+      "السماع يعتمد على لغة الجسد، والإنصات يعتمد على الألفاظ"
+    ],
+    correctIndex: 1,
+    rationale: "السماع (Hearing) التقاط فيزيولوجي لاإرادي لترددات الصوت، بينما الإنصات (Listening) نشاط ذهني ونفسي مقصود يهدف لتفسير المعنى وتقييمه والاستجابة له."
+  },
+  {
+    id: 27,
+    lectureId: 4,
+    topic: "مراحل الإنصات",
+    question: "ما هي المرحلة الأولى من المراحل المعرفية الخمس لعملية الإنصات الفعال؟",
+    options: [
+      "مرحلة الفهم والإدراك",
+      "مرحلة الاستقبال والالتقاط (Receiving)",
+      "مرحلة التقييم والنقد المتريث",
+      "مرحلة الاستجابة والتغذية الراجعة"
+    ],
+    correctIndex: 1,
+    rationale: "تبدأ العملية بمرحلة الاستقبال والالتقاط (Receiving) بالتركيز البصري والسمعي على المتحدث وحجب المشتتات المادية."
+  },
+  {
+    id: 28,
+    lectureId: 4,
+    topic: "الاستماع السلبي",
+    question: "ماذا يُقصد بنمط الاستماع المسمى 'الاستماع الزائف (Pseudolistening)'؟",
+    options: [
+      "إظهار علامات الانتباه الصوري بينما الذهن مستغرق في أفكار أخرى",
+      "التركيز على الأجزاء التي توافق هوى المستمع فقط",
+      "تأويل العبارات بوصفها هجوماً شخصياً",
+      "تتبع الهفوات وسقطات القول لإحراج المتحدث"
+    ],
+    correctIndex: 0,
+    rationale: "الاستماع الزائف هو التظاهر بالانتباه (هز الرأس، التبسم) بينما العقل شارد تماماً ومستغرق في موضوعات لا صلة لها بالحوار."
+  },
+  {
+    id: 29,
+    lectureId: 4,
+    topic: "الإنصات التعاطفي",
+    question: "أي من آليات الاستماع التعاطفي تتضمن قيام المستمع بإعادة صياغة المضمون بأسلوبه الخاص؟",
+    options: [
+      "تأجيل الأحكام وتقبل الآخر",
+      "إعادة الصياغة والانعكاس الدلالي (Paraphrasing)",
+      "التأكيد العاطفي والوجداني",
+      "الشريط المكسور"
+    ],
+    correctIndex: 1,
+    rationale: "إعادة الصياغة (Paraphrasing) تعني صياغة ما قاله المتحدث بأسلوب المستمع الخاص للتأكد من مطابقة المعنى المقصود وإشعار المتحدث بالفهم."
+  },
+  {
+    id: 30,
+    lectureId: 4,
+    topic: "مهارة السؤال",
+    question: "ما هي مميزات الأسئلة المفتوحة (Open-Ended Questions) في إدارة الحوار الشفهي؟",
+    options: [
+      "تتطلب إجابات قاطعة بنعم أو لا",
+      "تمنح المتحدث حرية واسعة في اختيار نطاق الإجابة وتشجع الإفصاح",
+      "تستخدم لجمع بيانات كمية سريعة والحسم الفوري",
+      "توجه الإجابة المفضلة لدى السائل بشكل انحيازي"
+    ],
+    correctIndex: 1,
+    rationale: "الأسئلة المفتوحة توسع النقاش، تمنح مساحة للتعبير وكشف الذات، وتوفر معلومات كيفية غنية بعيداً عن حصر الإجابة بنعم أو لا."
+  },
+  {
+    id: 31,
+    lectureId: 4,
+    topic: "الحزم الاتصالي",
+    question: "مما تتكون 'استراتيجية رسائل الذات (I-Messages)' المستخدمة في الحزم الاتصالي؟",
+    options: [
+      "اتهام المستقبل، الهجوم اللفظي، والدفاع عن النفس",
+      "وصف السلوك المجرد، بيان النتيجة العملية، والتعبير عن الشعور النفسي",
+      "التكرار الهادئ، النزع التدريجي، والانسحاب",
+      "الاستماع الزائف، التبرير، والشك"
+    ],
+    correctIndex: 1,
+    rationale: "تتكون رسائل الذات (I-Messages) من 3 عناصر منضبطة: وصف السلوك بموضوعية دون تجريح + النتيجة الإجرائية + التعبير عن المشاعر الذاتية، لتجنب استثارة المناخ الدفاعي."
+  },
+  {
+    id: 32,
+    lectureId: 4,
+    topic: "الاتصال غير اللفظي",
+    question: "وفقاً لدراسات ألبرت مهاربيان الشهيرة، ما هي النسبة الأكبر التي تعود للغة الجسد والحركات في التأثير عند التناقض؟",
+    options: [
+      "7%",
+      "38%",
+      "55%",
+      "90%"
+    ],
+    correctIndex: 2,
+    rationale: "أثبت مهاربيان (Mehrabian) توزيع الأثر عند تعارض اللفظ مع السلوك: 55% للغة الجسد والوجه، 38% للنظائر الصوتية والنبرة، و 7% فقط للكلمات المنطوقة."
+  },
+  {
+    id: 33,
+    lectureId: 4,
+    topic: "الكينيسكس",
+    question: "ماذا يُقصد بتصنيف المشعرات أو الشفرات البديلة (Emblems) ضمن علم حركة الجسد (Kinesics)؟",
+    options: [
+      "حركات جسدية ذات دلالات لغوية صريحة يمكن ترجمتها مباشرة إلى كلمات",
+      "حركات ترافق الحديث لتوضيحه في الفضاء المكاني",
+      "معبرات المشاعر والوجدان الداخلية للوجه",
+      "حركات التكيف والعدلات اللاإرادية"
+    ],
+    correctIndex: 0,
+    rationale: "المشعرات (Emblems) إشارات بديلة عن الكلام لها ترجمة حرفية متفق عليها ثقافياً، مثل رفع الإبهام للموافقة، أو التلويح باليد للتحية."
+  },
+  {
+    id: 34,
+    lectureId: 4,
+    topic: "المسافات المكانية",
+    question: "ما هي النطاقات الأربعة للمسافات المكانية (Proxemics) التي حددها إدوارد هول؟",
+    options: [
+      "القريبة، المتوسطة، البعيدة، والنهائية",
+      "الحميمة، الشخصية، الاجتماعية، والعمومية",
+      "الداخلية، الخارجية، الرسمية، وغير الرسمية",
+      "الفردية، الجمعية، المؤسسية، والدولية"
+    ],
+    correctIndex: 1,
+    rationale: "حدد إدوارد هول: المسافة الحميمة (0-45 سم)، الشخصية (45سم-1.2م)، الاجتماعية (1.2م-3.6م)، والعمومية (أكثر من 3.6م)."
+  },
+  {
+    id: 35,
+    lectureId: 4,
+    topic: "النظائر اللغوية",
+    question: "ماذا تُعبر عنه البارالانجويج (Paralanguage) أو النظائر اللغوية في الاتصال غير اللفظي؟",
+    options: [
+      "الكلمات المكتوبة والتراكيب النحوية الصريحة",
+      "كافة الخصائص والمؤشرات الصوتية المصاحبة للنطق كالنبرة والارتفاع",
+      "المسافات المكانية بين أطراف الحوار",
+      "لغة الجسد والتعابير الوجهية الدقيقة"
+    ],
+    correctIndex: 1,
+    rationale: "البارالانجويج هي المؤشرات الصوتية المصاحبة للأداء اللفظي كشدة الصوت، النبرة (Pitch)، السرعة، التوقفات، والنغمات، دون النظر للكلمات بذاتها."
+  },
+  {
+    id: 36,
+    lectureId: 4,
+    topic: "العوامل الإدراكية",
+    question: "ما هو التأثير الإدراكي الذي يجعل العقل البشري يميل لتكوين أطر سريعة عن الطرف الآخر خلال الثواني الأولى؟",
+    options: [
+      "تأثير القرن (Horns Effect)",
+      "تأثير الأولوية الإدراكي (Primacy Effect) والانطباعات الأولى",
+      "التنافر المعرفي",
+      "الإسقاط النفسي"
+    ],
+    correctIndex: 1,
+    rationale: "تأثير الأولوية (Primacy Effect) يرسخ الانطباع الأول المتكون في الثواني الأولى من اللقاء ويجعل الدماغ يفسر السلوكيات اللاحقة من خلال هذا الإطار الأولي."
+  },
+  {
+    id: 37,
+    lectureId: 4,
+    topic: "كشف الخداع",
+    question: "ماذا تعرف بالتسربات غير اللفظية (Nonverbal Leakage) في سياق كشف الخداع؟",
+    options: [
+      "رسائل نصية مكتوبة عن طريق الخطأ",
+      "سلوكيات ومؤشرات غير إرادية تظهر نتيجة صعوبة التحكم العضلي الكامل عند الكذب",
+      "مؤشرات الإتاحة وقراءة الرسائل",
+      "الروابط الضعيفة في الشبكات الاجتماعية"
+    ],
+    correctIndex: 1,
+    rationale: "التسرب غير اللفظي (Leakage) هو خروج حركات لا إرادية (كتغير نبرة الصوت أو تعبيرات وجهية خاطفة Micro-expressions) تفضح الحقيقة نتيجة الضغط النفسي وصعوبة السيطرة التامة على عضلات الجسد."
+  },
+  {
+    id: 38,
+    lectureId: 4,
+    topic: "قراءة لغة الجسد",
+    question: "ما هي المنهجية الأصح لقراءة وتفسير السلوك غير اللفظي في الاتصال الشخصي؟",
+    options: [
+      "الاعتماد على حركة واحدة بشكل مطلق",
+      "قراءة المجموعات الحركية (Clusters)، الملاءمة السياقية، وخط الأساس",
+      "إهمال الثقافة السائدة والتركيز على اللفظ فقط",
+      "تفسير السلوك بمعزل عن البيئة المكانية"
+    ],
+    correctIndex: 1,
+    rationale: "القراءة العلمية ترفض تفسير حركة واحدة معزولة، بل تشترط رصد باقة حركات متناسقة (Clusters)، ومراعاتها داخل سياقها البيئي والثقافي ومقارنتها بخط الأساس (Baseline) لسلوك الفرد المعتاد."
+  },
+  {
+    id: 39,
+    lectureId: 5,
+    topic: "تطور نظريات الصراع",
+    question: "كيف كانت تنظر المدرسة التقليدية (Traditional View) إلى الصراع التفاعلي والتنظيمي حتى منتصف القرن العشرين؟",
+    options: [
+      "ظاهرة ضرورية لتجديد المنظومات وتحفيز الإبداع",
+      "ظاهرة سلبية ومدمرة بالكامل ودليل على الفشل",
+      "حقيقة حتمية يجب قبولها والحد من آثارها",
+      "وسيلة تفاوضية مثالية للوصول لحل (ربح / ربح)"
+    ],
+    correctIndex: 1,
+    rationale: "اعتبرت المدرسة التقليدية الصراع مؤشراً خطيراً على سوء الإدارة وضعف التواصل وفشلاً تنظيمياً يجب استئصاله والقضاء عليه كلياً."
+  },
+  {
+    id: 40,
+    lectureId: 5,
+    topic: "أنواع الصراع",
+    question: "ما هو الصراع الذي يُحفز الإبداع، ويكشف الاختلالات المسكوت عنها، ويدفع نحو تطوير الأداء وفق المدرسة المعاصرة؟",
+    options: [
+      "الصراع غير الوظيفي الهدام",
+      "الصراع الوظيفي البناء (Functional Conflict)",
+      "الصراع المزمن الناتج عن سوء الفهم",
+      "النزاع القائم على الهجوم الشخصي"
+    ],
+    correctIndex: 1,
+    rationale: "الصراع الوظيفي البناء (Functional Conflict) يحفز التفكير النقدي، يكسر الجمود، ويكشف العيوب المستترة دون تفكيك العلاقات."
+  },
+  {
+    id: 41,
+    lectureId: 5,
+    topic: "نموذج توماس وكليمان",
+    question: "وفقاً لنموذج توماس - كليمان، ما هي الاستراتيجية التي تتميز بـ 'تأكيدية عالية وتعاونية عالية'؟",
+    options: [
+      "استراتيجية التنافس والفرض",
+      "استراتيجية التجنب والانسحاب",
+      "استراتيجية التكيف والتساهل",
+      "استراتيجية التعاون والتكامل (Collaborating) - ربح / ربح"
+    ],
+    correctIndex: 3,
+    rationale: "استراتيجية التعاون والتكامل (Collaborating) تجمع بين أقصى درجات التأكيدية لتحقيق أهداف الذات وأقصى درجات التعاونية لتحقيق أهداف الطرف الآخر، للوصول لحلول ابتكارية (Win-Win)."
+  },
+  {
+    id: 42,
+    lectureId: 5,
+    topic: "التفاوض المبدئي",
+    question: "ما هو الركن الأساسي الأول من أركان التفاوض المبدئي التكاملي (Principled Negotiation) لجامعة هارفارد؟",
+    options: [
+      "فصل الأشخاص عن المشكلة",
+      "التمسك بالموقف الصلب مسبقاً",
+      "استغلال نقاط ضعف الطرف الآخر",
+      "التعامل مع الصراع ككعكة ثابتة"
+    ],
+    correctIndex: 0,
+    rationale: "الركن الأول والأساسي لمشروع هارفارد للتفاوض (فيشر ويوري) هو 'فصل الأشخاص عن المشكلة'، للتعامل مع العلاقات بمودة واحترام ومع القضية الموضوعية بصلابة وحسم."
+  },
+  {
+    id: 43,
+    lectureId: 5,
+    topic: "التحليل الشبكي",
+    question: "ماذا يُقصد بمفهوم الروابط الضعيفة (Weak Ties) في التحليل الشبكي لمارك جرانوفتر؟",
+    options: [
+      "الأصدقاء المقربون وفريق العمل المباشر",
+      "المعارف السطحيون والاتصالات المتباعدة التي تمثل جسوراً لمعلومات وفرص جديدة",
+      "الروابط المنعدمة تماماً في المؤسسة",
+      "العلاقات الأسرية المغلقة"
+    ],
+    correctIndex: 1,
+    rationale: "أثبت مارك جرانوفتر (Mark Granovetter) في نظريته الشهيرة (The Strength of Weak Ties) أن المعارف البعيدين يقدمون جسوراً لشبكات مختلفة تزود الفرد بمعلومات وفرص جديدة لا تملكها الدائرة المقربة."
+  },
+  {
+    id: 44,
+    lectureId: 5,
+    topic: "تكتيكات التأثير",
+    question: "أي من تكتيكات التأثير التنظيمي يعتمد على توظيف الحجج المنطقية والأدلة البنائية والبيانات الرقمية الموثوقة؟",
+    options: [
+      "تكتيك الجذب القيمي والإلهامي",
+      "تكتيك الإقناع العقلاني (Rational Persuasion)",
+      "تكتيك التودد وبناء الرصيد",
+      "تكتيك التجميع والتكتل"
+    ],
+    correctIndex: 1,
+    rationale: "الإقناع العقلاني (Rational Persuasion) يعتمد على البراهين المنطقية، الإحصاءات الدقيقة، والحجج الموضوعية لإثبات جدوى المقترح."
+  },
+  {
+    id: 45,
+    lectureId: 5,
+    topic: "الاتصال الرقمي الوسيط",
+    question: "كيف يُعرف الاتصال الشخصي الوسيط (Computer-Mediated Communication - CMC)؟",
+    options: [
+      "التفاعل المباشر وجهاً لوجه دون وسائط",
+      "كل تفاعل شخصي بين أفراد أو مجموعات يتم عبر وسائط وتطبيقات رقمية افتراضية",
+      "البث الإذاعي والتلفزيوني الجماهيري",
+      "المراسلات الورقية التقليدية"
+    ],
+    correctIndex: 1,
+    rationale: "الاتصال الشخصي الوسيط (CMC) هو كافة أشكال التفاعل الإنساني المتبادل التي توظف التكنولوجيا الرقمية والإنترنت (تطبيقات، محادثات، مؤتمرات مرئية) وسيطاً لنقل الرسائل."
+  },
+  {
+    id: 46,
+    lectureId: 5,
+    topic: "نظرية SIPT",
+    question: "ما هي الفرضية الأساسية التي تقدمها نظرية معالجة المعلومات الشخصية (SIPT) لجوزيف والثر؟",
+    options: [
+      "عجز الاتصال الرقمي التام عن بناء علاقات عميقة",
+      "قدرة الأفراد على تطوير علاقات شخصية قوية عبر الوسائط الرقمية تعوض غياب المؤشرات الجسدية",
+      "استحالة تحقيق التفاهم دون اللقاء المباشر",
+      "تفوق الوسائط منخفضة الثراء دائماً"
+    ],
+    correctIndex: 1,
+    rationale: "تؤكد نظرية SIPT لجوزيف والثر (Joseph Walther) أن غياب الإشارات الجسدية في الفضاء الرقمي لا يمنع تكوين علاقات حميمة، بل يعوضه الأفراد بالكلمات والوقت والرموز التعبيرية."
+  },
+  {
+    id: 47,
+    lectureId: 5,
+    topic: "النموذج الفائق",
+    question: "ماذا يُقصد بمفهوم 'نموذج التفاعل التفرطي أو الفائق (Hyperpersonal Model)' لجوزيف والثر؟",
+    options: [
+      "أن الاتصال الرقمي قد يتجاوز أحياناً الاتصال المباشر في مستويات الحميمة والتقارب",
+      "انخفاض جودة التواصل الافتراضي مقارنة بالحضوري",
+      "بطء نقل المعلومات والبيانات عبر الشبكات",
+      "غياب أي تنظيم للذات في الفضاء الرقمي"
+    ],
+    correctIndex: 0,
+    rationale: "يفترض النموذج الفائق (Hyperpersonal Model) أن الاتصال الرقمي قد يتفوق على المباشر في التقارب والمودة بسبب قدرة المرسل على التحرير والترشيح الانتقائي للذات (Selective Self-Presentation) وإسقاط المتلقي لمشاعر مثالية."
+  },
+  {
+    id: 48,
+    lectureId: 5,
+    topic: "الهوية الافتراضية",
+    question: "كيف تتم صياغة الهوية الافتراضية والتعبير عن الذات في الفضاء الرقمي عبر ثلاثة مستويات متداخلة؟",
+    options: [
+      "النصوص والبيانات المرجعية، المؤشرات البصرية والرمزية، والتعديل الانتقائي والترشيح",
+      "الإرسال الصوتي، الاستقبال البصري، والتغذية الراجعة المؤجلة",
+      "الضوضاء المادية، النفسية، والدلالية",
+      "المسافة الحميمة، الشخصية، والاجتماعية"
+    ],
+    correctIndex: 0,
+    rationale: "تبنى الهوية الرقمية عبر: البيانات النصية والمعلومات التوثيقية، المؤشرات البصرية كالأفاتار والصور، والإدارة الدقيقة والترشيح الانتقائي لما يُعرض للجمهور."
+  },
+  {
+    id: 49,
+    lectureId: 5,
+    topic: "إرهاق الشاشات",
+    question: "ماذا يُقصد بظاهرة 'الإرهاق الرقمي أو إرهاق الشاشات (Digital / Zoom Fatigue)'؟",
+    options: [
+      "الملل الناتج عن قراءة الكتب الورقية",
+      "حالة استنزاف نفسي وذهني وجسماني تنجم عن المشاركة الممتدة في الاجتماعات الافتراضية والمرئية",
+      "ضعف شبكات الإنترنت والاتصال السلكي",
+      "الرغبة في الانعزال الاجتماعي التام"
+    ],
+    correctIndex: 1,
+    rationale: "إرهاق الزوم (Zoom Fatigue) حالة إعياء ذهني ونفسي وبصري ناتجة عن التحديق المطول في الشاشة، مراقبة النفس المستمرة، والتركيز المفرط على الإشارات غير اللفظية المجتزأة."
+  },
+  {
+    id: 50,
+    lectureId: 5,
+    topic: "التجاهل بالهاتف",
+    question: "ما هو المعنى الذي تعبر عنه كلمة Phubbing (التجاهل الرقمي أو التهميش بالهاتف)؟",
+    options: [
+      "تبادل الرسائل النصية بسرعة فائقة",
+      "انشغال الفرد بهاتفه الذكي وتصفح المنصات أثناء توجيه الحديث إليه في موقف حضوري مباشر",
+      "تشفير البيانات الحساسة ونقلها بأمان",
+      "استخدام الرموز التعبيرية لتعويض النبرة الصوتية"
+    ],
+    correctIndex: 1,
+    rationale: "مصطلح Phubbing منحوت من (Phone + Snubbing)، ويعني إهمال الطرف الآخر الحاضر والانشغال بالهاتف الذكي، مما يوجه رسالة ضمنية بعدم التقدير."
+  },
+  {
+    id: 51,
+    lectureId: 1,
+    topic: "خصائص الاتصال",
+    question: "أي من الخصائص الآتية تُعد من الخصائص الجوهرية للاتصال الشخصي؟",
+    options: [
+      "خاصية الحتمية وعدم القابلية للإلغاء والخاصية المعاملاتية",
+      "الاعتماد الحصري على الشاشات الرقمية والوسائط",
+      "القابلية التامة للمسح والتكرار المتطابق",
+      "أحادية الاتجاه وعدم وجود تغذية راجعة"
+    ],
+    correctIndex: 0,
+    rationale: "الخصائص الجوهرية الثابتة هي: الحتمية، عدم القابلية للإلغاء، عدم القابلية للتكرار المتطابق، الطبيعة المعاملاتية، والتعقد متعدد المستويات."
+  },
+  {
+    id: 52,
+    lectureId: 1,
+    topic: "تقليل عدم اليقين",
+    question: "ما هو الدور الذي تلعبه 'نظرية التخفيف من عدم اليقين' في اللقاءات الأولى بين الأفراد؟",
+    options: [
+      "زيادة التنافر المعرفي والتوتر النفسي",
+      "تفسير رغبة الفرد في تقليل الشك والتنبؤ بسلوكيات الطرف الآخر عبر استراتيجيات مختلفة",
+      "فرض السيطرة والتحكم العدواني",
+      "تقليل مكاسب العلاقة الاقتصادية"
+    ],
+    correctIndex: 1,
+    rationale: "توضح نظرية بيرغر وكالابريز أن الإنسان مدفوع فطرياً في اللقاءات الأولى برغبة تقليل عدم اليقين واستكشاف الطرف الآخر لتوقع تصرفاته واختيار الاستجابة المناسبة."
+  },
+  {
+    id: 53,
+    lectureId: 1,
+    topic: "رواد الاتصال",
+    question: "من هم أبرز الرواد الذين رسخوا القواعد العميقة لعلوم الاتصال البيني في مدرسة بالو ألتو؟",
+    options: [
+      "أرسطو وهارولد لاسويل",
+      "بول واتزلاويك وآخرون ممن صاغوا بديهيات الاتصال",
+      "ألتمن وتيلور",
+      "بيرغر وكالابريز"
+    ],
+    correctIndex: 1,
+    rationale: "بول واتزلاويك (Paul Watzlawick) وزملاؤه في مدرسة بالو ألتو (Palo Alto) هم من رسخوا بديهيات الاتصال البيني التي نقلت العلم إلى النماذج المنظومية والسلوكية."
+  },
+  {
+    id: 54,
+    lectureId: 1,
+    topic: "بديهيات بالو ألتو",
+    question: "كيف يؤثر 'بعد المحتوى وبعد العلاقة' في الرسائل الاتصالية وفق بديهيات مدرسة بالو ألتو؟",
+    options: [
+      "الرسالة تنقل معلومات موضوعية فحسب دون أي بعد نفسي",
+      "الرسالة لا تنقل معلومات موضوعية فحسب بل تحدد طبيعة العلاقة بين الطرفين ومكانتهما",
+      "العلاقة تلغي تماماً أهمية المحتوى اللفظي",
+      "المحتوى هو الجانب الوحيد القابل للقياس"
+    ],
+    correctIndex: 1,
+    rationale: "لكل اتصال بعدان: بعد المحتوى (البيانات الصريحة المنقولة)، وبعد العلاقة (كيف يجب أن تفهم الرسالة ونوع المكانة والسلطة والود القائم بين الطرفين)."
+  },
+  {
+    id: 55,
+    lectureId: 1,
+    topic: "المرونة الثقافية",
+    question: "ماذا يُقصد بمفهوم 'المرونة الاتصالية الثقافية (Cross-Cultural Communication Competence)'؟",
+    options: [
+      "التمسك بالأنماط الذهنية الجاهزة والانحيازات العرقية",
+      "القدرة على تعديل السلوكيات الاتصالية وإظهار التعاطف والوعي بالاختلافات الثقافية دون تحيزات",
+      "رفض التواصل مع الثقافات المغايرة",
+      "الاعتماد على لغة واحدة فقط في كل التفاعلات"
+    ],
+    correctIndex: 1,
+    rationale: "المرونة الثقافية هي الكفاءة في التكيف الواعي وتعديل الأسلوب ونبرة الصوت والإيماءات وفق أعراف الثقافات الأخرى مع إظهار التعاطف والتحرر من الأحكام المسبقة."
+  },
+  {
+    id: 56,
+    lectureId: 2,
+    topic: "التغذية الراجعة",
+    question: "ما هي الوظيفة الأساسية لـ 'رسائل التغذية الراجعة (Feedback)' داخل البنية الهيكلية للعملية الاتصالية؟",
+    options: [
+      "إحداث ضوضاء مادية خارجية",
+      "العمل كصمام أمان وضابط موجه للمسار الاتصالي لمعرفة مدى استيعاب المستقبل",
+      "إيقاف العملية الاتصالية نهائياً",
+      "تشفير الأفكار المجردة فقط"
+    ],
+    correctIndex: 1,
+    rationale: "التغذية الراجعة تعمل كصمام أمان ومنظم للمسار الاتصالي؛ تبين للمرسل درجة وصول المعنى وتمكنه من الاستمرار أو التعديل والتوضيح."
+  },
+  {
+    id: 57,
+    lectureId: 2,
+    topic: "الضوضاء الدلالية",
+    question: "أي من أشكال الضوضاء تنشأ عن الفجوة المعرفية واللغوية واستخدام المصطلحات التخصصية المعقدة؟",
+    options: [
+      "الضوضاء المادية",
+      "الضوضاء الفيزيولوجية",
+      "الضوضاء الدلالية أو السمانتية (Semantic Noise)",
+      "الضوضاء البيئية المكانية"
+    ],
+    correctIndex: 2,
+    rationale: "الضوضاء الدلالية (Semantic Noise) تنتج عن تباين المعاني اللغوية، والمصطلحات الغامضة وحمالة الأوجه التي تعيق فهم المتلقي للمقصد الأصلي."
+  },
+  {
+    id: 58,
+    lectureId: 2,
+    topic: "السياق الاجتماعي النفسي",
+    question: "كيف يتجلى السياق الاجتماعي - النفسي في العملية الاتصالية؟",
+    options: [
+      "عبر موازين السلطة بين الطرفين، والقواعد والتقاليد الاجتماعية، ودرجة القرب",
+      "عبر درجة الحرارة والإضاءة المادية",
+      "عبر التوقيت الفصلي والسلسلة الزمنية",
+      "عبر الشبكات والوسائط التقنية الرقمية"
+    ],
+    correctIndex: 0,
+    rationale: "يشمل السياق الاجتماعي-النفسي مكانة الأطراف، قواعد الأدب والمقام، علاقات القوة والسلطة، ومدى الحميمية أو الرسمية الحاكمة للموقف."
+  },
+  {
+    id: 59,
+    lectureId: 4,
+    topic: "مراحل الإنصات",
+    question: "ما هي المرحلة الرابعة من مراحل الإنصات الخمس وفق النموذج المعرفي الشامل؟",
+    options: [
+      "مرحلة الاستقبال والالتقاط",
+      "مرحلة الفهم والإدراك",
+      "مرحلة التقييم والنقد المتريث (Evaluating)",
+      "مرحلة الاستجابة والتغذية الراجعة"
+    ],
+    correctIndex: 2,
+    rationale: "ترتيب المراحل الخمس: 1. الاستقبال ➔ 2. الفهم ➔ 3. التذكر ➔ 4. التقييم والنقد المتريث (Evaluating) ➔ 5. الاستجابة."
+  },
+  {
+    id: 60,
+    lectureId: 4,
+    topic: "الاستماع السلبي",
+    question: "ماذا يُقصد بنمط الاستماع السلبي المسمى 'الاستماع الترصدي أو الهجومي (Ambushing)'؟",
+    options: [
+      "الإنصات القائم على تتبع الهفوات وسقطات القول لاستخدامها كحجج مضادة للإحراج",
+      "التظاهر بالانتباه الصوري بينما الذهن شارد",
+      "التركيز على الأجزاء التي توافق الهوى فقط",
+      "مقاطعة المتحدث لاستعراض التجارب الذاتية"
+    ],
+    correctIndex: 0,
+    rationale: "الاستماع الترصدي (Ambushing) هو الإنصات بنية الهجوم، وترصد زلات اللسان والهفوات لتجهيز رد مضاد وإحراج الطرف الآخر."
+  },
+  {
+    id: 61,
+    lectureId: 4,
+    topic: "أنواع الأسئلة",
+    question: "أي من أنماط الأسئلة تُستخدم لجمع بيانات كمية سريعة والحسم الفوري بـ (نعم / لا)؟",
+    options: [
+      "الأسئلة المفتوحة",
+      "الأسئلة المغلقة (Closed-Ended Questions)",
+      "الأسئلة السابرة والتوضيحية",
+      "الأسئلة الإيحائية الموجهة"
+    ],
+    correctIndex: 1,
+    rationale: "الأسئلة المغلقة (Closed-Ended) تحصر الإجابة في خيارات محددة كـ 'نعم' أو 'لا' وتستخدم للتأكيد والتدقيق وجمع البيانات الرقمية السريعة."
+  },
+  {
+    id: 62,
+    lectureId: 4,
+    topic: "الحزم الاتصالي",
+    question: "ماذا تعني استراتيجية 'النزع التدريجي للتصعيد (Fogging)' في مواجهة النقد والهجوم؟",
+    options: [
+      "الرد بعنف وهجوم مضاد فوري",
+      "الاعتراف الإيجابي بالمحتوى الصحيح في نقد الطرف الآخر دون تقبل الأحكام الجائرة",
+      "الانسحاب التام وتجنب الحوار كلياً",
+      "تكرار الكلمات بصورة عمياء"
+    ],
+    correctIndex: 1,
+    rationale: "النزع التدريجي (Fogging) أسلوب حزمي يعترف بالجزء الصحيح في نقد الخصم بهدوء دون تبني أحكامه التعميمية الجائرة، مما يمتص غضبه ويفكك هجومه."
+  },
+  {
+    id: 63,
+    lectureId: 4,
+    topic: "معبرات المشاعر",
+    question: "ماذا يُقصد بتصنيف معبرات المشاعر والوجدان (Affect Displays) في علم حركة الجسد؟",
+    options: [
+      "الحركات والتعابير الوجهية التي تعبر عن الحالات العاطفية والنفسية الداخلية",
+      "الإشارات اللغوية الصريحة كالتحية باليد",
+      "حركات التكيف المرتبطة بالقلق",
+      "الحركات الشارحة لتوضيح الأشكال في الفضاء"
+    ],
+    correctIndex: 0,
+    rationale: "معبرات الوجدان (Affect Displays) هي تعبيرات الوجه والجسد الدالة على الانفعالات الأساسية (خوف، فرح، غضب، دهشة، حزن) وتكشف المشاعر الحقيقية."
+  },
+  {
+    id: 64,
+    lectureId: 4,
+    topic: "المسافة الحميمة",
+    question: "ما هي النطاقات الأربعة للمسافات المكانية (Proxemics) التي تبدأ من التصاق الجسد وحتى 45 سم؟",
+    options: [
+      "المسافة الحميمة (Intimate Distance)",
+      "المسافة الشخصية",
+      "المسافة الاجتماعية",
+      "المسافة العمومية"
+    ],
+    correctIndex: 0,
+    rationale: "المسافة الحميمة (Intimate Distance) وفق تصنيف إدوارد هول تمتد من 0 إلى 45 سم، وتقتصر على العلاقات شديدة القرب والعواطف الخاصة."
+  },
+  {
+    id: 65,
+    lectureId: 4,
+    topic: "النظائر اللغوية",
+    question: "كيف يؤثر الصمت والتوقفات الصوتية في النظائر اللغوية للاتصال غير اللفظي؟",
+    options: [
+      "يعبر دائماً عن العجز اللغوي التام",
+      "يستخدم كتوقف تكتيكي لجذب الانتباه، أو للتفكير، أو للتعبير عن الرفض الضمني",
+      "يمنع تماماً أي تدفق للمشاعر",
+      "يلغي أثر لغة الجسد بالكامل"
+    ],
+    correctIndex: 1,
+    rationale: "الصمت (Silence / Pauses) ليس فراغاً بل يحمل شحنة دلالية عالية، ويستخدم تكتيكياً لإبراز أهمية الفكرة اللاحقة، أو للتروي، أو لإظهار عدم الرضا."
+  },
+  {
+    id: 66,
+    lectureId: 5,
+    topic: "إدارة الصراع",
+    question: "ما هي الميزات الأساسية لاستراتيجية 'المساومة والتسوية (Compromising)' في إدارة الصراع؟",
+    options: [
+      "الفوز التام على حساب الطرف الآخر (ربح / خسارة)",
+      "البحث عن حل أوسط يقدم فيه كل طرف تنازلات متوازنة (ربح جزئي / خسارة جزئية)",
+      "التنازل التام لإرضاء الطرف الآخر (خسارة / ربح)",
+      "التجاهل التام للصراع (خسارة / خسارة)"
+    ],
+    correctIndex: 1,
+    rationale: "المساومة والتسوية (Compromising) في نموذج TKI تقع في منتصف التأكيدية والتعاونية، ويبحث الأطراف فيها عن حل وسط بتنازلات متبادلة (Win some / Lose some)."
+  },
+  {
+    id: 67,
+    lectureId: 5,
+    topic: "التحليل الشبكي",
+    question: "ماذا تُعرف بـ 'مركزية الوساطة (Betweenness Centrality)' في التحليل الشبكي للعلاقات الشخصية؟",
+    options: [
+      "عدد الروابط المباشرة التي يمتلكها الفرد",
+      "موقع الفرد كحلقة وصل إجبارية بين مجموعتين غير مرتبطتين لاحتكار التدفق والمعلومات",
+      "الانعزال التام عن شبكات الاتصال",
+      "التكتل داخل مجموعات ضيقة أحادية الرؤية"
+    ],
+    correctIndex: 1,
+    rationale: "مركزية الوساطة (Betweenness Centrality) تعبر عن موقع الشخص كجسر حيوي يربط بين مجموعات منعزلة، مما يمنحه نفوذاً معلوماتياً وقدرة وساطة عالية."
+  },
+  {
+    id: 68,
+    lectureId: 5,
+    topic: "تكتيكات التأثير",
+    question: "أي من تكتيكات التأثير التنظيمي يعتمد على ربط أهداف المبادرة بالقيم الحاكمة والرؤية الاستراتيجية لإثارة الحماس والالتزام الوجداني؟",
+    options: [
+      "تكتيك الإقناع العقلاني",
+      "تكتيك الجذب القيمي والإلهامي (Inspirational Appeals)",
+      "تكتيك الاستشارة والتشارك",
+      "تكتيك التودد وبناء الرصيد"
+    ],
+    correctIndex: 1,
+    rationale: "الجذب القيمي والإلهامي (Inspirational Appeals) يركز على العواطف النبيلة، القيم المشتركة، والأهداف السامية لتحفيز التضامن والموافقة."
+  },
+  {
+    id: 69,
+    lectureId: 5,
+    topic: "خصائص CMC",
+    question: "ما هي إحدى الخصائص البنيوية الأربع للاتصال الشخصي الوسيط (CMC)؟",
+    options: [
+      "السيولة الزمانية والمكانية وإمكانية الأرشفة والمراجعة",
+      "الاعتماد الحصري على التواجد المادي في الرقعة نفسها",
+      "استحالة مراجعة النصوص قبل إرسالها",
+      "غياب النصوص والوسائط المدمجة تماماً"
+    ],
+    correctIndex: 0,
+    rationale: "يمتاز الاتصال الرقمي (CMC) بتجاوز الحدود الجغرافية، والسيولة التزامنية/اللاتزامنية، والقدرة الفائقة على أرشفة وتوثيق ومراجعة النصوص قبل بثها."
+  },
+  {
+    id: 70,
+    lectureId: 2,
+    topic: "ثراء الوسائط",
+    question: "ما الذي تصنفه نظرية الثراء الإعلامي (Media Richness Theory) لدافت ولينجل؟",
+    options: [
+      "الوسائط الاتصالية بناءً على قدرتها على نقل المعلومات وتقليل الإبهام والتناقض",
+      "مستويات الإفصاح عن الذات في طبقات البصلة",
+      "أنواع الضوضاء المادية والنفسية",
+      "درجات مسافة السلطة في الثقافات"
+    ],
+    correctIndex: 0,
+    rationale: "تصنف نظرية الثراء الوسائط ترتيباً من الأعلى ثراءً (وجه لوجه) إلى الأقل ثراءً (النصوص والتقارير) وفق قدرتها على إزالة الغموض وإتاحة التغذية الراجعة الفورية."
+  },
+  {
+    id: 71,
+    lectureId: 5,
+    topic: "إرهاق الشاشات",
+    question: "كيف يؤثر ما يُعرف بـ 'المرآة الذاتية' في ظاهرة الإرهاق الرقمي (Zoom Fatigue)؟",
+    options: [
+      "يقلل من مستويات التوتر أثناء الاجتماعات",
+      "مشاهدة الفرد لوجهه باستمرار أثناء الاجتماعات المرئية مما يرفع مستويات التوتر ومراقبة الذات",
+      "يلغي الحاجة للتواصل البصري تماماً",
+      "يسرع من عملية معالجة البيانات الدلالية"
+    ],
+    correctIndex: 1,
+    rationale: "رؤية الشخص لانعكاس وجهه وحركاته طوال مدة الاجتماع المرئي تمثل عبئاً نفسياً غير طبيعي يرفع من المراقبة الذاتية والتوتر مقارنة باللقاء المباشر."
+  },
+  {
+    id: 72,
+    lectureId: 5,
+    topic: "الأمان والخصوصية",
+    question: "ما هو دور التطبيقات التي توفر 'التشفير التام بين الطرفين (End-to-End Encryption)' في البيئة الرقمية؟",
+    options: [
+      "تسهيل تداول الشائعات والأخبار المغلوطة",
+      "منع تدخل الأطراف الثالثة وضمان سرية التبادلات الشخصية والمهنية والأكاديمية",
+      "إلغاء الخصوصية الرقمية للمستخدمين",
+      "إتاحية البيانات علناً لكافة الشبكات"
+    ],
+    correctIndex: 1,
+    rationale: "التشفير التام (E2EE) يضمن حصر تفكيك شفرة الرسائل على المرسل والمستقبل فقط ومنع مزودي الخدمة أو القراصنة من الاطلاع على المحتوى."
+  },
+  {
+    id: 73,
+    lectureId: 5,
+    topic: "الكفاءة الرقمية",
+    question: "ما هو المبدأ الحاكم في استراتيجية المطابقة البيئية بين الوسيلة والرسالة للكفاءة الرقمية؟",
+    options: [
+      "استخدام الوسائط النصية دائماً بغض النظر عن تعقيد الموقف",
+      "استخدام الوسائط الغنية للموضوعات المعقدة الحساسة والاقتصار على النصية للإجرائية",
+      "تجنب استخدام المكالمات المرئية في أي ظرف",
+      "الاعتماد على البريد الإلكتروني في حل النزاعات الحادة"
+    ],
+    correctIndex: 1,
+    rationale: "المطابقة البيئية الرشيدة تقتضي اختيار الوسيلة المناسبة لحساسية الرسالة: وسائط غنية (اجتماعات مباشرة/مرئية) للأمور الشائكة والنزاعات، وقنوات نصية موثقة للمهام الإجرائية."
+  },
+  {
+    id: 74,
+    lectureId: 5,
+    topic: "الذكاء الاصطناعي",
+    question: "ما هو التحدي الأبرز الذي يثيره استخدام الذكاء الاصطناعي التوليدي في التفاعل الشخصي والبحثي؟",
+    options: [
+      "سرعة إنجاز المهام الإدارية",
+      "إشكالية الأصالة الوجدانية (Authenticity Paradox) وتفريغ التفاعل من البصمة الذاتية",
+      "سهولة ترجمة النصوص عبر اللغات",
+      "توفر مساعدين افتراضيين لتنظيم الوقت"
+    ],
+    correctIndex: 1,
+    rationale: "تثير الاستعانة المفرطة بالذكاء الاصطناعي إشكالية 'الأصالة الوجدانية' (Authenticity Paradox)؛ حيث تصبح الرسائل منمقة ومصنوعة لكنها تفتقر للصدق الشعوري والبصمة الشخصية الحقيقية."
+  },
+  {
+    id: 75,
+    lectureId: 5,
+    topic: "تمكين الذكاء الاصطناعي",
+    question: "كيف تسهم أدوات الذكاء الاصطناعي في تمكين الاتصال الشخصي الوسيط وفق الاتجاهات المستحدثة؟",
+    options: [
+      "تدمير كافة شبكات التواصل الاجتماعي",
+      "إعادة تحسين النصوص، الترجمة الفورية، تلخيص المحادثات، وتقليل العبء الإداري والمعرفي",
+      "إلغاء الحاجة للتفكير البشري نهائياً",
+      "زيادة الضوضاء الدلالية والتشويش التقني"
+    ],
+    correctIndex: 1,
+    rationale: "يعزز الذكاء الاصطناعي الكفاءة الاتصالية عبر التلخيص الآلي للنقاشات الطويلة، الترجمة الفورية متعددة اللغات، وصقل الصياغات اللغوية لتجاوز الضوضاء الدلالية."
+  }
+];
+
+/* Core Theories and Scholars Data */
+const THEORIES_MATRIX = [
+  {
+    name: "نظرية التبادل الاجتماعي (Social Exchange Theory)",
+    scholars: "جورج هومانز، جون ثيبوت وهارولد كيلي (Homans, Thibaut & Kelley)",
+    coreThesis: "التفاعل الإنساني يخضع لمعادلة اقتصادية سلوكية؛ يستمر الأفراد في العلاقات التي تتجاوز فيها العوائد (المكاسب النفسية والاجتماعية) التكاليف (الجهد والوقت والمشاعر المستثمرة).",
+    keyConcepts: "مستوى المقارنة (CL)، مستوى مقارنة البدائل (CLalt)، العوائد والتكاليف، الاستقرار العلاقي."
+  },
+  {
+    name: "نظرية اختراق الذات (Social Penetration Theory)",
+    scholars: "إيروين ألتمان وتايلور (Altman & Taylor, 1973)",
+    coreThesis: "تتطور العلاقات من السطحية إلى العمق عبر كشف الذات التدريجي المتبادل، تشبيهاً للشخصية الإنسانية بطبقات البصلة المتراكمة.",
+    keyConcepts: "اتساع الإفصاح (Breadth)، عمق الإفصاح (Depth)، كشف الذات (Self-Disclosure)، المراحل الأربع (التوجيهية، الاستكشافية، الوجدانية، المستقرة)، وإزالة الاختراق (Depenetration)."
+  },
+  {
+    name: "نظرية تخفيف عدم اليقين (Uncertainty Reduction Theory)",
+    scholars: "تشارلز بيرغر وريتشارد كالابريز (Berger & Calabrese, 1975)",
+    coreThesis: "المحرك الأساسي في اللقاءات الأولى بين الأفراد هو الدافع لتقليل حالة الشك المعرفي والسلوكي والتنبؤ بتصرفات ومقاصد الطرف الآخر.",
+    keyConcepts: "الشك المعرفي، الشك السلوكي، الاستراتيجيات السلبية (الملاحظة)، النشطة (سؤال طرف ثالث)، والتفاعلية (التواصل المباشر)."
+  },
+  {
+    name: "بديهيات الاتصال ومدرسة بالو ألتو (Palo Alto Axioms)",
+    scholars: "بول واتزلاويك، بيفين وجاكسون (Paul Watzlawick et al., 1967)",
+    coreThesis: "السلوك كله اتصال، ويستحيل على الإنسان عدم التواصل داخل الموقف التفاعلي. لكل اتصال بعدان: بعد المحتوى وبعد العلاقة.",
+    keyConcepts: "حتمية الاتصال، بعد المحتوى (Content) وبعد العلاقة (Relationship)، التفاعلات التناظرية والتكاملية، التشفير والتفكيك المتزامن."
+  },
+  {
+    name: "نظرية التناقضات الاتصالية (Relational Dialectics Theory)",
+    scholars: "ليزلي بيكستر وباربرا مونتجمري (Leslie Baxter & Montgomery)",
+    coreThesis: "العلاقات الإنسانية ليست مستقرة وثابتة، بل هي ساحة ديناميكية مستمرة للتجاذب والتفاوض بين قوى ورغبات متضادة لا تنتهي.",
+    keyConcepts: "الاستقلالية مقابل الاتصال (Autonomy vs Connection)، التنبؤ مقابل المفاجأة (Novelty vs Predictability)، والانفتاح مقابل الانغلاق (Openness vs Closedness)."
+  },
+  {
+    name: "نظرية خرق التوقعات (Expectancy Violations Theory)",
+    scholars: "جوديث بورغون (Judee Burgoon, 1978)",
+    coreThesis: "يدخل الأفراد التفاعل بتوقعات معيارية حول المسافات والسلوك؛ عند خرق هذه التوقعات يحدث استثارة وتقييم يعتمد على جاذبية الطرف الخارق.",
+    keyConcepts: "التوقعات الاجتماعية، استثارة الانتباه، تقييم الخرق الإيجابي أو السلبي، مكافأة القائم بالاتصال (Reward Value)."
+  },
+  {
+    name: "نظرية ثراء الوسائط (Media Richness Theory)",
+    scholars: "ريتشارد دافت وروبرت لينجل (Richard Daft & Robert Lengel, 1986)",
+    coreThesis: "تختلف القنوات في قدرتها على نقل الرسائل وإزالة الغموض واللبس؛ الوسائط عالية الثراء للقضايا المعقدة، والمنخفضة للبيانات الروتينية.",
+    keyConcepts: "سرعة التغذية الراجعة، تعدد المؤشرات (لغة الجسد والنبرة)، التخصيص الفردي، والتنوع اللغوي."
+  },
+  {
+    name: "نظرية التنافر المعرفي (Cognitive Dissonance Theory)",
+    scholars: "ليون فيستينجر (Leon Festinger, 1957)",
+    coreThesis: "يسعى الفرد للحفاظ على الاتساق الداخلي؛ تعارض الرسالة مع القناعات يولد توتراً يدفعه لآليات دفاعية انتقائية لإعادة التوازن المعرفي.",
+    keyConcepts: "التعرض الانتقائي، الانتباه الانتقائي، التفسير الانتقائي، والتذكر الانتقائي."
+  },
+  {
+    name: "نموذج توماس وكليمان لإدارة الصراع (TKI Model)",
+    scholars: "كينيث توماس ورالف كليمان (Kenneth Thomas & Ralph Kilmann, 1974)",
+    coreThesis: "تصنيف سلوك الأفراد في النزاعات عبر بعدين: التأكيدية (السعي لتحقيق الذات) والتعاونية (مراعاة مصالح الآخر).",
+    keyConcepts: "التنافس والفرض (ربح/خسارة)، التجنب (خسارة/خسارة)، التكيف (خسارة/ربح)، المساومة (ربح جزئي/خسارة جزئية)، والتعاون (ربح/ربح)."
+  },
+  {
+    name: "نظرية الروابط الضعيفة والتحليل الشبكي (Weak Ties Theory)",
+    scholars: "مارك جرانوفتر (Mark Granovetter, 1973)",
+    coreThesis: "تكمن القوة الاستراتيجية في العلاقات السطحية المتباعدة (Weak Ties) لأنها تعمل كجسور لمعلومات وفرص جديدة لا تملكها الدائرة الضيقة.",
+    keyConcepts: "الروابط القوية (Strong Ties)، الروابط الضعيفة (Weak Ties)، مركزية الوساطة، والثقوب البنيوية (Structural Holes)."
+  },
+  {
+    name: "نظرية ماير للتعلم متعدد الوسائط (Multimedia Learning Theory)",
+    scholars: "ريتشارد ماير (Richard E. Mayer, 2001, 2009)",
+    coreThesis: "يملك العقل البشري قنوات محدودة لمعالجة الصوت والصورة؛ تصميم العرض يجب أن يقلل المعالجة غير الضرورية وإدارة الحمل المعرفي.",
+    keyConcepts: "مبدأ الاتساق (Coherence)، مبدأ الإشارة (Signaling)، مبدأ التجاور المكاني والزمني، مبدأ التقطيع (Segmenting)، وتجنب التكرار الحرفي."
+  },
+  {
+    name: "نظرية معالجة المعلومات والنموذج الفائق (SIPT & Hyperpersonal)",
+    scholars: "جوزيف والثر (Joseph Walther, 1992, 1996)",
+    coreThesis: "يتكيف الأفراد مع الوسائط الرقمية لتعويض غياب لغة الجسد، بل قد يتجاوز الاتصال الرقمي اللقاء المباشر في الحميمة بفضل الترشيح الانتقائي للذات.",
+    keyConcepts: "التعويض الزمني، التقديم الانتقائي للذات (Selective Self-Presentation)، والمثاليات الإسقاطية للمتلقي."
+  }
+];
+
+/* ==========================================================================
+   APPLICATION STATE & PERSISTENCE
+   ========================================================================== */
+let appState = {
+  theme: "light",
+  currentTab: "lectures",
+  currentLecture: 1,
+  bookmarkedQuestionIds: [],
+  userAnswers: {}, // qId -> selectedOptionIndex
+  simulator: {
+    inProgress: false,
+    scope: "all",
+    count: 50,
+    timerEnabled: true,
+    randomize: true,
+    instantFeedback: false,
+    questionIds: [],
+    currentIndex: 0,
+    answers: {}, // qId -> optionIndex
+    timeRemainingSeconds: 2400,
+    totalSecondsGiven: 2400,
+    timerIntervalId: null,
+    isCompleted: false,
+    score: null
+  }
+};
+
+/* ==========================================================================
+   INITIALIZATION & PERSISTENCE
+   ========================================================================== */
+window.addEventListener("DOMContentLoaded", async function() {
+  await loadSavedState();
+  initTheme();
+  renderLectureContent(appState.currentLecture);
+  renderBankQuestions();
+  renderTheoriesMatrix();
+  updateGlobalStats();
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+
+  // Notify Notebook host
+  if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === 'function') {
+    window.notebookAppApi.notifyAppReady();
+  }
+});
+
+async function loadSavedState() {
+  try {
+    if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === 'function') {
+      const saved = await window.notebookAppApi.getAppState();
+      if (saved && typeof saved === 'object') {
+        if (saved.theme) appState.theme = saved.theme;
+        if (Array.isArray(saved.bookmarkedQuestionIds)) appState.bookmarkedQuestionIds = saved.bookmarkedQuestionIds;
+        if (saved.userAnswers) appState.userAnswers = saved.userAnswers;
+      }
+    }
+  } catch (err) {
+    console.warn("Could not retrieve notebook app state:", err);
+  }
+}
+
+async function persistState() {
+  try {
+    if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
+      await window.notebookAppApi.setAppState({
+        theme: appState.theme,
+        bookmarkedQuestionIds: appState.bookmarkedQuestionIds,
+        userAnswers: appState.userAnswers
+      });
+    }
+  } catch (err) {
+    console.warn("Could not save notebook app state:", err);
+  }
+}
+
+/* ==========================================================================
+   THEME SWITCHER (Haven Light / Winter Evening Dark)
+   ========================================================================== */
+function initTheme() {
+  document.documentElement.setAttribute("data-theme", appState.theme);
+  updateThemeButtonUI();
+}
+
+function toggleTheme() {
+  appState.theme = appState.theme === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", appState.theme);
+  updateThemeButtonUI();
+  persistState();
+}
+
+function updateThemeButtonUI() {
+  const btnText = document.getElementById("themeToggleText");
+  const isDark = appState.theme === "dark";
+  if (btnText) {
+    btnText.textContent = isDark ? "الوضع النهاري" : "الوضع الليلي";
+  }
+  const btn = document.getElementById("themeToggleBtn");
+  if (btn) {
+    btn.innerHTML = isDark
+      ? `<i data-lucide="sun" style="width: 16px; height: 16px;"></i><span>الوضع النهاري</span>`
+      : `<i data-lucide="moon" style="width: 16px; height: 16px;"></i><span>الوضع الليلي</span>`;
+    if (window.lucide) window.lucide.createIcons();
+  }
+}
+
+/* ==========================================================================
+   NAVIGATION TAB SWITCHING
+   ========================================================================== */
+function switchMainTab(tabName) {
+  appState.currentTab = tabName;
+  const tabs = ["lectures", "bank", "simulator", "theories", "progress"];
+
+  tabs.forEach(t => {
+    const btn = document.getElementById(`tabBtn-${t}`);
+    const sec = document.getElementById(`view-${t}`);
+    if (btn) btn.classList.toggle("active", t === tabName);
+    if (sec) sec.classList.toggle("active", t === tabName);
+  });
+
+  if (tabName === "progress") {
+    renderBookmarksList();
+  }
+
+  if (window.lucide) window.lucide.createIcons();
+}
+
+/* ==========================================================================
+   LECTURE SUMMARIES RENDERER
+   ========================================================================== */
+function showLectureDetail(lectureId) {
+  appState.currentLecture = lectureId;
+  for (let i = 1; i <= 5; i++) {
+    const btn = document.getElementById(`lecNavBtn-${i}`);
+    if (btn) btn.classList.toggle("active", i === lectureId);
+  }
+  renderLectureContent(lectureId);
+}
+
+function renderLectureContent(lectureId) {
+  const container = document.getElementById("lectureContentArea");
+  if (!container) return;
+
+  const lec = LECTURES_DATA.find(l => l.id === lectureId) || LECTURES_DATA[0];
+
+  let html = `
+    <div class="lecture-card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-md);">
+        <div>
+          <span class="badge-tag badge-primary">المحاضرة رقم ${lec.id}</span>
+          <h2 class="headline" style="margin-top: 0.35rem; font-size: 1.45rem;">${lec.title}</h2>
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="filterBankToLecture(${lec.id})">
+          <i data-lucide="help-circle" style="width: 15px; height: 15px;"></i>
+          <span>أسئلة هذه المحاضرة (${getLectureQuestionCount(lec.id)})</span>
+        </button>
+      </div>
+
+      <div class="concept-box">
+        <strong>خلاصة المحاضرة والمدخل الأكاديمي:</strong>
+        <p style="margin: 0.35rem 0 0 0;">${lec.summary}</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: var(--space-lg); margin-top: var(--space-lg);">
+  `;
+
+  lec.keyPoints.forEach((kp, idx) => {
+    html += `
+      <div class="panel" style="background: var(--surface-container-low);">
+        <h3 style="font-size: 1.15rem; color: var(--primary); margin-bottom: var(--space-xs); display: flex; align-items: center; gap: 0.4rem;">
+          <span class="badge-tag" style="background: var(--primary); color: var(--on-primary); width: 22px; height: 22px; justify-content: center; padding: 0;">${idx + 1}</span>
+          ${kp.title}
+        </h3>
+        <div style="line-height: 1.7; color: var(--on-surface); font-size: 0.92rem;">
+          ${kp.desc}
+        </div>
+      </div>
+    `;
+  });
+
+  // Extra tables for Lectures
+  if (lectureId === 1) {
+    html += `
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>المعيار الثقافي</th>
+              <th>ثقافات السياق العالي (High-Context)</th>
+              <th>ثقافات السياق المنخفض (Low-Context)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>التركيز الدلالي</strong></td>
+              <td>المعاني ضمنية، مستمدة من سياق العلاقة والموقف والبيئة.</td>
+              <td>المعاني صريحة ومباشرة تماماً في الألفاظ والكلمات.</td>
+            </tr>
+            <tr>
+              <td><strong>أسلوب التعبير</strong></td>
+              <td>تجنب المواجهة المباشرة، الصمت والتلميح، الحفاظ على ماء الوجه.</td>
+              <td>الصراحة القاطعة، الدقة اللغوية، الموضوعية الصارمة.</td>
+            </tr>
+            <tr>
+              <td><strong>الرواد والمرجعيات</strong></td>
+              <td>إدوارد هول (Edward T. Hall) — المجتمعات الشرقية والجمعية.</td>
+              <td>إدوارد هول — المجتمعات الغربية وشمال أوروبا وأمريكا.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (lectureId === 3) {
+    html += `
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>مبدأ ماير (Mayer)</th>
+              <th>التطبيق في تصميم الشرائح</th>
+              <th>الهدف المعرفي</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>الاتساق (Coherence)</strong></td>
+              <td>حذف الكلمات والصور والموسيقى التي لا تخدم الهدف مباشرة.</td>
+              <td>تقليل المعالجة الذهنية الزائدة غير الضرورية.</td>
+            </tr>
+            <tr>
+              <td><strong>الإشارة (Signaling)</strong></td>
+              <td>وضع سهم أو تظليل أو لون وظيفي على الرقم أو العنصر الأهم.</td>
+              <td>توجيه انتباه العين إلى النواة الدلالية للشريحة.</td>
+            </tr>
+            <tr>
+              <td><strong>التجاور المكاني</strong></td>
+              <td>وضع الشرح والتسمية ملاصقاً للرسم البياني أو الصورة.</td>
+              <td>منع التشتت بين أطراف الشريحة المختلفة.</td>
+            </tr>
+            <tr>
+              <td><strong>التقطيع (Segmenting)</strong></td>
+              <td>تقسيم العمليات المعقدة إلى شرائح أو خطوات متتابعة.</td>
+              <td>مراعاة سعة الذاكرة العاملة المؤقتة للمتعلم.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (lectureId === 4) {
+    html += `
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>نطاق المسافة (إدوارد هول)</th>
+              <th>المدى بالأمتار / السنتيمترات</th>
+              <th>السياق التفاعلي النموذجي</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>المسافة الحميمة (Intimate)</strong></td>
+              <td>من الالتصاق إلى 45 سم</td>
+              <td>العلاقات العاطفية والأسرية القريبة جداً والهمس.</td>
+            </tr>
+            <tr>
+              <td><strong>المسافة الشخصية (Personal)</strong></td>
+              <td>من 45 سم إلى 1.2 متر</td>
+              <td>الحوارات الودية مع الأصدقاء والمعارف وزملاء العمل المقربين.</td>
+            </tr>
+            <tr>
+              <td><strong>المسافة الاجتماعية (Social)</strong></td>
+              <td>من 1.2 متر إلى 3.6 متر</td>
+              <td>الاجتماعات الرسمية، المعاملات المهنية، وحوارات المكاتب.</td>
+            </tr>
+            <tr>
+              <td><strong>المسافة العمومية (Public)</strong></td>
+              <td>أكثر من 3.6 متر</td>
+              <td>المحاضرات الجامعية، القاعات الكبرى، والخطب العامة.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  html += `
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = html;
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function getLectureQuestionCount(lecId) {
+  return QUESTIONS_BANK.filter(q => q.lectureId === lecId).length;
+}
+
+function filterBankToLecture(lecId) {
+  switchMainTab("bank");
+  const filter = document.getElementById("bankLectureFilter");
+  if (filter) {
+    filter.value = String(lecId);
+    applyBankFilters();
+  }
+}
+
+/* ==========================================================================
+   QUESTION BANK RENDERER & INTERACTION
+   ========================================================================== */
+let bankFilteredQuestions = [...QUESTIONS_BANK];
+let areAllRationalesShown = false;
+
+function renderBankQuestions() {
+  const container = document.getElementById("bankQuestionsContainer");
+  if (!container) return;
+
+  const countLabel = document.getElementById("bankResultCountText");
+  if (countLabel) {
+    countLabel.textContent = `عرض ${bankFilteredQuestions.length} من أصل ${QUESTIONS_BANK.length} سؤالاً`;
+  }
+
+  if (bankFilteredQuestions.length === 0) {
+    container.innerHTML = `
+      <div class="panel" style="text-align: center; padding: var(--space-2xl);">
+        <i data-lucide="help-circle" style="width: 42px; height: 42px; color: var(--on-surface-variant); margin-bottom: var(--space-sm);"></i>
+        <h3>لا توجد أسئلة تطابق معايير البحث الحالية</h3>
+        <p class="subhead">جرب تعديل كلمات البحث أو اختيار محاضرة أخرى.</p>
+        <button type="button" class="btn btn-secondary" onclick="resetBankFilters()" style="margin-top: var(--space-md);">إعادة ضبط الفلاتر</button>
+      </div>
+    `;
+    if (window.lucide) window.lucide.createIcons();
+    return;
+  }
+
+  let html = "";
+  const optionChars = ["A", "B", "C", "D"];
+
+  bankFilteredQuestions.forEach(q => {
+    const isBookmarked = appState.bookmarkedQuestionIds.includes(q.id);
+    const userAnswer = appState.userAnswers[q.id];
+    const isAnswered = userAnswer !== undefined;
+
+    html += `
+      <div class="question-card ${isBookmarked ? 'bookmarked' : ''}" id="bankCard-${q.id}">
+        <div class="q-header">
+          <div style="display: flex; align-items: center; gap: var(--space-sm);">
+            <span class="q-number">سؤال رقم ${q.id}</span>
+            <span class="badge-tag">محاضرة ${q.lectureId}</span>
+            <span class="badge-tag" style="background: var(--surface-container-high);">${q.topic}</span>
+          </div>
+          <div class="q-meta">
+            <button type="button" class="btn btn-secondary" style="padding: 0.25rem 0.6rem; min-height: 32px;" onclick="toggleBookmarkQuestion(${q.id})" title="${isBookmarked ? 'إزالة من المحفوظات' : 'حفظ السؤال للمراجعة'}">
+              <i data-lucide="bookmark" style="width: 14px; height: 14px; color: ${isBookmarked ? 'var(--warning)' : 'currentColor'}; fill: ${isBookmarked ? 'var(--warning)' : 'none'};"></i>
+              <span>${isBookmarked ? 'محفوظ' : 'حفظ'}</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="q-text">${q.question}</div>
+
+        <div class="q-options" id="bankOptions-${q.id}">
+    `;
+
+    q.options.forEach((opt, optIdx) => {
+      let optClass = "q-option";
+      if (isAnswered) {
+        if (optIdx === q.correctIndex) {
+          optClass += " correct-revealed";
+        } else if (optIdx === userAnswer && userAnswer !== q.correctIndex) {
+          optClass += " wrong-revealed";
+        }
+      }
+
+      html += `
+        <div class="${optClass}" onclick="handleBankOptionClick(${q.id}, ${optIdx})" role="button" tabindex="0">
+          <span class="q-opt-char">${optionChars[optIdx]}</span>
+          <span style="flex: 1;">${opt}</span>
+          ${isAnswered && optIdx === q.correctIndex ? '<i data-lucide="check-circle" style="width: 16px; height: 16px; color: var(--positive);"></i>' : ''}
+          ${isAnswered && optIdx === userAnswer && userAnswer !== q.correctIndex ? '<i data-lucide="x-circle" style="width: 16px; height: 16px; color: var(--error);"></i>' : ''}
+        </div>
+      `;
+    });
+
+    html += `
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-xs);">
+          <button type="button" class="btn btn-secondary" style="padding: 0.3rem 0.75rem; min-height: 32px; font-size: 0.8rem;" onclick="toggleSingleRationale(${q.id})">
+            <i data-lucide="info" style="width: 14px; height: 14px;"></i>
+            <span id="rationaleBtnText-${q.id}">${areAllRationalesShown ? 'إخفاء التعليل الأكاديمي' : 'عرض التعليل الأكاديمي'}</span>
+          </button>
+          ${isAnswered ? `<span class="caption-sage" style="color: ${userAnswer === q.correctIndex ? 'var(--positive)' : 'var(--error)'}; font-weight: 600;">${userAnswer === q.correctIndex ? 'إجابة صحيحة ✓' : 'إجابة خاطئة ✗'}</span>` : ''}
+        </div>
+
+        <div class="q-rationale ${areAllRationalesShown ? 'shown' : ''}" id="rationaleBox-${q.id}">
+          <div class="q-rationale-title">
+            <i data-lucide="check" style="width: 15px; height: 15px; color: var(--positive);"></i>
+            <span>الإجابة النموذجية المعتمدة: الخيار (${optionChars[q.correctIndex]}) — ${q.options[q.correctIndex]}</span>
+          </div>
+          <p style="margin: 0.35rem 0 0 0; line-height: 1.6;">
+            <strong>التعليل الأكاديمي والمستند النظري:</strong> ${q.rationale}
+          </p>
+        </div>
+
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function handleBankOptionClick(qId, optIdx) {
+  appState.userAnswers[qId] = optIdx;
+  persistState();
+  updateGlobalStats();
+
+  // Re-render single question
+  const q = QUESTIONS_BANK.find(item => item.id === qId);
+  if (!q) return;
+
+  const optionsContainer = document.getElementById(`bankOptions-${qId}`);
+  const optionChars = ["A", "B", "C", "D"];
+
+  if (optionsContainer) {
+    let optsHtml = "";
+    q.options.forEach((opt, idx) => {
+      let optClass = "q-option";
+      if (idx === q.correctIndex) {
+        optClass += " correct-revealed";
+      } else if (idx === optIdx && optIdx !== q.correctIndex) {
+        optClass += " wrong-revealed";
+      }
+      optsHtml += `
+        <div class="${optClass}" onclick="handleBankOptionClick(${q.id}, ${idx})" role="button" tabindex="0">
+          <span class="q-opt-char">${optionChars[idx]}</span>
+          <span style="flex: 1;">${opt}</span>
+          ${idx === q.correctIndex ? '<i data-lucide="check-circle" style="width: 16px; height: 16px; color: var(--positive);"></i>' : ''}
+          ${idx === optIdx && optIdx !== q.correctIndex ? '<i data-lucide="x-circle" style="width: 16px; height: 16px; color: var(--error);"></i>' : ''}
+        </div>
+      `;
+    });
+    optionsContainer.innerHTML = optsHtml;
+  }
+
+  // Automatically reveal rationale on answer
+  const rationaleBox = document.getElementById(`rationaleBox-${qId}`);
+  if (rationaleBox) {
+    rationaleBox.classList.add("shown");
+    const rBtnText = document.getElementById(`rationaleBtnText-${qId}`);
+    if (rBtnText) rBtnText.textContent = "إخفاء التعليل الأكاديمي";
+  }
+
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function toggleSingleRationale(qId) {
+  const box = document.getElementById(`rationaleBox-${qId}`);
+  const btnText = document.getElementById(`rationaleBtnText-${qId}`);
+  if (!box) return;
+
+  const isShown = box.classList.contains("shown");
+  if (isShown) {
+    box.classList.remove("shown");
+    if (btnText) btnText.textContent = "عرض التعليل الأكاديمي";
+  } else {
+    box.classList.add("shown");
+    if (btnText) btnText.textContent = "إخفاء التعليل الأكاديمي";
+  }
+}
+
+function toggleAllBankRationales() {
+  areAllRationalesShown = !areAllRationalesShown;
+  const btnText = document.getElementById("toggleAllRationalesText");
+  if (btnText) {
+    btnText.textContent = areAllRationalesShown ? "إخفاء جميع التعليلات" : "إظهار جميع التعليلات";
+  }
+
+  const allBoxes = document.querySelectorAll(".q-rationale");
+  allBoxes.forEach(box => {
+    if (areAllRationalesShown) box.classList.add("shown");
+    else box.classList.remove("shown");
+  });
+
+  const allBtns = document.querySelectorAll("[id^='rationaleBtnText-']");
+  allBtns.forEach(t => {
+    t.textContent = areAllRationalesShown ? "إخفاء التعليل الأكاديمي" : "عرض التعليل الأكاديمي";
+  });
+}
+
+function toggleBookmarkQuestion(qId) {
+  const index = appState.bookmarkedQuestionIds.indexOf(qId);
+  if (index > -1) {
+    appState.bookmarkedQuestionIds.splice(index, 1);
+  } else {
+    appState.bookmarkedQuestionIds.push(qId);
+  }
+  persistState();
+  updateGlobalStats();
+  renderBankQuestions();
+}
+
+function handleBankSearch() {
+  applyBankFilters();
+}
+
+function applyBankFilters() {
+  const searchVal = (document.getElementById("bankSearchInput")?.value || "").trim().toLowerCase();
+  const lectureVal = document.getElementById("bankLectureFilter")?.value || "all";
+  const bookmarkVal = document.getElementById("bankBookmarkFilter")?.value || "all";
+
+  bankFilteredQuestions = QUESTIONS_BANK.filter(q => {
+    // Lecture filter
+    if (lectureVal !== "all" && String(q.lectureId) !== lectureVal) {
+      return false;
+    }
+
+    // Bookmark / Status filter
+    if (bookmarkVal === "bookmarked" && !appState.bookmarkedQuestionIds.includes(q.id)) {
+      return false;
+    }
+    if (bookmarkVal === "unanswered" && appState.userAnswers[q.id] !== undefined) {
+      return false;
+    }
+    if (bookmarkVal === "incorrect") {
+      const ans = appState.userAnswers[q.id];
+      if (ans === undefined || ans === q.correctIndex) return false;
+    }
+
+    // Text search
+    if (searchVal) {
+      const matchQ = q.question.toLowerCase().includes(searchVal);
+      const matchRationale = q.rationale.toLowerCase().includes(searchVal);
+      const matchTopic = q.topic.toLowerCase().includes(searchVal);
+      const matchOpts = q.options.some(o => o.toLowerCase().includes(searchVal));
+      if (!matchQ && !matchRationale && !matchTopic && !matchOpts) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+
+  renderBankQuestions();
+}
+
+function resetBankFilters() {
+  const sInput = document.getElementById("bankSearchInput");
+  const lFilter = document.getElementById("bankLectureFilter");
+  const bFilter = document.getElementById("bankBookmarkFilter");
+  if (sInput) sInput.value = "";
+  if (lFilter) lFilter.value = "all";
+  if (bFilter) bFilter.value = "all";
+  applyBankFilters();
+}
+
+/* ==========================================================================
+   GLOBAL STATS CALCULATION
+   ========================================================================== */
+function updateGlobalStats() {
+  const answeredCountEl = document.getElementById("statAnsweredCount");
+  const accuracyEl = document.getElementById("statAccuracyPercent");
+  const bookmarkedEl = document.getElementById("statBookmarkedCount");
+
+  const answeredIds = Object.keys(appState.userAnswers).map(Number);
+  const totalAnswered = answeredIds.length;
+
+  let correctCount = 0;
+  answeredIds.forEach(id => {
+    const q = QUESTIONS_BANK.find(item => item.id === id);
+    if (q && appState.userAnswers[id] === q.correctIndex) {
+      correctCount++;
+    }
+  });
+
+  if (answeredCountEl) {
+    answeredCountEl.textContent = `${totalAnswered} / ${QUESTIONS_BANK.length}`;
+  }
+
+  if (accuracyEl) {
+    if (totalAnswered > 0) {
+      const acc = Math.round((correctCount / totalAnswered) * 100);
+      accuracyEl.textContent = `نسبة الدقة: ${acc}% (${correctCount} صحيح)`;
+    } else {
+      accuracyEl.textContent = "نسبة الدقة: --";
+    }
+  }
+
+  if (bookmarkedEl) {
+    bookmarkedEl.textContent = appState.bookmarkedQuestionIds.length;
+  }
+}
+
+/* ==========================================================================
+   EXAM SIMULATOR LOGIC
+   ========================================================================== */
+function startSimulatorExam() {
+  const scopeEl = document.querySelector('input[name="simScope"]:checked');
+  const countEl = document.querySelector('input[name="simCount"]:checked');
+  const timerEl = document.getElementById("simTimerEnable");
+  const randEl = document.getElementById("simRandomize");
+  const instantEl = document.getElementById("simInstantFeedback");
+
+  const scope = scopeEl ? scopeEl.value : "all";
+  let count = countEl ? parseInt(countEl.value, 10) : 50;
+  const timerEnabled = timerEl ? timerEl.checked : true;
+  const randomize = randEl ? randEl.checked : true;
+  const instantFeedback = instantEl ? instantEl.checked : false;
+
+  // Filter pool
+  let pool = [...QUESTIONS_BANK];
+  if (scope === "lec1_2") {
+    pool = pool.filter(q => q.lectureId === 1 || q.lectureId === 2);
+  } else if (scope === "lec3") {
+    pool = pool.filter(q => q.lectureId === 3);
+    // If pool has fewer than count, adjust
+    if (pool.length === 0) pool = QUESTIONS_BANK.filter(q => q.lectureId === 1);
+  } else if (scope === "lec4_5") {
+    pool = pool.filter(q => q.lectureId === 4 || q.lectureId === 5);
+  }
+
+  if (count > pool.length) {
+    count = pool.length;
+  }
+
+  if (randomize) {
+    pool.sort(() => Math.random() - 0.5);
+  }
+
+  const selectedQuestions = pool.slice(0, count);
+  const totalSeconds = timerEnabled ? count * 48 : 0; // ~48s per question
+
+  appState.simulator = {
+    inProgress: true,
+    scope,
+    count,
+    timerEnabled,
+    randomize,
+    instantFeedback,
+    questionIds: selectedQuestions.map(q => q.id),
+    currentIndex: 0,
+    answers: {},
+    timeRemainingSeconds: totalSeconds,
+    totalSecondsGiven: totalSeconds,
+    timerIntervalId: null,
+    isCompleted: false,
+    score: null
+  };
+
+  document.getElementById("simSetupScreen").style.display = "none";
+  document.getElementById("simResultScreen").style.display = "none";
+  document.getElementById("simActiveScreen").style.display = "block";
+
+  renderSimulatorQNavGrid();
+  renderSimulatorActiveQuestion();
+
+  if (timerEnabled) {
+    startSimulatorTimer();
+  } else {
+    const timerBadge = document.getElementById("simTimerBadge");
+    if (timerBadge) timerBadge.style.display = "none";
+  }
+}
+
+function startSimulatorTimer() {
+  const timerBadge = document.getElementById("simTimerBadge");
+  const timerText = document.getElementById("simTimeRemainingText");
+  if (timerBadge) timerBadge.style.display = "inline-flex";
+
+  if (appState.simulator.timerIntervalId) {
+    clearInterval(appState.simulator.timerIntervalId);
+  }
+
+  appState.simulator.timerIntervalId = setInterval(() => {
+    appState.simulator.timeRemainingSeconds--;
+    if (timerText) {
+      const mins = Math.floor(appState.simulator.timeRemainingSeconds / 60);
+      const secs = appState.simulator.timeRemainingSeconds % 60;
+      timerText.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    if (appState.simulator.timeRemainingSeconds <= 0) {
+      clearInterval(appState.simulator.timerIntervalId);
+      finishSimulatorExam(true);
+    }
+  }, 1000);
+}
+
+function renderSimulatorQNavGrid() {
+  const navGrid = document.getElementById("simQGridNav");
+  if (!navGrid) return;
+
+  let html = "";
+  appState.simulator.questionIds.forEach((qId, idx) => {
+    const isAnswered = appState.simulator.answers[qId] !== undefined;
+    const isCurrent = idx === appState.simulator.currentIndex;
+    let cls = "sim-q-btn";
+    if (isAnswered) cls += " answered";
+    if (isCurrent) cls += " current";
+
+    html += `
+      <button type="button" class="${cls}" onclick="jumpToSimulatorQ(${idx})">${idx + 1}</button>
+    `;
+  });
+
+  navGrid.innerHTML = html;
+}
+
+function renderSimulatorActiveQuestion() {
+  const sim = appState.simulator;
+  const currentQId = sim.questionIds[sim.currentIndex];
+  const q = QUESTIONS_BANK.find(item => item.id === currentQId);
+  if (!q) return;
+
+  const metaEl = document.getElementById("simCurrentQMeta");
+  const topicEl = document.getElementById("simTopicBadge");
+  const textEl = document.getElementById("simActiveQText");
+  const optsEl = document.getElementById("simActiveQOptions");
+  const rationaleEl = document.getElementById("simActiveRationale");
+
+  if (metaEl) metaEl.textContent = `السؤال ${sim.currentIndex + 1} من ${sim.questionIds.length}`;
+  if (topicEl) topicEl.textContent = `المحاضرة ${q.lectureId}: ${q.topic}`;
+  if (textEl) textEl.textContent = q.question;
+
+  // Options
+  const currentAnswer = sim.answers[currentQId];
+  const optionChars = ["A", "B", "C", "D"];
+  let optsHtml = "";
+
+  q.options.forEach((opt, optIdx) => {
+    const isSelected = currentAnswer === optIdx;
+    let labelCls = "sim-option-label";
+    if (isSelected) labelCls += " selected";
+
+    // If instant feedback is enabled and answered
+    if (sim.instantFeedback && currentAnswer !== undefined) {
+      if (optIdx === q.correctIndex) labelCls += " correct-revealed";
+      else if (isSelected && optIdx !== q.correctIndex) labelCls += " wrong-revealed";
+    }
+
+    optsHtml += `
+      <div class="${labelCls}" onclick="selectSimulatorAnswer(${q.id}, ${optIdx})">
+        <span class="q-opt-char">${optionChars[optIdx]}</span>
+        <span style="flex: 1;">${opt}</span>
+      </div>
+    `;
+  });
+  if (optsEl) optsEl.innerHTML = optsHtml;
+
+  // Instant Rationale
+  if (rationaleEl) {
+    if (sim.instantFeedback && currentAnswer !== undefined) {
+      rationaleEl.style.display = "block";
+      rationaleEl.innerHTML = `
+        <div class="q-rationale-title">
+          <span>الإجابة النموذجية: الخيار (${optionChars[q.correctIndex]})</span>
+        </div>
+        <p style="margin: 0.25rem 0 0 0;">${q.rationale}</p>
+      `;
+    } else {
+      rationaleEl.style.display = "none";
+    }
+  }
+
+  // Prev / Next button states
+  const prevBtn = document.getElementById("simPrevBtn");
+  const nextBtn = document.getElementById("simNextBtn");
+  if (prevBtn) prevBtn.disabled = sim.currentIndex === 0;
+  if (nextBtn) {
+    if (sim.currentIndex === sim.questionIds.length - 1) {
+      nextBtn.innerHTML = `<span>تسليم الاختبار</span><i data-lucide="check" style="width: 16px; height: 16px;"></i>`;
+    } else {
+      nextBtn.innerHTML = `<span>السؤال التالي</span><i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>`;
+    }
+  }
+
+  // Bookmark Button in Simulator
+  const isBookmarked = appState.bookmarkedQuestionIds.includes(q.id);
+  const bmBtnText = document.getElementById("simBookmarkBtnText");
+  if (bmBtnText) {
+    bmBtnText.textContent = isBookmarked ? "إلغاء حفظ السؤال" : "حفظ السؤال للمراجعة";
+  }
+
+  renderSimulatorQNavGrid();
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function selectSimulatorAnswer(qId, optIdx) {
+  appState.simulator.answers[qId] = optIdx;
+  renderSimulatorActiveQuestion();
+}
+
+function navSimulatorNext() {
+  const sim = appState.simulator;
+  if (sim.currentIndex === sim.questionIds.length - 1) {
+    confirmEndSimulator();
+  } else {
+    sim.currentIndex++;
+    renderSimulatorActiveQuestion();
+  }
+}
+
+function navSimulatorPrev() {
+  const sim = appState.simulator;
+  if (sim.currentIndex > 0) {
+    sim.currentIndex--;
+    renderSimulatorActiveQuestion();
+  }
+}
+
+function jumpToSimulatorQ(index) {
+  appState.simulator.currentIndex = index;
+  renderSimulatorActiveQuestion();
+}
+
+function toggleSimBookmarkCurrent() {
+  const currentQId = appState.simulator.questionIds[appState.simulator.currentIndex];
+  toggleBookmarkQuestion(currentQId);
+  renderSimulatorActiveQuestion();
+}
+
+function confirmEndSimulator() {
+  finishSimulatorExam(false);
+}
+
+function finishSimulatorExam(timeUp) {
+  if (appState.simulator.timerIntervalId) {
+    clearInterval(appState.simulator.timerIntervalId);
+  }
+
+  appState.simulator.inProgress = false;
+  appState.simulator.isCompleted = true;
+
+  // Calculate results
+  const sim = appState.simulator;
+  let correctCount = 0;
+  let topicBreakdown = {};
+
+  sim.questionIds.forEach(qId => {
+    const q = QUESTIONS_BANK.find(item => item.id === qId);
+    if (!q) return;
+
+    if (!topicBreakdown[q.lectureId]) {
+      topicBreakdown[q.lectureId] = { total: 0, correct: 0 };
+    }
+    topicBreakdown[q.lectureId].total++;
+
+    const userAns = sim.answers[qId];
+    if (userAns === q.correctIndex) {
+      correctCount++;
+      topicBreakdown[q.lectureId].correct++;
+    }
+  });
+
+  const total = sim.questionIds.length;
+  const scorePercent = Math.round((correctCount / total) * 100);
+  sim.score = scorePercent;
+
+  document.getElementById("simActiveScreen").style.display = "none";
+  document.getElementById("simResultScreen").style.display = "block";
+
+  const scoreText = document.getElementById("simFinalScoreText");
+  const gradeTitle = document.getElementById("simGradeTitle");
+  const gradeDesc = document.getElementById("simGradeDesc");
+
+  if (scoreText) scoreText.textContent = `${scorePercent}%`;
+
+  if (gradeTitle && gradeDesc) {
+    if (scorePercent >= 90) {
+      gradeTitle.textContent = "ممتاز مرتفع (امتياز أكاديمي متقدم)";
+      gradeDesc.textContent = "ما شاء الله! جاهزية ممتازة لامتحان الميدتيرم، وإلمام دقيق بكافة المفاهيم والنظريات وتطبيقاتها.";
+    } else if (scorePercent >= 80) {
+      gradeTitle.textContent = "جيد جداً مرتفع";
+      gradeDesc.textContent = "مستوى رفيع وقدرة قوية على تحليل الأسئلة. راجع الأسئلة الخاطئة لضمان الدرجة النهائية الكاملة.";
+    } else if (scorePercent >= 65) {
+      gradeTitle.textContent = "جيد (مستوى اجتياز مقبول)";
+      gradeDesc.textContent = "لديك فكرة عامة جيدة، لكنك بحاجة للتركيز على الفروق الدقيقة بين النظريات وتصنيفات الضوضاء والإنصات.";
+    } else {
+      gradeTitle.textContent = "بحاجة إلى إعادة المراجعة والتركيز";
+      gradeDesc.textContent = "ننصح بقراءة ملخصات المحاضرات الخمس بعناية، ثم حل بنك الأسئلة بالكامل مع تدقيق التعليلات الأكاديمية.";
+    }
+  }
+
+  // Summary Metrics
+  document.getElementById("simResultTotalQ").textContent = total;
+  document.getElementById("simResultCorrectQ").textContent = correctCount;
+  document.getElementById("simResultWrongQ").textContent = total - correctCount;
+
+  const secondsSpent = sim.totalSecondsGiven - sim.timeRemainingSeconds;
+  const mins = Math.floor(secondsSpent / 60);
+  const secs = secondsSpent % 60;
+  document.getElementById("simResultTimeSpent").textContent = `${mins} دقيقة و ${secs} ثانية`;
+
+  // Topic breakdown
+  const breakdownContainer = document.getElementById("simTopicBreakdown");
+  if (breakdownContainer) {
+    let bdHtml = '<div style="display: flex; flex-direction: column; gap: var(--space-xs);">';
+    for (let lec = 1; lec <= 5; lec++) {
+      if (topicBreakdown[lec]) {
+        const stats = topicBreakdown[lec];
+        const pct = Math.round((stats.correct / stats.total) * 100);
+        bdHtml += `
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: var(--surface-container); border-radius: var(--rounded);">
+            <span style="font-size: 0.88rem;"><strong>المحاضرة ${lec}</strong> (${stats.correct} من ${stats.total} إجابة صحيحة)</span>
+            <span class="badge-tag" style="background: ${pct >= 75 ? 'var(--positive)' : 'var(--warning)'}; color: #ffffff;">${pct}%</span>
+          </div>
+        `;
+      }
+    }
+    bdHtml += '</div>';
+    breakdownContainer.innerHTML = bdHtml;
+  }
+}
+
+function reviewExamMistakes() {
+  switchMainTab("bank");
+  const bFilter = document.getElementById("bankBookmarkFilter");
+  if (bFilter) {
+    bFilter.value = "incorrect";
+    applyBankFilters();
+  }
+}
+
+function resetSimulatorToSetup() {
+  document.getElementById("simActiveScreen").style.display = "none";
+  document.getElementById("simResultScreen").style.display = "none";
+  document.getElementById("simSetupScreen").style.display = "block";
+}
+
+/* ==========================================================================
+   THEORIES MATRIX RENDERER
+   ========================================================================== */
+function renderTheoriesMatrix() {
+  const container = document.getElementById("theoriesMatrixContainer");
+  if (!container) return;
+
+  let html = "";
+  THEORIES_MATRIX.forEach((th, idx) => {
+    html += `
+      <div class="theory-card">
+        <div>
+          <span class="badge-tag badge-primary">النظرية رقم ${idx + 1}</span>
+          <h3 style="font-size: 1.15rem; color: var(--primary); margin: 0.35rem 0 0.25rem 0;">${th.name}</h3>
+          <div class="caption-sage" style="margin-bottom: var(--space-sm); font-size: 0.85rem;">
+            <strong>الرواد والمؤسسون:</strong> ${th.scholars}
+          </div>
+          <div style="font-size: 0.88rem; line-height: 1.6; margin-bottom: var(--space-md);">
+            <strong>الفرضية الجوهرية:</strong> ${th.coreThesis}
+          </div>
+        </div>
+        <div class="concept-box" style="margin: 0; font-size: 0.82rem; line-height: 1.5;">
+          <strong>المفاهيم المفتاحية:</strong> ${th.keyConcepts}
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+/* ==========================================================================
+   SAVED QUESTIONS & PROGRESS
+   ========================================================================== */
+function renderBookmarksList() {
+  const container = document.getElementById("savedQuestionsContainer");
+  const countHeading = document.getElementById("savedCountHeading");
+  if (!container) return;
+
+  const count = appState.bookmarkedQuestionIds.length;
+  if (countHeading) countHeading.textContent = count;
+
+  if (count === 0) {
+    container.innerHTML = `
+      <p class="subhead" style="text-align: center; padding: var(--space-lg);">
+        لم تقم بحفظ أي أسئلة للمراجعة بعد. يمكنك النقر على زر "حفظ" في بنك الأسئلة أو أثناء محاكي الاختبار لتجميع الأسئلة الصعبة هنا.
+      </p>
+    `;
+    return;
+  }
+
+  let html = '<div style="display: flex; flex-direction: column; gap: var(--space-sm);">';
+  appState.bookmarkedQuestionIds.forEach(id => {
+    const q = QUESTIONS_BANK.find(item => item.id === id);
+    if (!q) return;
+
+    html += `
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; border: var(--hairline); border-radius: var(--rounded); background: var(--surface-container); gap: var(--space-md); flex-wrap: wrap;">
+        <div style="flex: 1 1 300px;">
+          <div style="font-size: 0.8rem; color: var(--primary); font-weight: 700;">سؤال ${q.id} (محاضرة ${q.lectureId} - ${q.topic})</div>
+          <div style="font-size: 0.92rem; font-weight: 600; margin-top: 0.2rem;">${q.question}</div>
+        </div>
+        <div style="display: flex; gap: var(--space-xs);">
+          <button type="button" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="jumpToBankQuestion(${q.id})">عرض وحل السؤال</button>
+          <button type="button" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; color: var(--error);" onclick="toggleBookmarkQuestion(${q.id})">حذف</button>
+        </div>
+      </div>
+    `;
+  });
+  html += '</div>';
+
+  container.innerHTML = html;
+}
+
+function jumpToBankQuestion(qId) {
+  switchMainTab("bank");
+  const card = document.getElementById(`bankCard-${qId}`);
+  if (card) {
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.style.borderColor = 'var(--primary)';
+  }
+}
+
+function clearAllBookmarks() {
+  appState.bookmarkedQuestionIds = [];
+  persistState();
+  updateGlobalStats();
+  renderBookmarksList();
+}
+
+/* ==========================================================================
+   EXPORT STUDY SUMMARY REPORT
+   ========================================================================== */
+function exportStudySummary() {
+  const total = QUESTIONS_BANK.length;
+  const answeredCount = Object.keys(appState.userAnswers).length;
+  let correctCount = 0;
+  Object.keys(appState.userAnswers).forEach(qId => {
+    const q = QUESTIONS_BANK.find(item => item.id === Number(qId));
+    if (q && appState.userAnswers[qId] === q.correctIndex) {
+      correctCount++;
+    }
+  });
+
+  const reportText = `
+تقرير مراجعة مقرر مدخل إلى الاتصال الشخصي للميدتيرم
+تاريخ المراجعة: ${new Date().toLocaleDateString('ar-EG')}
+-----------------------------------------------------------
+- إجمالي أسئلة المقرر: ${total} سؤالاً
+- الأسئلة المجابة في التدريب: ${answeredCount} سؤالاً
+- الإجابات الصحيحة: ${correctCount} سؤالاً
+- نسبة الدقة الإجمالية: ${answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0}%
+- عدد الأسئلة المحفوظة للمراجعة الحرجة: ${appState.bookmarkedQuestionIds.length} سؤالاً
+
+ملخص المحاضرات المعتمدة:
+1. التأصيل المفاهيمي والتطور النظري (DeVito, Hargie, Watzlawick, Baxter, Petronio)
+2. بنية المنظومة الاتصالية ونظرية ثراء الوسائط (Daft & Lengel, Festinger)
+3. مهارات العرض الفعال وتصميم الشرائح وقواعد ماير (Mayer, Duarte, Toastmasters)
+4. مهارات الإنصات الفعال والاتصال غير اللفظي (Mehrabian, Hall, Proxemics)
+5. إدارة الصراعات التفاعلية وبناء التحالفات والاتصال الرقمي (TKI, Harvard, SIPT, Walther)
+-----------------------------------------------------------
+بالتوفيق والنجاح الباهر في اختبار الميدتيرم!
+  `.trim();
+
+  if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === 'function') {
+    window.notebookAppApi.triggerFileDownload({
+      content: reportText,
+      contentType: "text/plain;charset=utf-8",
+      encoding: "utf-8",
+      filename: "تقرير_مراجعة_الاتصال_الشخصي_ميدتيرم.txt"
+    });
+  } else {
+    // Fallback standard text download
+    const blob = new Blob([reportText], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "تقرير_مراجعة_الاتصال_الشخصي_ميدتيرم.txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+}
+</script>
+ </body>
+</html>
