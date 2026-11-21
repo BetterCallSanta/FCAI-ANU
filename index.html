@@ -47,8 +47,8 @@
       --data-context: #4a5d80;
 
       /* System font stacks — 100% offline, zero external CDN or font dependency */
-      --font-headline: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, 'Traditional Arabic', 'Geeza Pro', 'Arabic Typesetting', serif;
-      --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Arabic', 'Tahoma', 'Arial', sans-serif;
+      --font-headline: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+      --font-body: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
       --font-label: ui-monospace, 'SFMono-Regular', 'Cascadia Code', Menlo, Consolas, 'Liberation Mono', monospace;
 
       /* Type scale (Narrative) */
@@ -768,52 +768,6 @@
     .pipe-e { background: var(--mint-tint); color: var(--positive); }
     .pipe-s { background: var(--coral-tint); color: var(--error); }
 
-    /* Review questions & interactive self-check */
-    .quiz-card {
-      background: var(--surface-container);
-      border: var(--hairline);
-      border-radius: var(--rounded-lg);
-      padding: var(--space-lg);
-      margin-top: var(--space-md);
-    }
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
-      margin-top: var(--space-md);
-    }
-    .quiz-opt {
-      text-align: start;
-      min-height: 44px;
-      padding: var(--space-sm) var(--space-md);
-      background: var(--background);
-      color: var(--on-surface);
-      border: var(--hairline-strong);
-      border-radius: var(--rounded);
-      cursor: pointer;
-      transition: background-color var(--dur-micro) var(--ease-out);
-    }
-    .quiz-opt:hover {
-      background: var(--surface-container-high);
-    }
-    .quiz-opt.correct {
-      background: var(--mint-tint);
-      border-color: var(--positive);
-      color: var(--positive);
-    }
-    .quiz-opt.wrong {
-      background: var(--coral-tint);
-      border-color: var(--error);
-      color: var(--error);
-    }
-    .quiz-feedback {
-      margin-top: var(--space-sm);
-      font-size: 0.92rem;
-      color: var(--on-surface-variant);
-      display: none;
-    }
-    .quiz-feedback.visible { display: block; }
-
     /* Back to top floating button */
     .back-to-top {
       position: fixed;
@@ -922,6 +876,17 @@
         scroll-behavior: auto !important;
       }
     }
+      /* Gentle visual refinement without altering layout or content */
+    :root { --rounded: 0.7rem; --rounded-lg: 1rem; }
+    body { line-height: 1.65; font-family: var(--font-body); }
+    html[dir="rtl"] body { font-family: 'Tahoma', 'Segoe UI', sans-serif; }
+    h1, h2, h3 { font-family: var(--font-headline); }
+    .hero-header, .panel, .sidebar, .example-card, .kpi-tile { border-radius: 16px; }
+    .btn, .collapse-toggle, .cycle-node, .bit-cell { border-radius: 10px; }
+    .utility-bar { backdrop-filter: blur(12px); }
+    .panel, .kpi-tile { transition: border-color .18s ease, box-shadow .18s ease; }
+    .section-heading { line-height: 1.3; }
+    @media (max-width: 640px) { .hero-header { padding: 1.25rem; } .page-shell { gap: 1rem; } }
   </style>
 </head>
 <body>
@@ -964,7 +929,6 @@
         <span class="lang-en">Contents &amp; Search Filter</span>
         <span class="lang-ar">الفهرس والبحث</span>
       </button>
-      <span class="coord-label" id="quiz-score-badge-mobile">0 / 6</span>
     </div>
 
     <!-- Sidebar Navigation -->
@@ -993,28 +957,11 @@
             <li><a class="nav-link" href="#sec-6"><span class="nav-num">06</span><span class="lang-en">OS Memory Management &amp; Lifecycle</span><span class="lang-ar">إدارة الذاكرة ودورة حياة البرنامج</span></a></li>
             <li><a class="nav-link" href="#sec-7"><span class="nav-num">07</span><span class="lang-en">Binary Data Representation</span><span class="lang-ar">تمثيل البيانات الثنائية</span></a></li>
             <li><a class="nav-link" href="#sec-8"><span class="nav-num">08</span><span class="lang-en">Worked Problems &amp; Formulas</span><span class="lang-ar">المسائل المحلولة والقوانين</span></a></li>
-            <li><a class="nav-link" href="#sec-9"><span class="nav-num">09</span><span class="lang-en">Academic Review Questions</span><span class="lang-ar">أسئلة المراجعة الأكاديمية</span></a></li>
           </ul>
         </nav>
       </div>
 
-      <div class="sidebar-group">
-        <span class="coord-label">
-          <span class="lang-en">SELF-CHECK PROGRESS</span>
-          <span class="lang-ar">تقدم الاختبار الذاتي</span>
-        </span>
-        <div class="observation-well" style="margin-top: var(--space-xs);">
-          <div id="quiz-score-readout" style="font-size: 1.1rem; color: var(--primary);">0 / 6</div>
-          <div style="font-size: 0.8rem; color: var(--on-surface-variant); margin-top: var(--space-xs);">
-            <span class="lang-en">Verified answers saved automatically</span>
-            <span class="lang-ar">تُحفظ الإجابات الصحيحة تلقائياً</span>
-          </div>
-          <button type="button" class="btn btn-secondary btn-sm" style="margin-top: var(--space-sm); width: 100%;" onclick="resetStudyProgress(this)">
-            <span class="lang-en">Reset Quiz State</span>
-            <span class="lang-ar">إعادة ضبط الاختبار</span>
-          </button>
-        </div>
-      </div>
+      
     </aside>
 
     <!-- Main Study Narrative -->
@@ -2067,30 +2014,6 @@
         </div>
       </section>
 
-      <!-- SECTION 9: Interactive Academic Review Questions -->
-      <section class="study-section" id="sec-9" data-keywords="review questions quiz assessment test self check">
-        <div class="section-header">
-          <div>
-            <span class="coord-label"><span class="lang-en">MODULE 09 · ACADEMIC SELF-ASSESSMENT</span><span class="lang-ar">الوحدة 09 · أسئلة المراجعة والتقويم الذاتي</span></span>
-            <h2 class="section-heading">
-              <span class="lang-en">Verify conceptual mastery across all six core exam questions</span>
-              <span class="lang-ar">تحقق من إتقان المفاهيم عبر ستة أسئلة مراجعة أكاديمية شاملة</span>
-            </h2>
-            <p class="section-sub">
-              <span class="lang-en">Select an answer for each question to receive immediate bilingual rationale. Your score persists across sessions.</span>
-              <span class="lang-ar">اختر إجابة لكل سؤال للحصول على التفسير الأكاديمي الفوري باللغتين، مع حفظ نتيجتك تلقائياً.</span>
-            </p>
-          </div>
-          <button type="button" class="collapse-toggle" onclick="toggleSection('sec-9', this)" aria-expanded="true">
-            <span class="lang-en">Collapse</span><span class="lang-ar">طي القسم</span>
-          </button>
-        </div>
-
-        <div class="section-body" id="quiz-container">
-          <!-- Populated cleanly by JS so both EN and AR options stay synchronized -->
-        </div>
-      </section>
-
       <footer class="study-footer">
         <span class="lang-en">Source Attribution: Synthesized from <em>IT Fundamentals — Lectures 1–3</em> (Computer Operation, System Unit &amp; CPU Architecture, Memory Technologies, Operating System Lifecycle, and Digital Representation).</span>
         <span class="lang-ar">إسناد المصدر: مُعدّ استناداً إلى محاضرات <em>أساسيات تقنية المعلومات (المحاضرات 1–3)</em> حول عمل الحاسوب، وحدة النظام، معمارية المعالج، تقنيات الذاكرة، وإدارة نظام التشغيل.</span>
@@ -2111,8 +2034,7 @@
       mcStep: 0,
       ipcStage: 'input',
       decimalVal: 65,
-      collapsedSections: [],
-      quizAnswers: {}
+      collapsedSections: []
     };
 
     const IPC_DATA = {
@@ -2157,129 +2079,6 @@
       }
     ];
 
-    const QUIZ_QUESTIONS = [
-      {
-        id: 'q1',
-        qEn: `1. Which statement accurately distinguishes DRAM from MRAM according to the lectures?`,
-        qAr: `1. أي عبارة تميّز بدقة بين ذاكرة DRAM وذاكرة MRAM وفقاً للمحاضرات؟`,
-        optsEn: [
-          `DRAM is non-volatile and requires no refresh; MRAM loses data on power-off.`,
-          `DRAM is volatile and requires constant refreshing; MRAM is non-volatile and stores bits using magnetic states.`,
-          `DRAM is used only for BIOS firmware; MRAM is exclusively used as CPU L1 cache.`,
-          `Both DRAM and MRAM must be erased with ultraviolet light before rewriting.`
-        ],
-        optsAr: [
-          `ذاكرة DRAM غير متطايرة ولا تحتاج لإنعاش؛ بينما تفقد MRAM بياناتها عند انقطاع الكهرباء.`,
-          `ذاكرة DRAM متطايرة وتحتاج إلى إنعاش متكرر؛ بينما MRAM غير متطايرة وتخزن البيانات بحالات مغناطيسية.`,
-          `تُستخدم DRAM للبرامج الثابتة فقط؛ وتُستخدم MRAM حصراً كذاكرة مخبئية L1.`,
-          `تتطلب كل من DRAM و MRAM المسح بالأشعة فوق البنفسجية قبل إعادة الكتابة.`
-        ],
-        correct: 1,
-        expEn: `DRAM stores each bit in a capacitor that leaks charge, so it is volatile and requires refreshing thousands of times per second. MRAM uses magnetic states, making it non-volatile with low power consumption.`,
-        expAr: `تخزن DRAM كل بت في مكثف يتسرب منه الشحن، لذا فهي متطايرة وتحتاج إلى إنعاش آلاف المرات في الثانية؛ بينما تستخدم MRAM حالات مغناطيسية تجعلها غير متطايرة ومنخفضة الاستهلاك للطاقة.`
-      },
-      {
-        id: 'q2',
-        qEn: `2. Which CPU component is directly responsible for comparing two numbers (e.g., checking whether A > B) and performing arithmetic?`,
-        qAr: `2. ما المكون داخل المعالج المسؤول مباشرةً عن مقارنة رقمين (مثل التحقق مما إذا كان A > B) وإجراء العمليات الحسابية؟`,
-        optsEn: [
-          `Control Unit (CU)`,
-          `Arithmetic Logic Unit (ALU)`,
-          `System Clock`,
-          `Dual Inline Package (DIP)`
-        ],
-        optsAr: [
-          `وحدة التحكم (CU)`,
-          `وحدة الحساب والمنطق (ALU)`,
-          `ساعة النظام (System Clock)`,
-          `الحزمة ثنائية الصف (DIP)`
-        ],
-        correct: 1,
-        expEn: `The ALU performs both arithmetic operations (+, −, ×, ÷) and comparison/logic operations (>, <, =). The Control Unit directs and coordinates operations.`,
-        expAr: `تتولى وحدة الحساب والمنطق (ALU) تنفيذ العمليات الحسابية وعمليات المقارنة والمنطق، بينما تتولى وحدة التحكم تنسيق وتوجيه العمليات.`
-      },
-      {
-        id: 'q3',
-        qEn: `3. Why does rebooting a computer often resolve sluggishness or erratic OS behavior?`,
-        qAr: `3. لماذا تنجح إعادة تشغيل الحاسوب (Reboot) غالباً في حل بطء النظام أو أخطائه العارضة؟`,
-        optsEn: [
-          `Because rebooting wipes volatile RAM clean and starts the operating system fresh.`,
-          `Because rebooting permanently erases and rewrites the CPU's silicon pathways.`,
-          `Because rebooting converts DRAM capacitors into non-volatile ROM firmware.`,
-          `Because rebooting doubles the system clock frequency.`
-        ],
-        optsAr: [
-          `لأن إعادة التشغيل تمسح محتويات RAM المتطايرة بالكامل وتعيد إقلاع نظام التشغيل من جديد.`,
-          `لأن إعادة التشغيل تعيد نقش المسارات السيليكونية داخل المعالج.`,
-          `لأن إعادة التشغيل تحوّل مكثفات DRAM إلى ذاكرة ROM دائمة.`,
-          `لأن إعادة التشغيل تضاعف تردد ساعة النظام.`
-        ],
-        correct: 0,
-        expEn: `Corrupted OS-managed bytes in RAM caused by software bugs or transient hardware errors are cleared when power cycles and volatile RAM is wiped during a reboot.`,
-        expAr: `عندما تتلف بعض البيانات التي يديرها نظام التشغيل في RAM بسبب خطأ برمجي أو عارض، تقوم إعادة التشغيل بمسح RAM المتطايرة بالكامل وبدء النظام بنظافة.`
-      },
-      {
-        id: 'q4',
-        qEn: `4. What is the exact sequence of the four stages in one CPU Machine Cycle?`,
-        qAr: `4. ما هو الترتيب الدقيق للمراحل الأربع في دورة الآلة الواحدة للمعالج؟`,
-        optsEn: [
-          `Input → Process → Output → Storage`,
-          `Decode → Fetch → Store → Execute`,
-          `Fetch → Decode → Execute → Store`,
-          `Fetch → Execute → Refresh → Reboot`
-        ],
-        optsAr: [
-          `إدخال ← معالجة ← إخراج ← تخزين`,
-          `فك الترميز ← جلب ← تخزين ← تنفيذ`,
-          `جلب (Fetch) ← فك الترميز (Decode) ← تنفيذ (Execute) ← تخزين (Store)`,
-          `جلب ← تنفيذ ← إنعاش ← إعادة تشغيل`
-        ],
-        correct: 2,
-        expEn: `A machine cycle consists of (1) Fetch instruction from memory, (2) Decode instruction into commands, (3) Execute via the ALU, and (4) Store results back to memory. (Input–Process–Output–Storage is the broader Information Processing Cycle.)`,
-        expAr: `تتكون دورة الآلة من: (1) الجلب من الذاكرة، (2) فك الترميز، (3) التنفيذ عبر ALU، (4) التخزين في الذاكرة. أما الإدخال والمعالجة والإخراج والتخزين فهي دورة معالجة المعلومات الأوسع.`
-      },
-      {
-        id: 'q5',
-        qEn: `5. In one-tenth of a second (the time it takes to blink an eye), roughly how many 10-ns operations can a computer perform?`,
-        qAr: `5. في عُشر الثانية (الزمن التقريبي لرمشة العين)، كم عملية بزمن 10 نانوثانية يستطيع الحاسوب تنفيذها تقريباً؟`,
-        optsEn: [
-          `10,000 operations`,
-          `100,000 operations`,
-          `1,000,000 operations`,
-          `10,000,000 (10 million) operations`
-        ],
-        optsAr: [
-          `10,000 عملية`,
-          `100,000 عملية`,
-          `1,000,000 عملية`,
-          `10,000,000 (10 ملايين) عملية`
-        ],
-        correct: 3,
-        expEn: `0.1 s ÷ (10 × 10⁻⁹ s) = 10⁻¹ ÷ 10⁻⁸ = 10⁷ = 10,000,000 operations.`,
-        expAr: `0.1 ثانية ÷ (10 × 10⁻⁹ ثانية) = 10⁻¹ ÷ 10⁻⁸ = 10⁷ = 10,000,000 عملية.`
-      },
-      {
-        id: 'q6',
-        qEn: `6. Which 8-bit binary pattern represents the decimal value 133₁₀?`,
-        qAr: `6. أي تمثيل ثنائي مكون من 8 بت يكافئ القيمة العشرية 133₁₀؟`,
-        optsEn: [
-          `10000101₂`,
-          `10000011₂`,
-          `10100101₂`,
-          `01000101₂`
-        ],
-        optsAr: [
-          `10000101₂`,
-          `10000011₂`,
-          `10100101₂`,
-          `01000101₂`
-        ],
-        correct: 0,
-        expEn: `128 (2⁷) + 4 (2²) + 1 (2⁰) = 133, which turns on bits 7, 2, and 0 → 10000101₂.`,
-        expAr: `128 (2⁷) + 4 (2²) + 1 (2⁰) = 133، أي تفعيل الخانات 7 و 2 و 0 ← 10000101₂.`
-      }
-    ];
-
     function persistState() {
       if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
         window.notebookAppApi.setAppState(STUDY_STATE).catch(function() {});
@@ -2307,7 +2106,6 @@
       }
 
       renderPipelineTable();
-      renderQuiz();
 
       if (preserveScroll) {
         requestAnimationFrame(function() {
@@ -2549,79 +2347,6 @@
       }
     }
 
-    function renderQuiz() {
-      var container = document.getElementById('quiz-container');
-      if (!container) return;
-      var html = '';
-      var correctCount = 0;
-
-      QUIZ_QUESTIONS.forEach(function(item) {
-        var chosen = STUDY_STATE.quizAnswers[item.id];
-        var hasChosen = typeof chosen === 'number';
-        var isCorrect = hasChosen && chosen === item.correct;
-        if (isCorrect) correctCount++;
-
-        var qText = STUDY_STATE.lang === 'ar' ? item.qAr : item.qEn;
-        var opts = STUDY_STATE.lang === 'ar' ? item.optsAr : item.optsEn;
-        var expText = STUDY_STATE.lang === 'ar' ? item.expAr : item.expEn;
-
-        html += '<div class="quiz-card">';
-        html += '<div style="font-weight: 600; color: var(--on-surface);">' + qText + '</div>';
-        html += '<div class="quiz-options">';
-        opts.forEach(function(optLabel, idx) {
-          var cls = 'quiz-opt';
-          if (hasChosen) {
-            if (idx === item.correct) cls += ' correct';
-            else if (idx === chosen) cls += ' wrong';
-          }
-          html += '<button type="button" class="' + cls + '" onclick="answerQuestion(\'' + item.id + '\', ' + idx + ')">' + optLabel + '</button>';
-        });
-        html += '</div>';
-        html += '<div class="quiz-feedback' + (hasChosen ? ' visible' : '') + '">';
-        if (hasChosen) {
-          var prefix = isCorrect
-            ? (STUDY_STATE.lang === 'ar' ? 'إجابة صحيحة — ' : 'Correct — ')
-            : (STUDY_STATE.lang === 'ar' ? 'توضيح — ' : 'Review Note — ');
-          html += '<strong style="color:' + (isCorrect ? 'var(--positive)' : 'var(--warning)') + ';">' + prefix + '</strong>' + expText;
-        }
-        html += '</div></div>';
-      });
-
-      container.innerHTML = html;
-      var scoreText = correctCount + ' / ' + QUIZ_QUESTIONS.length;
-      var r1 = document.getElementById('quiz-score-readout');
-      var r2 = document.getElementById('quiz-score-badge-mobile');
-      if (r1) r1.textContent = scoreText;
-      if (r2) r2.textContent = scoreText;
-    }
-
-    function answerQuestion(qId, optIdx) {
-      STUDY_STATE.quizAnswers[qId] = optIdx;
-      renderQuiz();
-      persistState();
-    }
-
-    function resetStudyProgress(btn) {
-      if (btn && btn.dataset.armed !== 'true') {
-        btn.dataset.armed = 'true';
-        btn.innerHTML = `<span class="lang-en">Click again to confirm</span><span class="lang-ar">اضغط مجدداً للتأكيد</span>`;
-        setTimeout(function() {
-          if (btn.dataset.armed === 'true') {
-            btn.dataset.armed = 'false';
-            btn.innerHTML = `<span class="lang-en">Reset Quiz State</span><span class="lang-ar">إعادة ضبط الاختبار</span>`;
-          }
-        }, 4000);
-        return;
-      }
-      if (btn) {
-        btn.dataset.armed = 'false';
-        btn.innerHTML = `<span class="lang-en">Reset Quiz State</span><span class="lang-ar">إعادة ضبط الاختبار</span>`;
-      }
-      STUDY_STATE.quizAnswers = {};
-      renderQuiz();
-      persistState();
-    }
-
     function toggleMobileToc() {
       var sidebar = document.getElementById('sidebar');
       if (sidebar) sidebar.classList.toggle('mobile-open');
@@ -2671,9 +2396,6 @@
       }
       if (typeof saved.decimalVal === 'number') STUDY_STATE.decimalVal = saved.decimalVal;
       if (Array.isArray(saved.collapsedSections)) STUDY_STATE.collapsedSections = saved.collapsedSections;
-      if (saved.quizAnswers && typeof saved.quizAnswers === 'object') {
-        STUDY_STATE.quizAnswers = saved.quizAnswers;
-      }
     }
 
     async function initStudyGuide() {
@@ -2689,7 +2411,6 @@
       selectMachineStep(STUDY_STATE.mcStep);
       setPipelineMode(STUDY_STATE.pipelineMode);
       renderBitLab();
-      renderQuiz();
 
       STUDY_STATE.collapsedSections.forEach(function(secId) {
         var sec = document.getElementById(secId);
